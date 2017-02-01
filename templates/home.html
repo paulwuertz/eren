@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/basic/jquery.qtip.min.css" />
     <style type="text/css">
         #mapo { 
             height: 800px; 
@@ -96,6 +97,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/eo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/basic/jquery.qtip.js"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 <script type="text/javascript">
@@ -120,11 +122,21 @@
             { 
                 title  : '{{ ren.nomo }}',
                 start  : '{{jar}}-{{ren.periodo.ekmonato}}-{{ren.periodo.ektago}}'{% if ren.periodo.fintago %},
-                end    : '{{jar}}-{{ren.periodo.finmonato}}-{{ren.periodo.fintago}}'{% endif %}
+                end    : '{{jar}}-{{ren.periodo.finmonato}}-{{ren.periodo.fintago}}'{% endif %},
+                description: '<dt><b><a href="{{ ren.link }}">{{ ren.nomo }}</a></b></dt><dt><b>Loko:</b></dt><dd>{{ ren.loko }}</dd><dt><b>Tempo:</b></dt><dd>{{ ren.tempo }}</dd><dt><b>Priskribo:</b></dt><dd>{{ ren.text }}</dd><dt><b>Kontakto:</b></dt><dd><a href="mailto:{{ren.mail}}">Alretpoŝtu!</a></dd>'
             },
             {% endif %}
         {% endfor %}
-        ]
+        ],
+        eventRender: function(event, element) {
+            element.qtip({
+                content: event.description,
+                hide: {
+                    fixed: true,
+                    delay: 300
+                }
+            });
+        }
     }).fullCalendar( 'gotoDate', "{{jar}}-01-01" );
 
     // set up the map
