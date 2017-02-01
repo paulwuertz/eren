@@ -1,6 +1,6 @@
 # ena
 
-Tio estas utilo por skani eventoj.hu kaj aûtomate divenas loko por montri en mapo kaj datumo en kalendaro.
+Tio estas utilo por skani www.eventoj.hu kaj aûtomate divenas loko por montri en mapo kaj datumo en kalendaro.
 
 Ĝi divenas lokoj per openstreetmaps servilo, kiu vin blokas, se vi tro ofte uzas la `get.py` skripton, sed kelkfoje funkscias. Tamen ne trouzu!
 
