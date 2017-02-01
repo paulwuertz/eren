@@ -15,6 +15,7 @@ def readJSON(file):
         data=json.loads(fi.read())
     return data
 
+WWW="http://www.p4w5.eu/eo-renkontoj"
 jaroj=range(1996,2018)
 
 @freezer.register_generator
@@ -23,11 +24,11 @@ def jare():
         yield {'jar': jar}
 @app.route('/<jar>/')
 def jare(jar):
-    return render_template('home.html',jar=jar ,jaroj=jaroj, renoj=readJSON(jar))
+    return render_template('home.html',jar=jar ,jaroj=jaroj, renoj=readJSON(jar),WWW=WWW)
 
 @app.route('/')
 def hejme():
-    return render_template('home.html',jaroj=jaroj, hejm=True)
+    return render_template('home.html',jaroj=jaroj, hejm=True,WWW=WWW)
 
 if __name__ == '__main__':
     freezer.freeze()
