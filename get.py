@@ -21,7 +21,7 @@ def printProgress (iteration, total, prefix = '', suffix = '', decimals = 1, bar
     sys.stdout.flush()
 
 def int2tagStr(nombr):
-	if str(nombr)==1:
+	if len(str(nombr))==1:
 		return "0"+str(nombr)
 	else:
 		return str(nombr)
