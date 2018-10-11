@@ -4,13 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>E-Renkontiĝoj en la mondo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/basic/jquery.qtip.min.css" />
+    <link href="{{ url_for('static',  filename='node_modules/material-design-icons/iconfont/material-icons.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/materialize-css/dist/css/materialize.min.css') }}" media="screen" title="no title">
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet/dist/leaflet.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.css') }}" />
     <style type="text/css">
-        #mapo { 
-            height: 800px; 
+        #mapo {
+            height: 800px;
             border: 1px solid black;
             margin-top: 10px;
             padding: 10px;
@@ -18,33 +20,45 @@
     </style>
 </head>
 <body>
-
+<!--- elektilo por cxiuj jaroj -->
     <nav>
       <div class="nav-wrapper green darken-4">
         <a href="#!" class="brand-logo left"> E-Renkontiĝoj</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
+            <ul>
             {% for jar in jaroj %}
-          <li><a href="{{WWW}}/{{jar}}/">{{ jar }}</a></li>
+                {% if jar>2014 %}
+                <li><a href="{{WWW}}/{{jar}}/">{{ jar }}</a></li>
+                {% else %}
+                <li><a href="{{WWW}}/{{jar}}/">{{ jar }}</a></li>
+                {% endif %}
             {% endfor %}
+            <ul>
         </ul>
       </div>
     </nav>
-
+<!--- Hejmpagxo se nenia jaro estas elektita -->
 {% if hejm %}
-<div class="row">
-  <div class="col s6 offset-s3">
-    <div class="card green-grey darken-1">
-      <div class="card-content black-text">
+      <div class="row">
+        <div class="col s6 offset-s3">
+          <div class="card green-grey darken-1">
+            <div class="card-content black-text">
               <span class="card-title">Bonvenon al renkontiĝejo.</span>
               <p>Jen la renkontiĝoj de Esperantujo ekde 1996 :)</p>
               <p>Simple klaku la jarnombro supre.</p>
               <p>Bedaûrinde ankoraû ne aû nur parte funkscias jaroj antaû 2014...</p>
+              <p>Se vi volas enigi novan eventon jen:</p>
+              <form method="post">
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+              </form>
             </div>
           </div>
         </div>
       </div>
 {% else %}
+<!--- Cxie tie cxion rilate al montri unu jaro de erenkontigxoj estas -->
+<!--- Jen la sxangxbutenoj por sxangxi inter karta aux kalendara vido -->
 <div class="row">
   <div class="col s12">
     <div class="card green-grey darken-1">
@@ -56,110 +70,64 @@
         <li class="tab col s3"><a href="#kalendaro">Kalendaro</a></li>
       </ul>
     </div>
+    <!--- la karto -->
     <div id="mapo" class="col s10 offset-s1"></div>
+    <!--- la kalendaro -->
     <div id="kalendaro" class="col s6 offset-s3"></div>
     </div>
+        <!--- teksta listo de renkontigxoj en tabela formo -->
+        <div class="row">
+            <div class="col s10 offset-s1">
+              <table class="striped bordered">
+                <thead>
+                  <tr>
+                      <th data-field="nomo">Nomo</th>
+                      <th data-field="loko">Loko</th>
+                      <th data-field="tempo">Tempo</th>
+                      <th data-field="tempo">Priskribo</th>
+                      <th data-field="tempo">Kontakto</th>
+                  </tr>
+                </thead>
 
-<div class="row">
-    <div class="col s10 offset-s1">
-      <table class="striped bordered">
-        <thead>
-          <tr>
-              <th data-field="nomo">Nomo</th>
-              <th data-field="loko">Loko</th>
-              <th data-field="tempo">Tempo</th>
-              <th data-field="tempo">Priskribo</th>
-              <th data-field="tempo">Kontakto</th>
-          </tr>
-        </thead>
-
-        <tbody>
-        {% for ren in renoj %}
-          <tr>
-            <td><a href="{{ ren.link }}">{{ ren.nomo }}</a></td>
-            <td>{{ ren.loko }}</td>
-            <td>{{ ren.tempo }}</td>
-            <td>{{ ren.text }}</td>
-            <td><a href="mailto:{{ren.mail}}">Alretpoŝtu!</a></td>
-          </tr>
-        {% endfor %}
-        </tbody>
-      </table>
-    </div>
-</div>
-<!---karta efiko -->
+                <tbody>
+                {% for ren in renoj %}
+                  <tr>
+                    <td><a href="{{ ren.link }}">{{ ren.nomo }}</a></td>
+                    <td>{{ ren.loko }}</td>
+                    <td>{{ ren.tempo }}</td>
+                    <td>{{ ren.text }}</td>
+                    <td><a href="mailto:{{ren.mail}}">Alretpoŝtu!</a></td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
             </div>
-          </div>
         </div>
+
       </div>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/eo.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/basic/jquery.qtip.js"></script>
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    </div>
+  </div>
+</div>
+
+<!--- JSajxojn -->
+ <script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
+ <script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
+ <script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
+ <script type="text/javascript" src="{{ url_for('static', filename='node_modules/moment/min/moment-with-locales.min.js') }}"></script>
+ <script type="text/javascript" src="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+ <script type="text/javascript" src="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/materialize-css/dist/js/materialize.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 <script type="text/javascript">
+    var csrf_token = "{{ csrf_token() }}";
     //setup tabs
     $(document).ready(function(){
         $('ul.tabs').tabs();
+        initCalendar({{ jar|safe }}, {{ renoj|safe }});
     });
-    
-    //setup Calendar
-    $('#kalendaro').fullCalendar({
-        locale:"eo",
-        minDate: "{{jar}}-01-01",
-        maxDate: "{{jar}}-12-31",
-        header: {
-            left: '',
-            center: 'title',
-            right: 'prev,next'
-        },
-         events: [
-        {% for ren in renoj %}
-            {% if ren.periodo.ektago %}
-            { 
-                title  : '{{ ren.nomo }}',
-                start  : '{{jar}}-{{ren.periodo.ekmonato}}-{{ren.periodo.ektago}}'{% if ren.periodo.fintago %},
-                end    : '{{jar}}-{{ren.periodo.finmonato}}-{{ren.periodo.fintago}}'{% endif %},
-                description: '<dt><b><a href="{{ ren.link }}">{{ ren.nomo }}</a></b></dt><dt><b>Loko:</b></dt><dd>{{ ren.loko }}</dd><dt><b>Tempo:</b></dt><dd>{{ ren.tempo }}</dd><dt><b>Priskribo:</b></dt><dd>{{ ren.text }}</dd><dt><b>Kontakto:</b></dt><dd><a href="mailto:{{ren.mail}}">Alretpoŝtu!</a></dd>'
-            },
-            {% endif %}
-        {% endfor %}
-        ],
-        eventRender: function(event, element) {
-            element.qtip({
-                content: event.description,
-                hide: {
-                    fixed: true,
-                    delay: 300
-                }
-            });
-        }
-    }).fullCalendar( 'gotoDate', "{{jar}}-01-01" );
-
-    // set up the map
-    map = new L.Map('mapo');
-
-    // create the tile layer with correct attribution
-    var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-    var osm = new L.TileLayer(osmUrl, {minZoom:3,attribution: osmAttrib});       
-
-    // start the map in South-East England
-    map.setView(new L.LatLng(51.3, 0.7),3);
-    map.addLayer(osm);
-
-{% for ren in renoj %}
-    {% if ren.lat is defined %}
-        var marker_{{ loop.index }} = L.marker([{{ren.lat}}, {{ ren.lon }}]).addTo(map);
-        var m{{ loop.index }}_str='<dt><b><a href="{{ ren.link }}">{{ ren.nomo }}</a></b></dt><dt><b>Loko:</b></dt><dd>{{ ren.loko }}</dd><dt><b>Tempo:</b></dt><dd>{{ ren.tempo }}</dd><dt><b>Priskribo:</b></dt><dd>{{ ren.text }}</dd><dt><b>Kontakto:</b></dt><dd><a href="mailto:{{ren.mail}}">Alretpoŝtu!</a></dd>'
-        marker_{{ loop.index }}.bindPopup(m{{ loop.index }}_str)
-    {% endif %}
-{% endfor %}
-
-{% endif %}
 </script>
+{% endif %}
+
 </body>
 </html>

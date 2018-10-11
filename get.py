@@ -4,7 +4,7 @@ from geopy.geocoders import Nominatim
 import json, sys, os
 
 EVENTOJ_URL="http://www.eventoj.hu/{0}.htm"
-jaroj=range(1996,2018)
+jaroj=range(2018,2020)
 geolocator = Nominatim()
 
 if not os.path.exists("renkontoj"):
@@ -29,8 +29,8 @@ def int2tagStr(nombr):
 """
 Transformas datumo kiel
 
-"26 februaro" aû 
-"26 - 27. februaro" aû 
+"26 februaro" aû
+"26 - 27. februaro" aû
 "26. februaro - 8. marto"
 
 kaj redonas vin
@@ -117,7 +117,7 @@ for jar in jaroj:
 			eren["loko"]=dd.text.split(".")[0].split("- en ")[1]
 			eren["text"]=".".join(dd.text.split(".")[1:])
 			try:
-				location = geolocator.geocode(eren["loko"].split(",")[0])	
+				location = geolocator.geocode(eren["loko"].split(",")[0])
 				eren["lat"]=location.raw["lat"]
 				eren["lon"]=location.raw["lon"]
 				loc+=1
@@ -129,7 +129,7 @@ for jar in jaroj:
 		cnt+=1
 		erenoj.append(eren)
 		printProgress(cnt, len(renoj), prefix = 'Progreso:', suffix = ' da renkontiĝoj', barLength = 50)
-	            
+
 	print()
 	print("Trovite "+str(len(renoj)))
 	print("Renkontitaj "+str(cnt))
