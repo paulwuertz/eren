@@ -1,6 +1,6 @@
 bs4==0.0.1
 geopy==1.11.0
-Flask==0.12
+Flask==1.0.2
 Frozen-Flask==0.12
 Jinja2==2.9.4
 lxml==3.6.0
