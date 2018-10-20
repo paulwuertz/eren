@@ -4,18 +4,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>E-Renkontiĝoj en la mondo</title>
+    <link rel="icon" href="{{ url_for('static',  filename='favicon.ico') }}" type="image/x-icon"/>
     <link href="{{ url_for('static',  filename='node_modules/material-design-icons/iconfont/material-icons.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/materialize-css/dist/css/materialize.min.css') }}" media="screen" title="no title">
     <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet/dist/leaflet.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/leaflet-locationpicker/dist/leaflet-locationpicker.src.css') }}" />
     <style type="text/css">
         #mapo {
             height: 800px;
             border: 1px solid black;
             margin-top: 10px;
             padding: 10px;
+        }
+        #cont-m {
+          min-height: 1200px;
+        }
+        .leaflet-locpicker-map {
+        	display: block !important;
+        }
+        .map-select {
+            position: relative;
+            left: 0 !important;
+            top:  0 !important;
+            width: 100% !important;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -40,22 +55,187 @@
     </nav>
 <!--- Hejmpagxo se nenia jaro estas elektita -->
 {% if hejm %}
-      <div class="row">
-        <div class="col s6 offset-s3">
-          <div class="card green-grey darken-1">
-            <div class="card-content black-text">
-              <span class="card-title">Bonvenon al renkontiĝejo.</span>
-              <p>Jen la renkontiĝoj de Esperantujo ekde 1996 :)</p>
-              <p>Simple klaku la jarnombro supre.</p>
-              <p>Bedaûrinde ankoraû ne aû nur parte funkscias jaroj antaû 2014...</p>
-              <p>Se vi volas enigi novan eventon jen:</p>
-              <form method="post">
-                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <div class="row" id="cont-m">
+        <div class="col l6 offset-l3 m8 offset-m2 s10 offset-s1">
+          <form method="post" class="col s12">
+                <div class="row"><label>Ĝeneralaĵoj</label></div>
+                <div class="row">
+                  <div class="input-field col m6 s12">
+                      <input placeholder="Aranĝnomo" id="title" type="text" class="validate">
+                      <label for="title">Nomo de la aranĝo:</label>
+                  </div>
+                  <div class="input-field col in-opts m6 s12">
+                      <input placeholder="Kiu organizas?" id="organizer" type="text" class="validate">
+                      <label for="organizer">Nomo de la organizanto:</label>
+                  </div>
+                  <div class="input-field col s12 m6 in-opts">
+                      <select id="landnomo" placeholder="Elektu grandecon...">
+                        <option value="0" selected disabled>Elektu grandeco</option>
+                        <option value="1">1-20  </option>
+                        <option value="2">20-30 </option>
+                        <option value="3">31-50 </option>
+                        <option value="4">51-100  </option>
+                        <option value="5">101-200 </option>
+                        <option value="6">201-500 </option>
+                        <option value="7">501-1000  </option>
+                        <option value="8">1001-pli  </option>
+                      </select>
+                      <label>Grandeco:</label>
+                  </div>
+                  <div class="input-field col s12 m6 in-opts">
+                        <select multiple>
+                          <option value="" disabled selected>Kio temas pri?</option>
+                          <option value="1">Aktivista renkontiĝo</option>
+                          <option value="2">Grupa migrado</option>
+                          <option value="3">Kultura evento</option>
+                          <option value="4">Lokgrupa renkontiĝo</option>
+                          <option value="5">Organizuma renkontiĝo</option>
+                          <option value="6">Poliglota renkontiĝo</option>
+                          <option value="7">Renkontiĝo kun memorganizitaj kursoj </option>
+                          <option value="8">Scienca renkontiĝo</option>
+                          <option value="9">Tauxga por komencantoj</option>
+                        </select>
+                        <label>Materialize Multiple Select</label>
+                  </div>
+                </div>
+
+                <div class="row"><label>Datoj</label></div>
+                <div class="row">
+                    <div class="input-field col m6 s12">
+                      <label>Komiencdato*</label>
+                      <input type="text" class="datepicker">
+                    </div>
+                    <div class="input-field col m6 s12">
+                      <label>Findato (nedeviga)</label>
+                      <input type="text" class="datepicker">
+                    </div>
+                </div>
+
+                <div class="row"><label>Ejo</label></div>
+                <div class="row">
+                <div class="input-field col s12">
+                  <div class="input-field col m6 s12">
+                      <div class="input-field col s12">
+                          <input id="geoloc" type="text" placeholder="0.0000,0.0000" />
+                          <label for="geoloc">Elektu la okazejo en la mapo:</label>
+                      </div>
+                      <div class="input-field in-opts col s12 bfh-selectbox bfh-countries" data-country="eo" data-flags="true">
+                                <input type="text" id="autocomplete-input" class="autocomplete" placeholder="Lando">
+                                <label for="autocomplete-input">Elektu eventlando:</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <input placeholder="Urbonomo" id="urbnomo" type="text" class="validate">
+                        <label for="urbnomo">Nomo de okazurbo:</label>
+                      </div>
+                  </div>
+                  <!--- MAP --->
+                  <div id="map" class="col m6 s12"></div>
+                </div>
+                </div>
+
+                <div class="row"><label>Retajxoj</label></div>
+                <div class="row">
+                  <div class="input-field col m6 s12">
+                    <input placeholder="http://www.lingvo-internacia.eu" id="website" type="text" class="validate">
+                    <label for="website">Retpaĝo de la aranĝo:</label>
+                  </div>
+                  <div class="input-field col m6 s12">
+                    <input placeholder="nenio@eventoj.net" id="email" type="text" class="validate">
+                    <label for="email">Poŝta adreso de organizanto:</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="description" class="materialize-textarea" length="520"></textarea>
+                        <label for="description">Mallonga priskribo:</label>
+                      </div>
+                </div>
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
               </form>
-            </div>
-          </div>
         </div>
       </div>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/moment/min/moment-with-locales.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/materialize-css/dist/js/materialize.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet-locationpicker/dist/leaflet-locationpicker.src.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/bootstrap-formhelpers/js/lang/eo/bootstrap-formhelpers-countries.eo.js') }}"></script>
+<script type="text/javascript">
+    var csrf_token = "{{ csrf_token() }}";
+    //setup tabs
+    $(document).ready(function(){
+        $('.datepicker').datepicker();
+        $('.in-opts select').formSelect();
+        var l=$('#geoloc').leafletLocationPicker(
+          {
+            alwaysOpen:true,
+            mapContainer: "#map",
+            locationDigits: 4,
+      			height: 250,
+            map: {zoom:1}
+          }
+        );
+        var landData = {};
+        var landoj=Object.values(BFHCountriesList)
+        for(var l in landoj) landData[landoj[l]]=null;
+        $('input.autocomplete').autocomplete({
+          data: landData,
+        });
+    });
+
+    /*
+    $("#formValidate").validate({
+    rules: {
+    uname: {
+        required: true,
+        minlength: 5
+    },
+    cemail: {
+        required: true,
+        email:true
+    },
+    password: {
+    required: true,
+    minlength: 5
+    },
+    cpassword: {
+    required: true,
+    minlength: 5,
+    equalTo: "#password"
+    },
+    curl: {
+        required: true,
+        url:true
+    },
+    crole:"required",
+    ccomment: {
+    required: true,
+    minlength: 15
+    },
+    cgender:"required",
+    cagree:"required",
+    },
+    //For custom messages
+    messages: {
+    uname:{
+        required: "Enter a username",
+        minlength: "Enter at least 5 characters"
+    },
+    curl: "Enter your website",
+    },
+    errorElement : 'div',
+    errorPlacement: function(error, element) {
+    var placement = $(element).data('error');
+    if (placement) {
+    $(placement).append(error)
+    } else {
+    error.insertAfter(element);
+    }
+    }
+  });*/
+</script>
 {% else %}
 <!--- Cxie tie cxion rilate al montri unu jaro de erenkontigxoj estas -->
 <!--- Jen la sxangxbutenoj por sxangxi inter karta aux kalendara vido -->
@@ -112,7 +292,6 @@
 <!--- JSajxojn -->
  <script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
  <script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
- <script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
  <script type="text/javascript" src="{{ url_for('static', filename='node_modules/moment/min/moment-with-locales.min.js') }}"></script>
  <script type="text/javascript" src="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.js') }}"></script>
  <script type="text/javascript" src="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.js') }}"></script>
