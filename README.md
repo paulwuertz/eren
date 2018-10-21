@@ -29,9 +29,9 @@ Do vi ne bezonas specialan retservilo por ĝin servi, estas enua HTML.
 Tio estas tre fuŝa servilo.
 Jen sekvaj pasxoj:
 
-[ ] aldonu funkcionanta datumbazligojn (pagxaro estas sxargxigata de .json datumoj nun)
-[ ] ebligi posti al la datumbazo
-[ ] plibelaspektigi la pagxo en mobila versio
-[ ] aldoni filtrojn en la antauxcode (nur montru eventoj laux datoj, regiono, grandeco...)
-[ ] instali abonu funkcion pere de email laux kriterioj
-[ ] programi A* algorithmo de eventkaravano laux plej malgranda tempa- kaj lokadistanco ^^
+* [ ] aldonu funkcionanta datumbazligojn (pagxaro estas sxargxigata de .json datumoj nun)
+* [ ] ebligi posti al la datumbazo
+* [ ] plibelaspektigi la pagxo en mobila versio
+* [ ] aldoni filtrojn en la antauxcode (nur montru eventoj laux datoj, regiono, grandeco...)
+* [ ] instali abonu funkcion pere de email laux kriterioj
+* [ ] programi A* algorithmo de eventkaravano laux plej malgranda tempa- kaj lokadistanco ^^
