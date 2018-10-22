@@ -58,101 +58,112 @@
       <div class="row" id="cont-m">
         <div class="col l6 offset-l3 m8 offset-m2 s10 offset-s1">
           <form method="post" class="col s12">
-                <div class="row"><label>Ĝeneralaĵoj</label></div>
-                <div class="row">
-                  <div class="input-field col m6 s12">
-                      <input placeholder="Aranĝnomo" id="title" type="text" class="validate">
-                      <label for="title">Nomo de la aranĝo:</label>
-                  </div>
-                  <div class="input-field col in-opts m6 s12">
-                      <input placeholder="Kiu organizas?" id="organizer" type="text" class="validate">
-                      <label for="organizer">Nomo de la organizanto:</label>
-                  </div>
-                  <div class="input-field col s12 m6 in-opts">
-                      <select id="landnomo" placeholder="Elektu grandecon...">
-                        <option value="0" selected disabled>Elektu grandeco</option>
-                        <option value="1">1-20  </option>
-                        <option value="2">20-30 </option>
-                        <option value="3">31-50 </option>
-                        <option value="4">51-100  </option>
-                        <option value="5">101-200 </option>
-                        <option value="6">201-500 </option>
-                        <option value="7">501-1000  </option>
-                        <option value="8">1001-pli  </option>
-                      </select>
-                      <label>Grandeco:</label>
-                  </div>
-                  <div class="input-field col s12 m6 in-opts">
-                        <select multiple>
-                          <option value="" disabled selected>Kio temas pri?</option>
-                          <option value="1">Aktivista renkontiĝo</option>
-                          <option value="2">Grupa migrado</option>
-                          <option value="3">Kultura evento</option>
-                          <option value="4">Lokgrupa renkontiĝo</option>
-                          <option value="5">Organizuma renkontiĝo</option>
-                          <option value="6">Poliglota renkontiĝo</option>
-                          <option value="7">Renkontiĝo kun memorganizitaj kursoj </option>
-                          <option value="8">Scienca renkontiĝo</option>
-                          <option value="9">Tauxga por komencantoj</option>
-                        </select>
-                        <label>Materialize Multiple Select</label>
-                  </div>
-                </div>
+            <div class="row"><label>Ĝeneralaĵoj</label></div>
+            <div class="row">
+              <div class="input-field col m6 s12">
+                  <input placeholder="Aranĝnomo" id="title" type="text" class="validate">
+                  <label for="title">Nomo de la aranĝo:</label>
+              </div>
+              <div class="input-field col in-opts m6 s12">
+                  <input placeholder="Kiu organizas?" id="organizer" type="text" class="validate">
+                  <label for="organizer">Nomo de la organizanto:</label>
+              </div>
+              <div class="input-field col s12 m6 in-opts">
+                  <select id="landnomo" placeholder="Elektu grandecon...">
+                    <option value="0" selected disabled>Elektu grandeco</option>
+                    <option value="1">1-20  </option>
+                    <option value="2">20-30 </option>
+                    <option value="3">31-50 </option>
+                    <option value="4">51-100  </option>
+                    <option value="5">101-200 </option>
+                    <option value="6">201-500 </option>
+                    <option value="7">501-1000  </option>
+                    <option value="8">1001-pli  </option>
+                  </select>
+                  <label>Grandeco:</label>
+              </div>
+              <div class="input-field col s12 m6 in-opts">
+                    <select multiple>
+                      <option value="" disabled selected>Kio temas pri?</option>
+                      <option value="1">Aktivista renkontiĝo</option>
+                      <option value="2">Grupa migrado</option>
+                      <option value="3">Kultura evento</option>
+                      <option value="4">Lokgrupa renkontiĝo</option>
+                      <option value="5">Organizuma renkontiĝo</option>
+                      <option value="6">Poliglota renkontiĝo</option>
+                      <option value="7">Renkontiĝo kun memorganizitaj kursoj </option>
+                      <option value="8">Scienca renkontiĝo</option>
+                      <option value="9">Tauxga por komencantoj</option>
+                    </select>
+                    <label>Materialize Multiple Select</label>
+              </div>
+            </div>
 
-                <div class="row"><label>Datoj</label></div>
-                <div class="row">
-                    <div class="input-field col m6 s12">
-                      <label>Komiencdato*</label>
-                      <input type="text" class="datepicker">
-                    </div>
-                    <div class="input-field col m6 s12">
-                      <label>Findato (nedeviga)</label>
-                      <input type="text" class="datepicker">
-                    </div>
+            <div class="row"><label>Datoj</label></div>
+            <div class="row">
+                <div class="input-field col m6 s12">
+                  <label>Komiencdato*</label>
+                  <input type="text" class="datepicker">
                 </div>
+                <div class="input-field col m6 s12">
+                  <label>Findato (nedeviga)</label>
+                  <input type="text" class="datepicker">
+                </div>
+            </div>
 
-                <div class="row"><label>Ejo</label></div>
-                <div class="row">
-                <div class="input-field col s12">
-                  <div class="input-field col m6 s12">
-                      <div class="input-field col s12">
-                          <input id="geoloc" type="text" placeholder="0.0000,0.0000" />
-                          <label for="geoloc">Elektu la okazejo en la mapo:</label>
-                      </div>
-                      <div class="input-field in-opts col s12 bfh-selectbox bfh-countries" data-country="eo" data-flags="true">
-                                <input type="text" id="autocomplete-input" class="autocomplete" placeholder="Lando">
-                                <label for="autocomplete-input">Elektu eventlando:</label>
-                      </div>
-                      <div class="input-field col s12">
-                        <input placeholder="Urbonomo" id="urbnomo" type="text" class="validate">
-                        <label for="urbnomo">Nomo de okazurbo:</label>
-                      </div>
+            <div class="row"><label>Ejo</label></div>
+            <div class="row">
+            <div class="input-field col s12">
+              <div class="input-field col m6 s12">
+                  <div class="input-field col s12">
+                      <input id="geoloc" type="text" placeholder="0.0000,0.0000" />
+                      <label for="geoloc">Elektu la okazejo en la mapo:</label>
                   </div>
-                  <!--- MAP --->
-                  <div id="map" class="col m6 s12"></div>
-                </div>
-                </div>
+                  <div class="input-field in-opts col s12 bfh-selectbox bfh-countries" data-country="eo" data-flags="true">
+                            <input type="text" id="autocomplete-input" class="autocomplete" placeholder="Lando">
+                            <label for="autocomplete-input">Elektu eventlando:</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <input placeholder="Urbonomo" id="urbnomo" type="text" class="validate">
+                    <label for="urbnomo">Nomo de okazurbo:</label>
+                  </div>
+              </div>
+              <!--- MAP --->
+              <div id="map" class="col m6 s12"></div>
+            </div>
+            </div>
 
-                <div class="row"><label>Retajxoj</label></div>
-                <div class="row">
-                  <div class="input-field col m6 s12">
-                    <input placeholder="http://www.lingvo-internacia.eu" id="website" type="text" class="validate">
-                    <label for="website">Retpaĝo de la aranĝo:</label>
-                  </div>
-                  <div class="input-field col m6 s12">
-                    <input placeholder="nenio@eventoj.net" id="email" type="text" class="validate">
-                    <label for="email">Poŝta adreso de organizanto:</label>
-                  </div>
-                </div>
+            <div class="row"><label>Retajxoj</label></div>
+            <div class="row">
+              <div class="input-field col m6 s12">
+                <input placeholder="http://www.lingvo-internacia.eu" id="website" type="text" class="validate">
+                <label for="website">Retpaĝo de la aranĝo:</label>
+              </div>
+              <div class="input-field col m6 s12">
+                <input placeholder="nenio@eventoj.net" id="email" type="text" class="validate">
+                <label for="email">Poŝta adreso de organizanto:</label>
+              </div>
+            </div>
 
-                <div class="row">
-                      <div class="input-field col s12">
-                        <textarea id="description" class="materialize-textarea" length="520"></textarea>
-                        <label for="description">Mallonga priskribo:</label>
-                      </div>
-                </div>
-              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-              </form>
+            <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="description" class="materialize-textarea" length="520"></textarea>
+                    <label for="description">Mallonga priskribo:</label>
+                  </div>
+            </div>
+            <div class="row">
+              <div class="input-field col row l4 offset-l4 m6 offset-m3 s12">
+                <input placeholder="{{ GLOBAL.DEMANDO }}" id="sekreta" type="text" class="s12 validate">
+                <label for="sekreta">Respondu por kredigi vin: {{ GLOBAL.DEMANDO }} <i class="material-icons right tooltipped" data-position="top" data-tooltip="{{ GLOBAL.DEMANDO_KONSILO|safe }}">help_outline</i></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col row l4 offset-l4 m6 offset-m3 s12">
+                <a class="col btn waves-effect waves-light s12" href="templates/starter-template/preview.html">Aldonu eventon<i class="material-icons right">send</i></a>
+              </div>
+            </div>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            </form>
         </div>
       </div>
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
@@ -168,6 +179,7 @@
     $(document).ready(function(){
         $('.datepicker').datepicker();
         $('.in-opts select').formSelect();
+        $('.tooltipped').tooltip({"exitDelay":1000});
         var l=$('#geoloc').leafletLocationPicker(
           {
             alwaysOpen:true,
@@ -183,6 +195,7 @@
         $('input.autocomplete').autocomplete({
           data: landData,
         });
+
     });
 
     /*

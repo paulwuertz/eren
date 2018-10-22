@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 import json, os, sys, urllib, datetime, sqlalchemy
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 
 from flask_wtf import Form
 from wtforms import StringField, PasswordField
@@ -14,35 +14,37 @@ from sqlalchemy.dialects.mysql import BIGINT
 from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import sessionmaker, relationship, backref
 
-import sekreta
+from sekreta import *
 
 Base = declarative_base()
 csrf = CSRFProtect()
 class Evento(Base):
 	__tablename__ = "Evento"
 	id = Column(Integer, primary_key=True, unique=True, nullable=False)
-	nomo = Column(Text(255))
-	lat = Column(Float)
-	lng = Column(Float)
-	grandeco = Column(Integer)
-	ektiempo = Column(Date)
-	fintempo = Column(Date)
-	retposxto = Column(Text(255))
-	priskribo = Column(Text())
-	link = Column(Text(255))
-	loko = Column(Text(255))
+	nomo = Column(Text(255), nullable=False)
+	lat = Column(Float, nullable=False)
+	lng = Column(Float, nullable=False)
+	grandeco = Column(Integer, nullable=False)
+	ektiempo = Column(Date, nullable=False)
+	fintempo = Column(Date, nullable=False)
+	retposxto = Column(Text(255), nullable=False)
+	priskribo = Column(Text(), nullable=False)
+	link = Column(Text(255), nullable=False)
+	loko = Column(Text(255), nullable=False)
 	logo = Column(Text(255))
 
 	def __init__(self, nomo=None, ektiempo=None, fintempo=None, latlng=None, retposxto=None, priskribo=None, link=None, loko=None, logo=None):
-		if latlng:    self.lat, self.lng = latlng
-		if nomo:      self.nomo = nomo
-		if ektiempo:  self.ektiempo = ektiempo
-		if fintempo:  self.fintempo = fintempo
-		if retposxto: self.retposxto = retposxto
-		if priskribo: self.priskribo = priskribo
-		if link:      self.link = link
-		if loko:      self.loko = loko
-		if logo:      self.logo = logo
+		self.lat, self.lng = latlng
+		self.nomo = nomo
+		self.ektiempo = ektiempo
+		self.fintempo = fintempo
+		self.retposxto = retposxto
+		self.priskribo = priskribo
+		self.link = link
+		self.loko = loko
+		if  logo:
+			#TODO kontrolu logo kaj savu en datumbazo kiel oktetajxo aux en FS kaj la relativa pos.
+			self.logo = logo
 
 	def grandeco2str(self, grandec):
 		if grandec==0: return "1-20"
@@ -55,9 +57,6 @@ class Evento(Base):
 		elif grandec==7: return "1001-pli"
 		else: return None
 
-
-DEBUG = True
-
 def readJSON(file):
     with open("renkontoj/"+str(file)+".json","r") as fi:
         data=json.loads(fi.read())
@@ -69,18 +68,23 @@ jaroj=range(1996,2018)
 
 @app.route('/<jar>/')
 def jare(jar):
-    return render_template('home.html',jar=jar ,jaroj=jaroj, renoj=readJSON(jar),WWW=WWW)
+    return render_template('home.html',jar=jar ,jaroj=jaroj, GLOBAL=GLOBAL, renoj=readJSON(jar),WWW=WWW)
 
 @app.route('/')
 def hejme():
-    return render_template('home.html',jaroj=jaroj, hejm=True,WWW=WWW)
+	print(GLOBAL)
+	return render_template('home.html',jaroj=jaroj, GLOBAL=GLOBAL, hejm=True,WWW=WWW)
 
+@app.route('/aldoniEventon', methods=["POST"])
+def aldoniEventon():
+	#se mankas enda datumero redonu eraron
+	if not (latlng and nomo and ektiempo and fintempo and retposxto and priskribo and link and loko):
+		return jsonify({"succeson":False,"messagxo":"latlng %s nomo %s ektiempo %s fintempo %s retposxto %s priskribo %s link %s loko %s" % [not not o for o in [latlng and nomo and ektiempo and fintempo and retposxto and priskribo and link and loko]]})
+	else:
+		pass
+	return render_template('home.html',jaroj=jaroj, hejm=True,WWW=WWW)
 
-class EmailPasswordForm(Form):
-	email = StringField('Email', validators=[DataRequired(), Email()])
-	password = PasswordField('Password', validators=[DataRequired()])
-
-
+DEBUG = True
 if __name__ == '__main__':
     if "genDB" in sys.argv:
            print('running eren ' + sqlalchemy.__version__)
@@ -88,6 +92,6 @@ if __name__ == '__main__':
            Base.metadata.create_all(engine) #Lets create the actual sqlite database and schema!
            print('database created: eren.db')
            exit()
-    app.secret_key=sekreta.SECRET_KEY
+    app.secret_key=SECRET_KEY
     csrf.init_app(app)
     app.run(port=5000, debug=True)
