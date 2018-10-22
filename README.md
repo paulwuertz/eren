@@ -26,9 +26,12 @@ Do vi ne bezonas specialan retservilo por ĝin servi, estas enua HTML.
 
 ### ideoj
 
-Tio estas tre fuŝa servo.
-Mi ŝatus:
+Tio estas tre fuŝa servilo.
+Jen sekvaj pasxoj:
 
-* ĝin funksciigi per la jaroj antaû 2014 je bazo de datoj de eventoj.hu
-* mane korekti lokojn je mapo
-* aldoni filtron al mapo, kiu montras la markojn je mapo inter kelkj monatoj
+* [ ] aldonu funkcionanta datumbazligojn (pagxaro estas sxargxigata de .json datumoj nun)
+* [ ] ebligi posti al la datumbazo
+* [ ] plibelaspektigi la pagxo en mobila versio
+* [ ] aldoni filtrojn en la antauxcode (nur montru eventoj laux datoj, regiono, grandeco...)
+* [ ] instali abonu funkcion pere de email laux kriterioj
+* [ ] programi A* algorithmo de eventkaravano laux plej malgranda tempa- kaj lokadistanco ^^
