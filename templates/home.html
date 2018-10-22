@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>E-Renkontiĝoj en la mondo</title>
     <link rel="icon" href="{{ url_for('static',  filename='favicon.ico') }}" type="image/x-icon"/>
@@ -32,6 +32,17 @@
             width: 100% !important;
             margin: 0 auto;
         }
+        .input-field div.error {
+            position: relative;
+            top: -1rem;
+            left: 0rem;
+            font-size: 0.8rem;
+            color: #FF4081;
+            -webkit-transform: translateY(30%);
+            -ms-transform: translateY(30%);
+            -o-transform: translateY(30%);
+            transform: translateY(30%);
+        }
     </style>
 </head>
 <body>
@@ -57,19 +68,19 @@
 {% if hejm %}
       <div class="row" id="cont-m">
         <div class="col l6 offset-l3 m8 offset-m2 s10 offset-s1">
-          <form method="post" class="col s12">
+          <form id="novevento" method="post" class="col s12">
             <div class="row"><label>Ĝeneralaĵoj</label></div>
             <div class="row">
               <div class="input-field col m6 s12">
-                  <input placeholder="Aranĝnomo" id="title" type="text" class="validate">
+                  <input placeholder="Eventnomo" name="eventnomo" type="text" required>
                   <label for="title">Nomo de la aranĝo:</label>
               </div>
               <div class="input-field col in-opts m6 s12">
-                  <input placeholder="Kiu organizas?" id="organizer" type="text" class="validate">
+                  <input placeholder="Kiu organizas?" name="organizanto" type="text" required>
                   <label for="organizer">Nomo de la organizanto:</label>
               </div>
               <div class="input-field col s12 m6 in-opts">
-                  <select id="landnomo" placeholder="Elektu grandecon...">
+                  <select name="grandeco" placeholder="Elektu grandecon..." required>
                     <option value="0" selected disabled>Elektu grandeco</option>
                     <option value="1">1-20  </option>
                     <option value="2">20-30 </option>
@@ -83,17 +94,17 @@
                   <label>Grandeco:</label>
               </div>
               <div class="input-field col s12 m6 in-opts">
-                    <select multiple>
+                    <select multiple name="tipoj">
                       <option value="" disabled selected>Kio temas pri?</option>
-                      <option value="1">Aktivista renkontiĝo</option>
-                      <option value="2">Grupa migrado</option>
-                      <option value="3">Kultura evento</option>
-                      <option value="4">Lokgrupa renkontiĝo</option>
-                      <option value="5">Organizuma renkontiĝo</option>
-                      <option value="6">Poliglota renkontiĝo</option>
-                      <option value="7">Renkontiĝo kun memorganizitaj kursoj </option>
-                      <option value="8">Scienca renkontiĝo</option>
-                      <option value="9">Tauxga por komencantoj</option>
+                      <option value="aktivista_renkontiĝo">Aktivista renkontiĝo</option>
+                      <option value="grupa_migrado">Grupa migrado</option>
+                      <option value="kultura_evento">Kultura evento</option>
+                      <option value="lokgrupa_renkontiĝo">Lokgrupa renkontiĝo</option>
+                      <option value="organizuma_renkontiĝo">Organizuma renkontiĝo</option>
+                      <option value="poliglota_renkontiĝo">Poliglota renkontiĝo</option>
+                      <option value="Renkontiĝo_kun_memorganizitaj_kursoj ">Renkontiĝo kun memorganizitaj kursoj </option>
+                      <option value="scienca_renkontiĝo">Scienca renkontiĝo</option>
+                      <option value="tauxga_por_komencantoj">Tauxga por komencantoj</option>
                     </select>
                     <label>Materialize Multiple Select</label>
               </div>
@@ -103,11 +114,11 @@
             <div class="row">
                 <div class="input-field col m6 s12">
                   <label>Komiencdato*</label>
-                  <input type="text" class="datepicker">
+                  <input name="ekdato" type="text" class="datepicker" required>
                 </div>
                 <div class="input-field col m6 s12">
                   <label>Findato (nedeviga)</label>
-                  <input type="text" class="datepicker">
+                  <input name="findato" type="text" class="datepicker" required>
                 </div>
             </div>
 
@@ -116,15 +127,15 @@
             <div class="input-field col s12">
               <div class="input-field col m6 s12">
                   <div class="input-field col s12">
-                      <input id="geoloc" type="text" placeholder="0.0000,0.0000" />
+                      <input name="geoloc" type="text" placeholder="0.0000,0.0000" required>
                       <label for="geoloc">Elektu la okazejo en la mapo:</label>
                   </div>
                   <div class="input-field in-opts col s12 bfh-selectbox bfh-countries" data-country="eo" data-flags="true">
-                            <input type="text" id="autocomplete-input" class="autocomplete" placeholder="Lando">
+                            <input type="text" name="lando" class="autocomplete" placeholder="Lando" required>
                             <label for="autocomplete-input">Elektu eventlando:</label>
                   </div>
                   <div class="input-field col s12">
-                    <input placeholder="Urbonomo" id="urbnomo" type="text" class="validate">
+                    <input placeholder="Urbonomo" name="urbnomo" type="text" required>
                     <label for="urbnomo">Nomo de okazurbo:</label>
                   </div>
               </div>
@@ -136,30 +147,30 @@
             <div class="row"><label>Retajxoj</label></div>
             <div class="row">
               <div class="input-field col m6 s12">
-                <input placeholder="http://www.lingvo-internacia.eu" id="website" type="text" class="validate">
+                <input placeholder="http://www.lingvo-internacia.eu" name="website" type="text" required>
                 <label for="website">Retpaĝo de la aranĝo:</label>
               </div>
               <div class="input-field col m6 s12">
-                <input placeholder="nenio@eventoj.net" id="email" type="text" class="validate">
+                <input placeholder="nenio@eventoj.net" name="email" type="text" required>
                 <label for="email">Poŝta adreso de organizanto:</label>
               </div>
             </div>
 
             <div class="row">
                   <div class="input-field col s12">
-                    <textarea id="description" class="materialize-textarea" length="520"></textarea>
+                    <textarea name="description" class="materialize-textarea" length="520" required></textarea>
                     <label for="description">Mallonga priskribo:</label>
                   </div>
             </div>
             <div class="row">
               <div class="input-field col row l4 offset-l4 m6 offset-m3 s12">
-                <input placeholder="{{ GLOBAL.DEMANDO }}" id="sekreta" type="text" class="s12 validate">
+                <input placeholder="{{ GLOBAL.DEMANDO }}" name="sekreta" type="text" class="s12" required>
                 <label for="sekreta">Respondu por kredigi vin: {{ GLOBAL.DEMANDO }} <i class="material-icons right tooltipped" data-position="top" data-tooltip="{{ GLOBAL.DEMANDO_KONSILO|safe }}">help_outline</i></label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col row l4 offset-l4 m6 offset-m3 s12">
-                <a class="col btn waves-effect waves-light s12" href="templates/starter-template/preview.html">Aldonu eventon<i class="material-icons right">send</i></a>
+                <button href="#" id="premo" type="submit" class="col btn waves-effect waves-light s12">Aldonu eventon<i class="material-icons right">send</i></button>
               </div>
             </div>
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
@@ -173,6 +184,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/materialize-css/dist/js/materialize.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet-locationpicker/dist/leaflet-locationpicker.src.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/bootstrap-formhelpers/js/lang/eo/bootstrap-formhelpers-countries.eo.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery-validation/dist/jquery.validate.js') }}"></script>
 <script type="text/javascript">
     var csrf_token = "{{ csrf_token() }}";
     //setup tabs
@@ -195,59 +207,66 @@
         $('input.autocomplete').autocomplete({
           data: landData,
         });
-
-    });
-
-    /*
-    $("#formValidate").validate({
-    rules: {
-    uname: {
-        required: true,
-        minlength: 5
-    },
-    cemail: {
-        required: true,
-        email:true
-    },
-    password: {
-    required: true,
-    minlength: 5
-    },
-    cpassword: {
-    required: true,
-    minlength: 5,
-    equalTo: "#password"
-    },
-    curl: {
-        required: true,
-        url:true
-    },
-    crole:"required",
-    ccomment: {
-    required: true,
-    minlength: 15
-    },
-    cgender:"required",
-    cagree:"required",
-    },
-    //For custom messages
-    messages: {
-    uname:{
-        required: "Enter a username",
-        minlength: "Enter at least 5 characters"
-    },
-    curl: "Enter your website",
-    },
-    errorElement : 'div',
-    errorPlacement: function(error, element) {
-    var placement = $(element).data('error');
-    if (placement) {
-    $(placement).append(error)
-    } else {
-    error.insertAfter(element);
-    }
-    }
-  });*/
+        var formVal = $("#novevento").validate({
+          rules: {
+            ekdato: {
+                required: true,
+                minlength: 5
+            },
+            findato: {
+                required: true,
+                minlength: 5
+            },
+            geoloc: {
+                required: true,
+                minlength: 5
+            },
+            website: {
+                required: true,
+                minlength: 5
+            },
+            email: {
+                required: true,
+                minlength: 15,
+                email:true
+            }
+          },
+          //For custom messages
+           messages: {
+           },
+           errorElement : 'div',
+           errorPlacement: function(error, element) {
+             var placement = $(element).data('error');
+             if (placement) {
+               $(placement).append(error)
+             } else {
+               error.insertAfter(element);
+             }
+           },
+          submitHandler: function(form) {
+            //$(form).ajaxSubmit();
+            var formData = {
+              "organizanto": $('input[name="organizanto"]').val(),
+              "grandeco":    $('input[name="grandeco"]').val(),
+              "tipoj":       $('input[name="tipoj"]').val(),
+              "ekdato":      $('input[name="ekdato"]').val(),
+              "findato":     $('input[name="findato"]').val(),
+              "geoloc":      $('input[name="geoloc"]').val(),
+              "lando":       $('input[name="lando"]').val(),
+              "urbnomo":     $('input[name="urbnomo"]').val(),
+              "website":     $('input[name="website"]').val(),
+              "email":       $('input[name="email"]').val(),
+              "description": $('input[name="description"]').val(),
+              "sekreta":     $('input[name="sekreta"]').val()
+            }
+            alert("whut!?!"+JSON.stringify(formData))
+          }
+        })
+        $("a#premo").click(function(event){
+            event.preventDefault();
+            //formVal.form();
+          });
+        })
 </script>
 {% else %}
 <!--- Cxie tie cxion rilate al montri unu jaro de erenkontigxoj estas -->

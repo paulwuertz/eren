@@ -1,3 +1,7 @@
 renkontoj/*
 build/*
 sekreta.py
+/static/node_modules
+eren.db
+static/package-lock.json
+*.pyc
