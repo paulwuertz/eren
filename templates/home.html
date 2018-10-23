@@ -81,7 +81,7 @@
               </div>
               <div class="input-field col s12 m6 in-opts">
                   <select name="grandeco" placeholder="Elektu grandecon..." required>
-                    <option value="0" selected disabled>Elektu grandeco</option>
+                    <option value="default" selected disabled>Elektu grandeco</option>
                     <option value="1">1-20  </option>
                     <option value="2">20-30 </option>
                     <option value="3">31-50 </option>
@@ -95,7 +95,7 @@
               </div>
               <div class="input-field col s12 m6 in-opts">
                     <select multiple name="tipoj">
-                      <option value="" disabled selected>Kio temas pri?</option>
+                      <option value="default" disabled selected>Kio temas pri?</option>
                       <option value="aktivista_renkontiĝo">Aktivista renkontiĝo</option>
                       <option value="grupa_migrado">Grupa migrado</option>
                       <option value="kultura_evento">Kultura evento</option>
@@ -127,7 +127,7 @@
             <div class="input-field col s12">
               <div class="input-field col m6 s12">
                   <div class="input-field col s12">
-                      <input name="geoloc" type="text" placeholder="0.0000,0.0000" required>
+                      <input id="geoinput" name="geoloc" type="text" placeholder="0.0000,0.0000" required>
                       <label for="geoloc">Elektu la okazejo en la mapo:</label>
                   </div>
                   <div class="input-field in-opts col s12 bfh-selectbox bfh-countries" data-country="eo" data-flags="true">
@@ -184,15 +184,23 @@
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/materialize-css/dist/js/materialize.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet-locationpicker/dist/leaflet-locationpicker.src.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/bootstrap-formhelpers/js/lang/eo/bootstrap-formhelpers-countries.eo.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery-validation/dist/jquery.validate.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery-validation/dist/jquery.validate.min.js') }}"></script>
 <script type="text/javascript">
     var csrf_token = "{{ csrf_token() }}";
-    //setup tabs
+
+    jQuery.validator.addMethod("geocoordinates", function(value, element) {
+        var latlng = value.split(",");
+        var lat = (!isNaN(latlng[0]) && (latlng[0]<=90 && latlng[0]>=-90));
+        var lng = (!isNaN(latlng[1]) && (latlng[1]<=180 && latlng[1]>=-180));
+        return this.optional(element) || (latlng.length == 2 && lat && lng);
+    }, "Bonvole entajpu validajn geokordinatojn aux enklaku la mapon");
+
+    //setup after HTML loaded
     $(document).ready(function(){
         $('.datepicker').datepicker();
         $('.in-opts select').formSelect();
         $('.tooltipped').tooltip({"exitDelay":1000});
-        var l=$('#geoloc').leafletLocationPicker(
+        var l=$('#geoinput').leafletLocationPicker(
           {
             alwaysOpen:true,
             mapContainer: "#map",
@@ -200,7 +208,10 @@
       			height: 250,
             map: {zoom:1}
           }
-        );
+        ).on('changeLocation', function(e) {
+            $('#geolat').val( e.latlng.lat )
+            $('#geolng').val( e.latlng.lng )
+        });	;
         var landData = {};
         var landoj=Object.values(BFHCountriesList)
         for(var l in landoj) landData[landoj[l]]=null;
@@ -209,25 +220,33 @@
         });
         var formVal = $("#novevento").validate({
           rules: {
+            grandeco: {
+              minlengt:1
+            },
+            tipoj: {
+              minlengt:1
+            },
+            grandeco: {
+              valueNotEquals: "default"
+            },
             ekdato: {
                 required: true,
-                minlength: 5
+                date: true
             },
             findato: {
                 required: true,
-                minlength: 5
+                date: true
             },
             geoloc: {
                 required: true,
-                minlength: 5
+                geocoordinates : true
             },
             website: {
                 required: true,
-                minlength: 5
+                url: true
             },
             email: {
                 required: true,
-                minlength: 15,
                 email:true
             }
           },
