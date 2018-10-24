@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 import json, os, sys, urllib, datetime, sqlalchemy
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 
 from flask_wtf import Form
 from wtforms import StringField, PasswordField
@@ -77,12 +77,12 @@ def hejme():
 
 @app.route('/aldoniEventon', methods=["POST"])
 def aldoniEventon():
+	print(request.form)
 	#se mankas enda datumero redonu eraron
 	if not (latlng and nomo and ektiempo and fintempo and retposxto and priskribo and link and loko):
 		return jsonify({"succeson":False,"messagxo":"latlng %s nomo %s ektiempo %s fintempo %s retposxto %s priskribo %s link %s loko %s" % [not not o for o in [latlng and nomo and ektiempo and fintempo and retposxto and priskribo and link and loko]]})
 	else:
-		pass
-	return render_template('home.html',jaroj=jaroj, hejm=True,WWW=WWW)
+		return jsonify({"succeson":True,"messagxo":"latlng %s nomo %s ektiempo %s fintempo %s retposxto %s priskribo %s link %s loko %s" % [not not o for o in [latlng and nomo and ektiempo and fintempo and retposxto and priskribo and link and loko]]})
 
 DEBUG = True
 if __name__ == '__main__':

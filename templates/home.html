@@ -278,7 +278,16 @@
               "description": $('input[name="description"]').val(),
               "sekreta":     $('input[name="sekreta"]').val()
             }
-            alert("whut!?!"+JSON.stringify(formData))
+
+            $.ajax({ url: '/aldoniEventon',
+              type: 'POST',
+              beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', csrf_token)},
+              data: formData,
+              always: function(response) {
+                alert( "finished"+JSON.stringify(data));
+                $('#someDiv').html(response);
+              }
+            });
           }
         })
         $("a#premo").click(function(event){
