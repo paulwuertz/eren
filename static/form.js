@@ -5,9 +5,36 @@ jQuery.validator.addMethod("geocoordinates", function(value, element) {
     return this.optional(element) || (latlng.length == 2 && lat && lng);
 }, "Bonvole entajpu validajn geokordinatojn aux enklaku la mapon");
 
+$.validator.addMethod("anyDate",
+function(value, element) {
+    return value.match(/^(0?[1-9]|[12][0-9]|3[0-1])[-](0?[1-9]|1[0-2])[-](20)\d{2}$/);
+},"Bonvole entajpu validajn datoj por ek- kaj opcione por findato!");
+
+function formData() {
+    var geo=$('input[name="geoloc"]').val().split(","),
+        lat = parseFloat(geo[0]),
+        lng = parseFloat(geo[1]);
+    return {
+      "nomo":        $('input[name="eventnomo"]').val(),
+      "organizanto": $('input[name="organizanto"]').val(),
+      "grandeco":    $('select[name="grandeco"]').val(),
+      "tipoj":       $('select[name="tipoj"]').val(),
+      "ekdato":      $('input[name="ekdato"]').val(),
+      "findato":     $('input[name="findato"]').val(),
+      "lat":         lat,
+      "lng":        lng,
+      "lando":       $('input[name="lando"]').val(),
+      "urbnomo":     $('input[name="urbnomo"]').val(),
+      "website":     $('input[name="website"]').val(),
+      "email":       $('input[name="email"]').val(),
+      "priskribo":   $('textarea[name="priskribo"]').val(),
+      "sekreta":     $('input[name="sekreta"]').val()
+    }
+}
+
 //setup after HTML loaded
 $(document).ready(function(){
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({format:"dd-mm-yyyy"});
     $('.in-opts select').formSelect();
     $('.tooltipped').tooltip({"exitDelay":1000});
     var l=$('#geoinput').leafletLocationPicker(
@@ -41,11 +68,11 @@ $(document).ready(function(){
         },
         ekdato: {
             required: true,
-            date: true
+            anyDate: true
         },
         findato: {
             required: true,
-            date: true
+            anyDate: true
         },
         geoloc: {
             required: true,
@@ -74,25 +101,10 @@ $(document).ready(function(){
        },
       submitHandler: function(form) {
         //$(form).ajaxSubmit();
-        var formData = {
-          "organizanto": $('input[name="organizanto"]').val(),
-          "grandeco":    $('input[name="grandeco"]').val(),
-          "tipoj":       $('input[name="tipoj"]').val(),
-          "ekdato":      $('input[name="ekdato"]').val(),
-          "findato":     $('input[name="findato"]').val(),
-          "geoloc":      $('input[name="geoloc"]').val(),
-          "lando":       $('input[name="lando"]').val(),
-          "urbnomo":     $('input[name="urbnomo"]').val(),
-          "website":     $('input[name="website"]').val(),
-          "email":       $('input[name="email"]').val(),
-          "description": $('input[name="description"]').val(),
-          "sekreta":     $('input[name="sekreta"]').val()
-        }
-
         $.ajax({ url: '/aldoniEventon',
           type: 'POST',
           beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', csrf_token)},
-          data: formData,
+          data: formData(),
           always: function(response) {
             alert( "finished"+JSON.stringify(data));
             $('#someDiv').html(response);
