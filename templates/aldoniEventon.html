@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <title>E-Renkontiĝoj en la mondo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/leaflet-locationpicker/dist/leaflet-locationpicker.src.css') }}" />
+{% endblock %}
+
+{% block body %}
+<!--- Hejmpagxo se nenia jaro estas elektita -->
+<div class="row" id="cont-m">
+  <div id="formContainer" class="card col row l6 offset-l3 m8 offset-m2 s10 offset-s1 z-depth-1">
+    <div id="formHead" class="card-header white-text container teal lighten-2 s12">
+        <h2>Teksto</h2>
+    </div>
+    <div class="card-body grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+    <form id="novevento" method="post">
+      <div class="row"><label>Ĝeneralaĵoj</label></div>
+      <div class="row">
+        <div class="input-field col m6 s12">
+            <input placeholder="Eventnomo" name="eventnomo" type="text" required>
+            <label for="title">Nomo de la aranĝo:</label>
+        </div>
+        <div class="input-field col in-opts m6 s12">
+            <input placeholder="Kiu organizas?" name="organizanto" type="text" required>
+            <label for="organizer">Nomo de la organizanto:</label>
+        </div>
+        <div class="input-field col s12 m6 in-opts">
+            <select name="grandeco" placeholder="Elektu grandecon..." required>
+              <option value="default" selected disabled>Elektu grandeco</option>
+              <option value="1">1-20      </option>
+              <option value="2">20-30     </option>
+              <option value="3">31-50     </option>
+              <option value="4">51-100    </option>
+              <option value="5">101-200   </option>
+              <option value="6">201-500   </option>
+              <option value="7">501-1000  </option>
+              <option value="8">1001-pli  </option>
+            </select>
+            <label for="grandeco">Grandeco:</label>
+        </div>
+        <div class="input-field col s12 m6 in-opts">
+              <select multiple name="tipoj">
+                <option value="default" disabled selected>Kio temas pri?</option>
+                <option value="aktivista_renkontiĝo">Aktivista renkontiĝo</option>
+                <option value="grupa_migrado">Grupa migrado</option>
+                <option value="kultura_evento">Kultura evento</option>
+                <option value="lokgrupa_renkontiĝo">Lokgrupa renkontiĝo</option>
+                <option value="organizuma_renkontiĝo">Organizuma renkontiĝo</option>
+                <option value="poliglota_renkontiĝo">Poliglota renkontiĝo</option>
+                <option value="Renkontiĝo_kun_memorganizitaj_kursoj ">Renkontiĝo kun memorganizitaj kursoj </option>
+                <option value="scienca_renkontiĝo">Scienca renkontiĝo</option>
+                <option value="tauxga_por_komencantoj">Tauxga por komencantoj</option>
+              </select>
+              <label for="tipoj">Materialize Multiple Select</label>
+        </div>
+      </div>
+
+      <div class="row"><label>Datoj</label></div>
+      <div class="row">
+          <div class="input-field col m6 s12">
+            <label>Komiencdato*</label>
+            <input name="ekdato" type="text" class="datepicker" required>
+          </div>
+          <div class="input-field col m6 s12">
+            <label>Findato (nedeviga)</label>
+            <input name="findato" type="text" class="datepicker">
+          </div>
+      </div>
+
+      <div class="row"><label>Ejo</label></div>
+      <div class="row">
+      <div class="input-field col s12">
+        <div class="input-field col m6 s12">
+            <div class="input-field col s12">
+                <input id="geoinput" name="geoloc" type="text" placeholder="0.0000,0.0000" required>
+                <label for="geoloc">Elektu la okazejo en la mapo:</label>
+            </div>
+            <div class="input-field in-opts col s12 bfh-selectbox bfh-countries" data-country="eo" data-flags="true">
+                      <input type="text" name="lando" class="autocomplete" placeholder="Lando" required>
+                      <label for="autocomplete-input">Elektu eventlando:</label>
+            </div>
+            <div class="input-field col s12">
+              <input placeholder="Urbonomo" name="urbnomo" type="text" required>
+              <label for="urbnomo">Nomo de okazurbo:</label>
+            </div>
+        </div>
+        <!--- MAP --->
+        <div id="map" class="col m6 s12"></div>
+      </div>
+      </div>
+
+      <div class="row"><label>Retajxoj</label></div>
+      <div class="row">
+        <div class="input-field col m6 s12">
+          <input placeholder="http://www.lingvo-internacia.eu" name="website" type="text" required>
+          <label for="website">Retpaĝo de la aranĝo:</label>
+        </div>
+        <div class="input-field col m6 s12">
+          <input placeholder="nenio@eventoj.net" name="email" type="text" required>
+          <label for="email">Poŝta adreso de organizanto:</label>
+        </div>
+      </div>
+
+      <div class="row">
+            <div class="input-field col s12">
+              <textarea name="priskribo" class="materialize-textarea" length="520" required></textarea>
+              <label for="priskribo">Mallonga priskribo:</label>
+            </div>
+      </div>
+      <div class="row">
+        <div class="input-field col row l4 offset-l4 m6 offset-m3 s12">
+          <input placeholder="{{ GLOBAL.DEMANDO }}" name="sekreta" type="text" class="s12" required>
+          <label for="sekreta">Respondu por kredigi vin: {{ GLOBAL.DEMANDO }} <i class="material-icons right tooltipped" data-position="top" data-tooltip="{{ GLOBAL.DEMANDO_KONSILO|safe }}">help_outline</i></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col row l4 offset-l4 m6 offset-m3 s12">
+          <button href="#" id="premo" type="submit" class="col btn waves-effect waves-light s12">Aldonu eventon<i class="material-icons right">send</i></button>
+        </div>
+      </div>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      </form>
+  </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet-locationpicker/dist/leaflet-locationpicker.src.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/bootstrap-formhelpers/js/lang/eo/bootstrap-formhelpers-countries.eo.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='form.js') }}"></script>
+{% endblock %}

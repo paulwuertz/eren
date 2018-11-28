@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" href="{{ url_for('static',  filename='favicon.ico') }}" type="image/x-icon"/>
+    <link href="{{ url_for('static',  filename='node_modules/material-design-icons/iconfont/material-icons.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/materialize-css/dist/css/materialize.min.css') }}" media="screen" title="no title">
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet/dist/leaflet.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}" />
+    {% block header %}{% endblock %}
+  </head>
+<body>
+<!--- elektilo por cxiuj jaroj -->
+<nav>
+  <div class="nav-wrapper green darken-4">
+    <a href="#!" class="brand-logo left"> E-Renkontiĝoj</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+        <ul>
+        {% for jar in range(1996,2018) %}
+            {% if jar>2014 %}
+            <li><a href="{{WWW}}/{{jar}}/">{{ jar }}</a></li>
+            {% else %}
+            <li><a href="{{WWW}}/{{jar}}/">{{ jar }}</a></li>
+            {% endif %}
+        {% endfor %}
+        <ul>
+    </ul>
+  </div>
+</nav>
+<!--- Hejmpagxo se nenia jaro estas elektita -->
+{% block body %}{% endblock %}
+
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/moment/min/moment-with-locales.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/materialize-css/dist/js/materialize.min.js') }}"></script>
+<script type="text/javascript">var csrf_token = "{{ csrf_token() }}";</script>
+
+<!--- JSajxojn -->
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/moment/min/moment-with-locales.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/materialize-css/dist/js/materialize.min.js') }}"></script>
+{% block js %}{% endblock %}
+
+</body>
+</html>

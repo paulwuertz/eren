@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>E-Renkontiĝoj en la mondo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.css') }}" />
+{% endblock %}
+
+{% block body %}
+<!--- Cxie tie cxion rilate al montri unu jaro de erenkontigxoj estas -->
+<!--- Jen la sxangxbutenoj por sxangxi inter karta aux kalendara vido -->
+<div class="row">
+  <div class="col s12">
+    <div class="card green-grey darken-1">
+      <div class="card-content black-text">
+    <div class="row">
+    <div class="col s6 offset-s3">
+      <ul class="tabs  offset-s1">
+        <li class="tab col s3"><a href="#mapo">Mapo</a></li>
+        <li class="tab col s3"><a href="#kalendaro">Kalendaro</a></li>
+      </ul>
+    </div>
+    <!--- la karto -->
+    <div id="mapo" class="col s10 offset-s1"></div>
+    <!--- la kalendaro -->
+    <div id="kalendaro" class="col s6 offset-s3"></div>
+    </div>
+        <!--- teksta listo de renkontigxoj en tabela formo -->
+        <div class="row">
+            <div class="col s10 offset-s1">
+              <table class="striped bordered">
+                <thead>
+                  <tr>
+                      <th data-field="nomo">Nomo</th>
+                      <th data-field="loko">Loko</th>
+                      <th data-field="tempo">Tempo</th>
+                      <th data-field="tempo">Priskribo</th>
+                      <th data-field="tempo">Kontakto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for ren in renoj %}
+                  <tr>
+                    <td><a href="{{ ren.link }}">{{ ren.nomo }}</a></td>
+                    <td>{{ ren.loko }}</td>
+                    <td>{{ ren.tempo }}</td>
+                    <td>{{ ren.text }}</td>
+                    <td><a href="mailto:{{ren.mail}}">Alretpoŝtu!</a></td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<!--- JSajxojn -->
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+<script type="text/javascript">
+    var csrf_token = "{{ csrf_token() }}";
+    //setup tabs
+    $(document).ready(function(){
+        $('ul.tabs').tabs();
+        initCalendar({{ jar|safe }}, {{ renoj|safe }});
+    });
+</script>
+{% endblock %}

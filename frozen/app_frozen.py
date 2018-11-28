@@ -28,20 +28,4 @@ def jare(jar):
 def hejme():
     return render_template('home.html',jaroj=jaroj, hejm=True,WWW=WWW)
 
-from flask_wtf import Form
-from wtforms import StringField, PasswordField
-from wtforms.validators import DataRequired, Email
-
-class EmailPasswordForm(Form):
-	email = StringField('Email', validators=[DataRequired(), Email()])
-	password = PasswordField('Password', validators=[DataRequired()])
-
-@app.route('/aldonEventon', methods=["POST"])
-def login():
-	form = EmailPasswordForm()
-	if form.validate_on_submit():
-		print("yea")
-
-if __name__ == '__main__':
-    #freezer.freeze()
-    app.run(port=5000, debug=True)
+freezer.freeze()

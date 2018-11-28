@@ -22,7 +22,7 @@ function formData() {
       "ekdato":      $('input[name="ekdato"]').val(),
       "findato":     $('input[name="findato"]').val(),
       "lat":         lat,
-      "lng":        lng,
+      "lng":         lng,
       "lando":       $('input[name="lando"]').val(),
       "urbnomo":     $('input[name="urbnomo"]').val(),
       "website":     $('input[name="website"]').val(),
@@ -37,41 +37,36 @@ $(document).ready(function(){
     $('.datepicker').datepicker({format:"dd-mm-yyyy"});
     $('.in-opts select').formSelect();
     $('.tooltipped').tooltip({"exitDelay":1000});
-    var l=$('#geoinput').leafletLocationPicker(
-      {
+    var l=$('#geoinput').leafletLocationPicker({
         alwaysOpen:true,
         mapContainer: "#map",
         locationDigits: 4,
         height: 250,
         map: {zoom:1}
-      }
-    ).on('changeLocation', function(e) {
-        $('#geolat').val( e.latlng.lat )
-        $('#geolng').val( e.latlng.lng )
-    });	;
+    });
     var landData = {};
     var landoj=Object.values(BFHCountriesList)
     for(var l in landoj) landData[landoj[l]]=null;
     $('input.autocomplete').autocomplete({
       data: landData,
     });
-    var formVal = $("#novevento").validate({
+    var formVal = $("form#novevento").validate({
       rules: {
         grandeco: {
-          minlengt:1
+          required: true,
+          minlengt:1,
+          valueNotEquals: "default"
         },
         tipoj: {
+          required: true,
           minlengt:1
-        },
-        grandeco: {
-          valueNotEquals: "default"
         },
         ekdato: {
             required: true,
             anyDate: true
         },
         findato: {
-            required: true,
+            required: false,
             anyDate: true
         },
         geoloc: {
@@ -111,9 +106,11 @@ $(document).ready(function(){
           }
         });
       }
-    })
+    });
+    $("#idForm").submit(function(e) {
+      event.preventDefault();
+    });
     $("a#premo").click(function(event){
         event.preventDefault();
-        //formVal.form();
-      });
-    })
+    });
+}); //end document ready

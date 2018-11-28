@@ -1,0 +1,38 @@
+#mapo {
+    height: 800px;
+    border: 1px solid black;
+    margin-top: 10px;
+    padding: 10px;
+}
+#cont-m {
+  min-height: 1200px;
+}
+.leaflet-locpicker-map {
+  display: block !important;
+}
+.map-select {
+    position: relative;
+    left: 0 !important;
+    top:  0 !important;
+    width: 100% !important;
+    margin: 0 auto;
+}
+.input-field div.error {
+    position: relative;
+    top: -1rem;
+    left: 0rem;
+    font-size: 0.8rem;
+    color: #FF4081;
+    -webkit-transform: translateY(30%);
+    -ms-transform: translateY(30%);
+    -o-transform: translateY(30%);
+    transform: translateY(30%);
+}
+
+#formContainer {
+  padding-top: 50px;
+  border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+
+#formHead {
+}
