@@ -1,0 +1,3546 @@
+{
+    "Brisbano- A\u016dstralio": [
+        "-27.4689682",
+        "153.0234991"
+    ],
+    "Kievo- Ukrainio": [
+        "50.4501071",
+        "30.5240501"
+    ],
+    "Trier- Germanio": [
+        "49.7596208",
+        "6.6441878"
+    ],
+    "La BASTIDE-sur-l'HERS - Okcitanio- Francio": [
+        "42.95633",
+        "1.9089971"
+    ],
+    "Bouresse- Francio": [
+        "46.3615009",
+        "0.6094403"
+    ],
+    "Herzberg am Harz- Germanio": [
+        "51.61920265",
+        "10.3406087249326"
+    ],
+    "Campina Grande- Brazilo": [
+        "-7.2246743",
+        "-35.8771292"
+    ],
+    "Stevensbeek- Nederlando": [
+        "51.6053471",
+        "5.92126776951946"
+    ],
+    "N\u00e1chod- \u0108ehio": [
+        "50.4167811",
+        "16.1630918"
+    ],
+    "La Chaux-de-Fonds (NE)- Svislando": [
+        "47.103287",
+        "6.8324545"
+    ],
+    "Toulouse- Francio": [
+        "43.6044622",
+        "1.4442469"
+    ],
+    "Amougies- Belgio": [
+        "50.743719",
+        "3.5066795"
+    ],
+    "A\u015dkelon- Israelo": [
+        "31.6644874",
+        "34.5730157"
+    ],
+    "Kutaiso- Kartvelio": [
+        "42.2716455",
+        "42.705359"
+    ],
+    "Tehrano- IRANO": [
+        "35.7006177",
+        "51.4013785"
+    ],
+    "Baug\u00e9- Francio": [
+        "47.5490746",
+        "-0.117747326483762"
+    ],
+    "Essen- Germanio": [
+        "51.457087",
+        "7.011429"
+    ],
+    "Castione della Presolana- Bergamo- Italio": [
+        "45.907455",
+        "10.0350592"
+    ],
+    "Berlin- Germanio": [
+        "52.5170365",
+        "13.3888599"
+    ],
+    "Bre\u017eice- Slovenio": [
+        "45.9038415",
+        "15.593046"
+    ],
+    "Pontarlier- Francio": [
+        "46.9040348",
+        "6.3546345"
+    ],
+    "Varsovio- Pollando": [
+        "52.2319237",
+        "21.0067265"
+    ],
+    "Barto\u0161ovice- \u0108ehio": [
+        "49.6688413",
+        "18.0546068"
+    ],
+    "Frankfurt (Oder)- Germanio": [
+        "52.3412273",
+        "14.549452"
+    ],
+    "Porto Alegre- Brazilo": [
+        "-30.0324999",
+        "-51.2303767"
+    ],
+    "Nagoya- Japanio": [
+        "35.15792",
+        "136.90448"
+    ],
+    "Tehran- irano": [
+        "35.7006177",
+        "51.4013785"
+    ],
+    "Tehrano- Irano": [
+        "35.7006177",
+        "51.4013785"
+    ],
+    "Bjalistoko- Pollando": [
+        "53.132398",
+        "23.1591679"
+    ],
+    "Ruse- Bulgario": [
+        "43.8480413",
+        "25.9542057"
+    ],
+    "Colmar- Francio": [
+        "48.0777517",
+        "7.3579641"
+    ],
+    "Vroclavo- Pollando": [
+        "51.1089776",
+        "17.0326689"
+    ],
+    "Edinburgo- Skotlando": [
+        "55.9496416",
+        "-3.1902352"
+    ],
+    "Partiz\u00e1nske- Slovakio": [
+        "48.6264092",
+        "18.3730067"
+    ],
+    "Wroclaw- Pollando": [
+        "51.1263106",
+        "16.9781963305126"
+    ],
+    "Hamilton- Kanado": [
+        "43.255205",
+        "-79.868202"
+    ],
+    "Romo- Italio": [
+        "41.894802",
+        "12.4853384"
+    ],
+    "Les Brenets- Svislando": [
+        "47.0677727",
+        "6.7058982"
+    ],
+    "Parthenay-Secondigny- Francio": [
+        "46.6106485",
+        "-0.4292194"
+    ],
+    "Andrych\u00f3w- Pollando": [
+        "49.8555791",
+        "19.3436756"
+    ],
+    "Bratislavo- Slovakio": [
+        "48.1359085",
+        "17.1597440625"
+    ],
+    "Freiburg": [
+        "47.9960901",
+        "7.8494005"
+    ],
+    "Toyonaka- Japanio": [
+        "34.7862025",
+        "135.4737093"
+    ],
+    "Svitavy- \u0108ehio": [
+        "49.7562053",
+        "16.4688995"
+    ],
+    "Subotica- Serbio": [
+        "46.1000129",
+        "19.6640974"
+    ],
+    "Mielno- Pollando": [
+        "54.2590065",
+        "16.0539997"
+    ],
+    "Sorriso/MT- Brazilo": [
+        "-12.5444887",
+        "-55.7233972"
+    ],
+    "Londono- Britio": [
+        "51.5073219",
+        "-0.1276474"
+    ],
+    "Bad Schandau- Germanio": [
+        "50.918091",
+        "14.1534018"
+    ],
+    "Teruel- Hispanio": [
+        "40.3436719",
+        "-1.1081939"
+    ],
+    "Gelsenkirchen- Germanio": [
+        "51.5110321",
+        "7.0960124"
+    ],
+    "Roskilde- Danio": [
+        "55.6433478",
+        "12.0819247"
+    ],
+    "Ny\u00edregyh\u00e1za-S\u00f3st\u00f3gy\u00f3gyf\u00fcrd\u0151- Hungario": [
+        "48.00747465",
+        "21.7281581241776"
+    ],
+    "Raleigh- North Carolina- Usono": [
+        "35.7803977",
+        "-78.6390989"
+    ],
+    "Erevan- Armenio": [
+        "40.16431325",
+        "44.5317329719653"
+    ],
+    "Brugge/Bru\u011do- Belgio": [
+        "51.1969806",
+        "3.2172409"
+    ],
+    "Liep\u0101ja- Latvio": [
+        "56.5048435",
+        "21.0070903"
+    ],
+    "Udine- Italio": [
+        "46.0634632",
+        "13.2358377"
+    ],
+    "Odeso- Ukrainio": [
+        "46.4852419",
+        "30.7433894"
+    ],
+    "Esperanto-G\u00e5rden en Lesj\u00f6fors- Svedio": [
+        "59.9813948",
+        "14.1752001"
+    ],
+    "Raleigh- Norda Karolino- Usono": [
+        "35.7803977",
+        "-78.6390989"
+    ],
+    "Herzberg am Harz - la Esperanto-urbo- Germanio": [
+        "51.6568837",
+        "10.3445656184664"
+    ],
+    "Sapa- Vjetnamio": [
+        "22.3001494",
+        "103.8941846"
+    ],
+    "Duszniki-Zdr\u00f3j- Pollando": [
+        "50.4044249",
+        "16.3901528"
+    ],
+    "Busan- Korea Respubliko": [
+        "35.1799528",
+        "129.0752365"
+    ],
+    "Bansk\u00e1 \u0160tiavnica- Slovakio": [
+        "48.4580926",
+        "18.8988414"
+    ],
+    "Rudnik- Serbio": [
+        "44.1407138",
+        "20.498457"
+    ],
+    "Alto Para\u00ecso de Goias- Brazilo": [
+        "-14.1304779",
+        "-47.5100161"
+    ],
+    "Thomsdorf- Germanio": [
+        "54.2237533",
+        "11.0094278"
+    ],
+    "Gimpo-Seulo- Sud-Koreio": [
+        "37.55902745",
+        "126.793298543895"
+    ],
+    "Rakovn\u00edk- \u0108ehio": [
+        "50.1039674",
+        "13.7333385"
+    ],
+    "Karlovac - Sisak- Kroatio": [
+        "45.4775055",
+        "15.6570792"
+    ],
+    "Ni\u0135ni Tagil- Rusio": [
+        "57.905149",
+        "59.9508466"
+    ],
+    "u": [
+        "42.6384261",
+        "12.674297"
+    ],
+    "Bjelovar- Kroatio": [
+        "45.8990121",
+        "16.8424444"
+    ],
+    "Gyenesdi\u00e1s- Hungario": [
+        "46.7725171",
+        "17.2860041"
+    ],
+    "Z\u00f6blitz- Germanio": [
+        "50.65891335",
+        "13.2361237136898"
+    ],
+    "Lan\u010dov": [
+        "48.9070583",
+        "15.7678004"
+    ],
+    "Duszniki Zdr\u00f3j- Pollando": [
+        "50.4044249",
+        "16.3901528"
+    ],
+    "Metabief- Francio": [
+        "46.7734907",
+        "6.3505765"
+    ],
+    "Berlino- Germanio": [
+        "52.5170365",
+        "13.3888599"
+    ],
+    "Ros\u00e9e- Belgio": [
+        "50.2323028",
+        "4.6876566"
+    ],
+    "Lendava- Slovenio": [
+        "46.55480075",
+        "16.4433260154866"
+    ],
+    "Heraclea (Matera)- Italio": [
+        "40.2196531",
+        "16.6703351286036"
+    ],
+    "Timi\u015foara- Rumanio": [
+        "45.7538355",
+        "21.2257474"
+    ],
+    "Skokovy- \u0108ehio": [
+        "50.5313762",
+        "15.1104629"
+    ],
+    "Gdansk-Sopot- Pollando": [
+        "54.44483815",
+        "18.5542429892388"
+    ],
+    "Prago- \u0108ehio": [
+        "50.0874654",
+        "14.4212535"
+    ],
+    "Hra\u0161\u010dina- Kroatio": [
+        "46.1104686",
+        "16.2276136"
+    ],
+    "Munkeno- Germanio": [
+        "48.1371079",
+        "11.5753822"
+    ],
+    "Poznan- Pollando": [
+        "52.4006522",
+        "16.9197520238885"
+    ],
+    "Pozna\u0144- Pollando": [
+        "52.4006522",
+        "16.9197520238885"
+    ],
+    "Rijeka- Kroatio": [
+        "45.3269357",
+        "14.4409841"
+    ],
+    "Tossa de Mar- Hispanio": [
+        "41.7197773",
+        "2.9312155"
+    ],
+    "Schw\u00e4bisch Gm\u00fcnd- Germanio": [
+        "48.8001179",
+        "9.7963529"
+    ],
+    "Silver Bay- NY- Usono": [
+        "43.6964519",
+        "-73.5056735"
+    ],
+    "Baiersbronn- Germanio": [
+        "48.5066107",
+        "8.3701885"
+    ],
+    "\u00c0ger- Katalunio": [
+        "42.0000879",
+        "0.7632247"
+    ],
+    "Bornerbroek- Nederlando": [
+        "52.3100786",
+        "6.65211312582564"
+    ],
+    "So\u0109i": [
+        "43.5854823",
+        "39.723109"
+    ],
+    "Lunteren- Nederlando": [
+        "52.10038555",
+        "5.61158909956178"
+    ],
+    "Homburg- Germanio": [
+        "49.3181673",
+        "7.3340336"
+    ],
+    "Jokohamo (Yokohama)- Japanio": [
+        "35.444991",
+        "139.636768"
+    ],
+    "Honda-Tolimo- Kolombio": [
+        "5.2106086",
+        "-74.7361304"
+    ],
+    "Gliwice- Pollando": [
+        "50.30113145",
+        "18.662347227972"
+    ],
+    "Sundern-Langscheid- Germanio": [
+        "51.3524669",
+        "7.9516849"
+    ],
+    "Zagrebo- Kroatio": [
+        "45.813177",
+        "15.977048"
+    ],
+    "Recife- Brazilo": [
+        "-8.0641931",
+        "-34.8781517"
+    ],
+    "Hameln- Germanio": [
+        "52.1039941",
+        "9.3561569"
+    ],
+    "Triesto- Italio": [
+        "42.4026964",
+        "11.4441946"
+    ],
+    "Guant\u00e1namo- Kubo": [
+        "20.1431797",
+        "-75.2034783"
+    ],
+    "Sofio- Bulgario": [
+        "42.6978634",
+        "23.3221789"
+    ],
+    "Hanojo- Vjetnamio": [
+        "21.0294498",
+        "105.8544441"
+    ],
+    "Szczecin- Pollando": [
+        "53.42968095",
+        "14.5929126702923"
+    ],
+    "Saarbr\u00fccken- Germanio": [
+        "49.234362",
+        "6.996379"
+    ],
+    "Haltern am See- Germanio": [
+        "51.7430516",
+        "7.187221"
+    ],
+    "Goias - Brazilo": [
+        "-15.9323662",
+        "-50.1392928"
+    ],
+    "Malaltaj Tatroj- Slovakio": [
+        null,
+        null
+    ],
+    "Pintung- Tajvano": [
+        null,
+        null
+    ],
+    "Herzberg am Harz- Germanio Intensa lernado de baza gramatiko kaj utila vortprovizo": [
+        null,
+        null
+    ],
+    "Zvenigorod- Jer\u015dovo": [
+        null,
+        null
+    ],
+    "Kathmanduo- Nepalo": [
+        null,
+        null
+    ],
+    "Les Issambres en Restadejo Val d'Esqui\u00e8re (Lazura Marbordo)- Francio": [
+        null,
+        null
+    ],
+    "Vinjalo (Vi\u00f1ales)- Pinar del R\u00edo- Kubo": [
+        null,
+        null
+    ],
+    "Seulo- Koreio": [
+        null,
+        null
+    ],
+    "Bia\u0142isztok- Pollando": [
+        null,
+        null
+    ],
+    "Szczeczin- Pollando": [
+        null,
+        null
+    ],
+    "Hodon\u00edn- \u0109e Kun\u0161t\u00e1t- \u0108ehio": [
+        null,
+        null
+    ],
+    "Arrout- suda Francio": [
+        null,
+        null
+    ],
+    "urbo Lvovo (Lviv)- Ukrainio": [
+        null,
+        null
+    ],
+    "Sudaukrajinsjk- Ukrainio": [
+        null,
+        null
+    ],
+    "Ulanbatoro (Mongolio) - Pekino - Xi'an - Ordoso - Ho\u0125oto (\u0108inio)": [
+        null,
+        null
+    ],
+    "Bad M\u00fcnder- inter Hannover kaj Hameln- Germanio": [
+        null,
+        null
+    ],
+    "Forsvik- Svedio 58\u00b034\u203236\u2033N 14\u00b026\u203212\u2033\u00d6": [
+        null,
+        null
+    ],
+    "Parizo (Mandres les Roses)- Francio": [
+        null,
+        null
+    ],
+    "Pfaffenhofen- Germanio- Okaze de la kleine Landesgartenschau naturo en la urbo en Pfaffenhofen ni invitas \u0109iujn Esperantistojn al Esperanto-renkonti\u011do al la ejo de la ekspozicio": [
+        null,
+        null
+    ],
+    "Frajburgo- Germanio": [
+        null,
+        null
+    ],
+    "Ulanbatoro-\u0124uvsgul- Mondolio": [
+        null,
+        null
+    ],
+    "Ulanbatoro (Mongolio)-UlanUde-Bajkalo (Burjatio- Rusio)": [
+        null,
+        null
+    ],
+    "Bru\u011do/Enghien-Edingen- Belgio": [
+        null,
+        null
+    ],
+    "monta bazejo Aktru- Respubliko Altajo- Rusio": [
+        null,
+        null
+    ],
+    "Karpata montaro": [
+        null,
+        null
+    ],
+    "hotelo Hangan- Seulo- Koreio - anta\u016d la UK": [
+        null,
+        null
+    ],
+    "flughaveno \"Ramenskoe\"- apud Moskvo- Rusio": [
+        null,
+        null
+    ],
+    "Seulo- Suda-Koreio": [
+        null,
+        null
+    ],
+    "Seulo- Suda Koreio": [
+        null,
+        null
+    ],
+    "Kostrzyn \u0109e la rivero Oder/Odra- Pollando": [
+        null,
+        null
+    ],
+    "Pluezek- Francio": [
+        null,
+        null
+    ],
+    "urbo Neapoli- la Esperanto-Domo de Annie Grente": [
+        null,
+        null
+    ],
+    "Als\u00f3\u00f6rs (\u0109e Balatono)- Hungario": [
+        null,
+        null
+    ],
+    "Polikoro- Italio": [
+        null,
+        null
+    ],
+    "Boru\u011derdo- Irano": [
+        null,
+        null
+    ],
+    "Schwerte- Ruhr-regiono- Germanio": [
+        null,
+        null
+    ],
+    "La Chaux-de-Fonds- La Sagne (Svislando)- kun Stefano Keller (CDELI)- Mireille Grosjean (SES)- D-rino Zorana Sokolovska (lingvisto- Instituto pri plurlingvismo- Universitato de Friburgo)- Claude Gacond (kreinto de CDELI)- Tomasz Chmielik (UAM- Poznano- Pollando)- Cesco Reale (UEA/UN)- Luc Allemand (CDELI)": [
+        null,
+        null
+    ],
+    "Zell \u0109e Mozelo- Germanio": [
+        null,
+        null
+    ],
+    "Indian Social Institute- Bengaluro- Barato": [
+        null,
+        null
+    ],
+    "urbeto Ver\u0151ce- 40 km-ojn de Budape\u015dto- Hungario": [
+        null,
+        null
+    ],
+    "balneologia kuracloko Mor\u015din- Ukrainio": [
+        null,
+        null
+    ],
+    "kiu en luda kaj vigla formo oni praktikos Esperanton": [
+        null,
+        null
+    ],
+    "\u0109iuj radioamatoraj bendoj plus Echolink": [
+        null,
+        null
+    ],
+    "la Junulara Kulturdomo": [
+        null,
+        null
+    ],
+    "Bia\u0142ysztok- Pollando": [
+        null,
+        null
+    ],
+    "Prago": [
+        "50.0874654",
+        "14.4212535"
+    ],
+    "pluraj kroataj urboj": [
+        null,
+        null
+    ],
+    "San Sebasti\ufffdn de los Reyes (\ufffde Madrido)": [
+        null,
+        null
+    ],
+    "Bouresse": [
+        "46.3615009",
+        "0.6094403"
+    ],
+    "Civitana instituto de la ortodoksa monahejo Valmo- Hein\ufffdvesi": [
+        null,
+        null
+    ],
+    "Sallaga Urbo (Salt Lake City)": [
+        null,
+        null
+    ],
+    "Esperanto-Garden- Lesj\u00f6fors": [
+        "59.9813948",
+        "14.1752001"
+    ],
+    "Germanio: Andi: +49-511-7000011- anka\u016d raditelefono- dum la MELA nur \u011di: Laca/Andi: +36-30-2097864\n": [
+        null,
+        null
+    ],
+    "Germanio: Andi: +49-511-7000011- anka\u016d raditelefono- dum la MELA nur \u011di: Laca/Andi: +36-30-2097864\n\n": [
+        null,
+        null
+    ],
+    "Villeneuve d'Ascq- Francio (59)": [
+        "50.6193174",
+        "3.1314002"
+    ],
+    "Xi'an- \u0108inio": [
+        "34.2660171",
+        "108.9424252"
+    ],
+    "Suzdal- Rusio": [
+        "56.4193908",
+        "40.4487893"
+    ],
+    "Yatugatake-Esperanto-Domo de Japana Esperanto-Instituto": [
+        null,
+        null
+    ],
+    "salono de  Oficira Palaco de Litovia Armeo- str": [
+        null,
+        null
+    ],
+    "Odessa": [
+        "46.4852419",
+        "30.7433894"
+    ],
+    "\u0108a\u0109ak": [
+        "43.8888275",
+        "20.3447317"
+    ],
+    "Gy\u0151r- Hungario": [
+        "47.687609",
+        "17.6346815"
+    ],
+    "Taguatinga (suburbo de Braziljo- \u0109efurbo de Brazilo)": [
+        null,
+        null
+    ],
+    "urbeto Bogorodick- Tula Regiono- Rusio": [
+        null,
+        null
+    ],
+    "Buenos Aires- Argentinio": [
+        null,
+        null
+    ],
+    "Strasbourg": [
+        "48.584614",
+        "7.7507127"
+    ],
+    "Pula- Kroatio": [
+        "44.8696242",
+        "13.8455452"
+    ],
+    "Bad Wimpfen- Sud-Germanio": [
+        null,
+        null
+    ],
+    "Pljos- \u0109e rivero Volga": [
+        null,
+        null
+    ],
+    "Hungario": [
+        "47.1817585",
+        "19.5060937"
+    ],
+    "Orl\u00e9ans (120 km sud-okcidente de Parizo)- Francio": [
+        null,
+        null
+    ],
+    "Kudowa Zdr\u00f3j": [
+        "50.4420034",
+        "16.2416299"
+    ],
+    "Treviso": [
+        "45.6658505",
+        "12.2455414"
+    ],
+    "Jalta- Ukrainio": [
+        "44.4970713",
+        "34.1586871"
+    ],
+    "montaro Roh\u00e1\u010de- Slovakio": [
+        null,
+        null
+    ],
+    "E\u016dropa Parlamento- temo: Kiel Esperanto povas helpi al unui\u011dinta E\u016dropo": [
+        null,
+        null
+    ],
+    "Nepalo": [
+        "28.1083929",
+        "84.0917139"
+    ],
+    "Kapuziner-Begegnungshaus St": [
+        null,
+        null
+    ],
+    "la ripozejo \"Bodrostj\" en Jekaterinburg": [
+        null,
+        null
+    ],
+    "\u010cesk\u00e1 T\u0159ebov\u00e1": [
+        "49.9021593",
+        "16.4472039"
+    ],
+    "Kudowa Zdroj- Pollando": [
+        "50.4420034",
+        "16.2416299"
+    ],
+    "H\u00f3dmez\u0151v\u00e1s\u00e1rhely- Hungario": [
+        "46.4171344",
+        "20.3196068"
+    ],
+    "esperantista pensiono \"\u0108an\u0109ar\" en Biograd n/m- Kroatio ": [
+        null,
+        null
+    ],
+    "pansiono Izabella- vila\u011do S\u00f6jt\u00f6r": [
+        null,
+        null
+    ],
+    "urbo Tobolsk": [
+        null,
+        null
+    ],
+    "Zell a": [
+        "49.1399484",
+        "11.1877337"
+    ],
+    "urbo Mak\u00f3": [
+        null,
+        null
+    ],
+    "montaro Kamni\u0161ke Alpe": [
+        null,
+        null
+    ],
+    "la \"Spirita Domo L\u00e9on Denis\" (Strato Ab\u00edlio dos Santos- 137; kvartalo Bento Ribeiro- Rio de Janeiro- Brazilo)": [
+        null,
+        null
+    ],
+    "Herzberg": [
+        "51.6565219",
+        "10.3428415"
+    ],
+    "Nort sur Erdre apud Nanto": [
+        null,
+        null
+    ],
+    "Morbecque-le-Parc- Francio": [
+        "50.66607405",
+        "2.54988795656643"
+    ],
+    "\u0108eboksari- Inf: Konstantin Vihrov vihrov@inbox": [
+        null,
+        null
+    ],
+    "Artigues-pr\u00e8s-Bordeaux (apud Bordozo)": [
+        null,
+        null
+    ],
+    "kastelo Grezijono": [
+        null,
+        null
+    ],
+    "montkabano Andrejev Dom na Slemenu (1089 m)": [
+        null,
+        null
+    ],
+    "urbo Bourg-en-Bresse ": [
+        null,
+        null
+    ],
+    "moderna senobstakla konstrua\u0135o Juniorcentro- Se\u010d- \u0108ehio": [
+        null,
+        null
+    ],
+    "la urbo Barra Mansa- Brazilo": [
+        null,
+        null
+    ],
+    "Hotelo Esperanto- Priblyna- Slovakio": [
+        null,
+        null
+    ],
+    "la bazejo \"Lotuso\" Inf": [
+        null,
+        null
+    ],
+    "urbeto Beli sur nordadriatika insulo Cres- Kroatio": [
+        null,
+        null
+    ],
+    "Austrio": [
+        "47.2000338",
+        "13.199959"
+    ],
+    "Hillsborough - Auckland NZ": [
+        "-36.9221753",
+        "174.7532908"
+    ],
+    "urbo Szombathely- Hungario (apud la a\u016dstra landlimo)": [
+        null,
+        null
+    ],
+    "P\u00edsek \u0108ehio": [
+        "49.3089887",
+        "14.147769"
+    ],
+    "Niska banja- apud urbo Nis": [
+        null,
+        null
+    ],
+    "urbo Tata": [
+        "9.0108454",
+        "-79.4731322"
+    ],
+    "Universitato de Kalifornio- San Diego": [
+        null,
+        null
+    ],
+    "la nordoriento de Brazilo": [
+        null,
+        null
+    ],
+    "Rotterdam- Nederlando": [
+        "51.92779805",
+        "4.48862326925829"
+    ],
+    "Oostvoorne apud Rotterdam- Nederlando": [
+        null,
+        null
+    ],
+    "kadro de KAEST-2008- Konferenco pri Aplikado de Esperanto en Scienco kaj Tekniko apud Prago": [
+        null,
+        null
+    ],
+    "Bra\u015fov- Rumanio": [
+        "45.78297865",
+        "25.1519733359119"
+    ],
+    "marborda- 4-stela Hotelo Excelsior": [
+        null,
+        null
+    ],
+    "urbo Samara- Rusio": [
+        null,
+        null
+    ],
+    "la norda itala regiono Piemonto": [
+        null,
+        null
+    ],
+    "urbo R\u00e1ckeve- je 40 km-oj sude de Budapesxto": [
+        null,
+        null
+    ],
+    "bona etoso! Inf": [
+        null,
+        null
+    ],
+    "la bela valo de la rivero Tay": [
+        null,
+        null
+    ],
+    "neformala etoso- simila al tiu de junularaj esperantistaj renkonti\u011doj": [
+        null,
+        null
+    ],
+    "la vila\u011do Cheste- proksime al la urbo Valencio (Hispanio)": [
+        null,
+        null
+    ],
+    "Ny\u00edregyh\u00e1za-S\u00f3st\u00f3f\u00fcrd\u0151- organizata de Hungara Fervojista E-Asocio": [
+        null,
+        null
+    ],
+    "vila\u011do Caricino Ozero (Carina Lago)- 7 km-ojn norde de Tihvin- apud Peterburgo (Leningrad)- kun eventuala posta komuna voja\u011do al la UK en Bia\u0142ystok": [
+        null,
+        null
+    ],
+    "la prefer-frekvencoj de ILERA: 7": [
+        null,
+        null
+    ],
+    "Vieno": [
+        "48.2083537",
+        "16.3725042"
+    ],
+    "Bydgoszcz- Pollando": [
+        "53.12974625",
+        "18.0293696585349"
+    ],
+    "Kondoros- Hungario": [
+        "46.7599676",
+        "20.7950557"
+    ],
+    "Milano- Italio": [
+        "45.4667971",
+        "9.1904984"
+    ],
+    "la urboj kaj vila\u011doj \u011dis la fino de la dua mondmilito la plimulto de la lo\u011dantoj estis nederland-devenaj menonitoj- kiuj venis tien en la 17-a jarcento": [
+        null,
+        null
+    ],
+    "turismaj kondi\u0109oj - proksime al la hungaria landlimo! Inf": [
+        null,
+        null
+    ],
+    "Vraca- Bulgario kun programeroj okaze de la centjara jubileo de la E-movado en la urbo": [
+        null,
+        null
+    ],
+    "urbeto Starigrad (apud nacia parko Paklenica) en Kroatio": [
+        null,
+        null
+    ],
+    "1889- aperis la unuaj esperantistoj en Kroatio": [
+        null,
+        null
+    ],
+    "Maribor- Slovenio": [
+        "46.555628",
+        "15.64477"
+    ],
+    "familia pensiono ESPERO en vila\u011deto Skokovy - 75 km nordoriente de Prago ": [
+        null,
+        null
+    ],
+    "Ron\u0109enjo- Italio": [
+        null,
+        null
+    ],
+    "La Man\u0109o (centro-sudo de la Iberia duoninsulo)": [
+        null,
+        null
+    ],
+    "kiu \u0109iu preparos tion- kion li / \u015di plej \u015datas": [
+        null,
+        null
+    ],
+    "urboj H\u00f3dmez\u0151v\u00e1s\u00e1rhely kaj Szeged- Hungario": [
+        null,
+        null
+    ],
+    "kiu oni povos praktiki meditadon- fari komunan ekskurson al vizitindaj lokoj- sperti korean kulturon": [
+        null,
+        null
+    ],
+    "Zaozhuang-a Profesia Instituto kaj Zaozhuang-a Universitato en \u0108inio": [
+        null,
+        null
+    ],
+    "Kiev- Ukrainio": [
+        "50.4501071",
+        "30.5240501"
+    ],
+    "Bydgoszcz kaj Toru\u0144 okaze de la 151 naski\u011ddatreveno de Ludoviko Zamenhof - kaj Internacia Esperanto Pedagogia Kurso en Internacia Centro pri Kulturo kaj Turismo \"Kujavio Kaj Pomerelio\" Mi\u0119dzynarodowe Centrum Kultury I Turystyki \"Kujawy I Pomorze\"": [
+        null,
+        null
+    ],
+    "decembro": [
+        "37.1372145",
+        "-8.0227983"
+    ],
+    "Camon- proksime al Mirepoix-Ari\u00e8ge - Francio": [
+        null,
+        null
+    ],
+    "Kvinpetalo- 15 rue du Lavoir- FR-86410 Bouresse- Francio": [
+        null,
+        null
+    ],
+    "unu valo loko de arto kaj kulturo- trovloko de leonhomo (\"L\u00f6wenmensch\")- prahistorio kaj belegaj arta\u0135oj": [
+        null,
+        null
+    ],
+    "urbo Liberec- Kongresa centro Babylon": [
+        null,
+        null
+    ],
+    "la regiono de \u011cirono- Hispanio - kun la subteno kaj kunlaboro de hispanaj kaj portugalaj esperantistoj": [
+        null,
+        null
+    ],
+    "Zakarpatsjka provinco al la plej alta monto de Ukrainio Hoverla": [
+        null,
+        null
+    ],
+    "neforgesebla etoso kun densa vespera programo": [
+        null,
+        null
+    ],
+    "montaro": [
+        "43.3578532",
+        "-110.9175065"
+    ],
+    "kiu oni povas praktiki meditadon- fari komunan ekskurson al vizitindaj lokoj- sperti korean kulturon- ekkoni pri \u016donbulismo kaj tiel plu": [
+        null,
+        null
+    ],
+    "Apudmoskvo- Rusio": [
+        null,
+        null
+    ],
+    "urbo: Hainandao Insulo- \u0108inio": [
+        null,
+        null
+    ],
+    "Blieskastel- DE-66440- Germanio": [
+        "49.2370918",
+        "7.2599036"
+    ],
+    "Esperanto-Centro Herzberg/Harz- Germanio": [
+        "51.6551679",
+        "10.3476948"
+    ],
+    "kvartalo Songshan de Harbino- \u0108inio": [
+        null,
+        null
+    ],
+    "kastelo de La Plingueti\u00e8re": [
+        null,
+        null
+    ],
+    "la turisma vila\u011do Palu\u0161e": [
+        null,
+        null
+    ],
+    "\u015dtato Para\u00edba": [
+        null,
+        null
+    ],
+    "la sudorienta regiono de \u015dtato Minas Gerais- gastigos la VIII-an Sudminasan Renkonti\u011don de Esperanto": [
+        null,
+        null
+    ],
+    "Catal\u00e3o (\u015dtato Goiaso) - Brazilio": [
+        null,
+        null
+    ],
+    "Porto Alegre- Rio Grande do Sul- Brazilio": [
+        null,
+        null
+    ],
+    "la urbocentro de Niter\u00f3i": [
+        null,
+        null
+    ],
+    "Kroatio! \n": [
+        "45.5643442",
+        "17.0118954"
+    ],
+    "Karlovac- Petrinja- Sisak": [
+        "45.3324674",
+        "16.2231456"
+    ],
+    "Jalta! \n": [
+        "44.4970713",
+        "34.1586871"
+    ],
+    "Baug\u00e9- kastelo Greziljono- Francio": [
+        null,
+        null
+    ],
+    "moderna domo urbocentre sed en trankvila \u0109irka\u016do": [
+        null,
+        null
+    ],
+    "Liptovsk\u00fd J\u00e1n- Slovakio": [
+        "48.99407245",
+        "19.6682900285087"
+    ],
+    "Auckland": [
+        "-36.8534665",
+        "174.7655514"
+    ],
+    "Zag\u00f3rze \u015al\u0105skie (60 km for de Vroclavo) en Pollando": [
+        null,
+        null
+    ],
+    "Iksan- Koreio": [
+        null,
+        null
+    ],
+    "Barra do Gar\u00e7as- MT Brazilo": [
+        "-15.8916033",
+        "-52.2615413"
+    ],
+    "Shallowford House Staffordshire- Britio": [
+        "52.8606994",
+        "-2.1837108"
+    ],
+    "Jer\u015dovo- apudmoskva ripozejo- Rusio": [
+        null,
+        null
+    ],
+    "Nankana Sahib- Pakistano": [
+        "31.4446506",
+        "73.6933253"
+    ],
+    "Katmandu- Nepalo": [
+        "27.708796",
+        "85.320244"
+    ],
+    "La Bastide-sur-l'Hers- Francio": [
+        "42.95633",
+        "1.9089971"
+    ],
+    "Santa Cruz del Norte- Kubo": [
+        "23.1534283",
+        "-81.9225504"
+    ],
+    "Madrid- Hispanio": [
+        "40.4167047",
+        "-3.7035825"
+    ],
+    "Beno\u00eete-Vaux apud Verdun- Francio": [
+        null,
+        null
+    ],
+    "St": [
+        "51.908526",
+        "11.4939134"
+    ],
+    "la urbo Ostuni (Brindisi)": [
+        null,
+        null
+    ],
+    "Bogor- Indonezio": [
+        "-6.5962986",
+        "106.7972421"
+    ],
+    "Nilvange- Francio": [
+        "49.341511",
+        "6.0507501"
+    ],
+    "Jerusalemo- Israelo": [
+        "31.778345",
+        "35.2250786"
+    ],
+    "Greziljono- Baug\u00e9- Francio": [
+        "47.5512797",
+        "-0.082320040008184"
+    ],
+    "Roterdamo- Nederlando": [
+        null,
+        null
+    ],
+    "Jalto- Ukrainio": [
+        null,
+        null
+    ],
+    "Zaragoza- Hispanio": [
+        "41.84004695",
+        "-1.16950900924476"
+    ],
+    "Ramsgate- Britio": [
+        "51.3344829",
+        "1.4227153"
+    ],
+    "N\u00fcrnberg- Germanio": [
+        "49.453872",
+        "11.077298"
+    ],
+    "Otavo- Ontario- Kanado": [
+        "45.421106",
+        "-75.690308"
+    ],
+    "Linlithgow- Skotlando (inter Glasgow kaj Edinburgh)": [
+        null,
+        null
+    ],
+    "Utena- Litovio": [
+        "55.4984381",
+        "25.6025772"
+    ],
+    "Kalwaria Zebrzydowska- Pollando": [
+        "49.8669482",
+        "19.6763089"
+    ],
+    "Saint-Amand-Montrond- Francio": [
+        "46.7227062",
+        "2.5046503"
+    ],
+    "Jerevano- Armenio": [
+        null,
+        null
+    ],
+    "Madrido- Hispanio": [
+        "40.4167047",
+        "-3.7035825"
+    ],
+    "Prvi\u0107 Luka (insulo Prvi\u0107": [
+        null,
+        null
+    ],
+    "Castellaro apud San Remo": [
+        null,
+        null
+    ],
+    "Niznij Tagil- Rusio": [
+        null,
+        null
+    ],
+    "Karpata montaro- Ukrainio": [
+        null,
+        null
+    ],
+    "kibuco Afikim (proksime al la lago Galileo) Israelo": [
+        null,
+        null
+    ],
+    "Schwerte- Germanio": [
+        "51.445525",
+        "7.5674652"
+    ],
+    "Mora- Portugalio": [
+        "38.9441885",
+        "-8.1654674"
+    ],
+    "Zell/Mozelo- Germanio": [
+        null,
+        null
+    ],
+    "kastelo Barto\u0161ovice- \u0108ehio": [
+        null,
+        null
+    ],
+    "Kotonuo- Benino": [
+        null,
+        null
+    ],
+    "Montrealo- Kebekio- Kanado": [
+        "45.4972159",
+        "-73.6103642"
+    ],
+    "Granby- Kebekio- Kanado": [
+        "45.3990409",
+        "-72.721834"
+    ],
+    "Pernik (30 km-ojn de Sofio)": [
+        null,
+        null
+    ],
+    "Herzberg (kun Popolaltlernejo Osterode) en la Esperanto-Centro Herzberg am Harz- Germanio": [
+        null,
+        null
+    ],
+    "Sofio- Vito\u015da montaro": [
+        null,
+        null
+    ],
+    "Vy\u0161kov- \u0108ehio": [
+        "49.2778194",
+        "16.9994446"
+    ],
+    "Blieskastel- Germanio": [
+        "49.2370918",
+        "7.2599036"
+    ],
+    "Hanovro- Germanio": [
+        "52.3744779",
+        "9.7385532"
+    ],
+    "Herzberg/Harz- la Esperanto-urbo- Germanio": [
+        "51.6439569",
+        "10.3301135216632"
+    ],
+    "la Harz-montaro- legendo de sor\u0109istinoj sur la monto Brocken en Germanio": [
+        null,
+        null
+    ],
+    "Dahlem-Baasem- Germanio": [
+        "50.3717212",
+        "6.495205"
+    ],
+    "Karlovo-Sopot- Bulgario": [
+        "42.709467",
+        "24.7800265"
+    ],
+    "Rostock- Germanio": [
+        "54.0924445",
+        "12.1286127"
+    ],
+    "Alikanto (Alicante) en Hispanio": [
+        null,
+        null
+    ],
+    "Moskvo": [
+        "55.7507178",
+        "37.6176606"
+    ],
+    "Kvinpetalo- Bouresse- Francio": [
+        null,
+        null
+    ],
+    "Kvinpetalo- Francio": [
+        null,
+        null
+    ],
+    "Berlino! Temas pri gustumado de ekstere\u016dropaj man\u011doj kaj elprovado de alilandaj aktiva\u0135oj": [
+        null,
+        null
+    ],
+    "la Kulturcentro Kvinpetalo- Bouresse- Francio": [
+        null,
+        null
+    ],
+    "Grezijono- Francio": [
+        null,
+        null
+    ],
+    "Homburgo/Saar- Germanio": [
+        null,
+        null
+    ],
+    "Herzberg- Germanio": [
+        "51.6565219",
+        "10.3428415"
+    ],
+    "Karlstad- Svedio": [
+        "59.3799132",
+        "13.502948"
+    ],
+    "Sarlando- Loreno kaj Luksemburgio - (esperante) vivi la 3-landan realon": [
+        null,
+        null
+    ],
+    "Achern- Germanio": [
+        "48.6300161",
+        "8.0735581"
+    ],
+    "Harbino- \u0108inio": [
+        null,
+        null
+    ],
+    "Namuro- Valonio (Belgio)": [
+        null,
+        null
+    ],
+    "Mazara-Agrigento-Sambuca (Sicilio)": [
+        null,
+        null
+    ],
+    "Izola- Slovenio": [
+        "45.5398936",
+        "13.65939"
+    ],
+    "Oslo- Norvegio": [
+        "59.9133301",
+        "10.7389701"
+    ],
+    "la urbo Chamonix \u0109e la Blanka Monto- Francio": [
+        null,
+        null
+    ],
+    "Oliva (Valencio)- Hispanio": [
+        "39.473115",
+        "-0.331423"
+    ],
+    "Usti nad Labem- \u0108ehio": [
+        "50.6603327",
+        "14.0381357"
+    ],
+    "Po\u00e7os de Caldas- Brazilio": [
+        null,
+        null
+    ],
+    "\u0141odz- centra Pollando": [
+        null,
+        null
+    ],
+    "Karlovo- Bulgario": [
+        "42.63464825",
+        "24.5854624239595"
+    ],
+    "Ny\u00edregyh\u00e1za- Hungario": [
+        "47.9557802",
+        "21.7167982"
+    ],
+    "urbo V\u00e1c- je \u0109": [
+        null,
+        null
+    ],
+    "Alto Paraiso de Goias- Brazilio": [
+        null,
+        null
+    ],
+    "la urbo Orivesi": [
+        null,
+        null
+    ],
+    "G\u00f6teborg- Svedio": [
+        "57.7072326",
+        "11.9670171"
+    ],
+    "Hiller\u00f8d norde de Kopenhago": [
+        null,
+        null
+    ],
+    "Lesj\u00f6fors- Svedio": [
+        "59.97628",
+        "14.1840612"
+    ],
+    "Herzberg - la Esperanto-urbo- Germanio": [
+        "51.6565219",
+        "10.3428415"
+    ],
+    "Karlovac- Petrinja- Sisak- Kroatio": [
+        "45.3324674",
+        "16.2231456"
+    ],
+    "Szczawno Zdr\u00f3j- malnova kuracurbo en Pollando": [
+        null,
+        null
+    ],
+    "eksa Neutral-Moresnet- Belgio": [
+        null,
+        null
+    ],
+    "Jilin-a Universitato en Changchun- Jilin- kun la temo \"Penege plibonigu la Esperantan kapablon\"": [
+        null,
+        null
+    ],
+    "urbo Ni\u015d": [
+        null,
+        null
+    ],
+    "Pluezek- Bretonio- Francio": [
+        null,
+        null
+    ],
+    "Marburg- Germanio en la Naturamika Kabano": [
+        null,
+        null
+    ],
+    "Nazareto- Israelo": [
+        null,
+        null
+    ],
+    "Obzor- Bulgario": [
+        "42.8205748",
+        "27.8794434"
+    ],
+    "Huta Certeze (distrikto Satu Mare)": [
+        null,
+        null
+    ],
+    "Sirakuso- Novjorkio- Usono (Syracuse- New York- US)": [
+        null,
+        null
+    ],
+    "Saarbr\u00fccken/Sarlando en Germanio": [
+        "49.234362",
+        "6.996379"
+    ],
+    "Sliven- Bulgario": [
+        "42.6817633",
+        "26.3153528"
+    ],
+    "Mueleja Insulo en Bydgoszcz- Pollando": [
+        null,
+        null
+    ],
+    "Bad Pyrmont- Germanio": [
+        "51.9850503",
+        "9.2434635"
+    ],
+    "Viktorio- BK- Kanado": [
+        null,
+        null
+    ],
+    "Kasn\u00e4s (proksime al Turku)- Finnlando": [
+        null,
+        null
+    ],
+    "familia pensiono ESPERO en vila\u011deto Skokovy - 75 km nordoriente de Prago- \u0108ehio": [
+        null,
+        null
+    ],
+    "CDELI- La Chaux-de-Fonds- Svislando": [
+        "47.1043064",
+        "6.8262405"
+    ],
+    "Montkabano Jankovac- sur monto Papuk- Kroatio": [
+        null,
+        null
+    ],
+    "Lajoux 39310 Septmontcel - Francio": [
+        null,
+        null
+    ],
+    "Melle (apud Osnabr\u00fcck)- Germanio": [
+        null,
+        null
+    ],
+    "105A Quan Thanh strato- Hanojo": [
+        null,
+        null
+    ],
+    "Armenio- dedi\u0109ita al 2795 jari\u011do de la \u0109efurbo Jerevan": [
+        null,
+        null
+    ],
+    "la feriejo Suarono- Brazilio": [
+        null,
+        null
+    ],
+    "Barato": [
+        "22.3511148",
+        "78.6677428"
+    ],
+    "hoteleto red Star: Hofherr Albert utca 3/B- HU-1194 Budapest- Hungario": [
+        null,
+        null
+    ],
+    "Nymburk- \u0108ehio": [
+        "50.186331",
+        "15.0417306"
+    ],
+    "Greziljono- Baug\u00e9 en Anjou- Francio": [
+        "47.5512797",
+        "-0.082320040008184"
+    ],
+    "Kronach- Germanio": [
+        "50.2397846",
+        "11.3277669"
+    ],
+    "Incheon- Koreio": [
+        null,
+        null
+    ],
+    "La Chaux-de-Fonds- Svislando": [
+        "47.103287",
+        "6.8324545"
+    ],
+    "Lavelanet (Okcitanio-Francio)": [
+        "42.9325",
+        "1.84341"
+    ],
+    "Suzhou- \u0108inio": [
+        "31.3016935",
+        "120.5810725"
+    ],
+    "urbeto Salard\u00fa": [
+        null,
+        null
+    ],
+    "Werkhoven- Nederlando": [
+        "52.02069765",
+        "5.23500628074614"
+    ],
+    "Bugo- Kolombio": [
+        null,
+        null
+    ],
+    "P\u0159\u00edbram- \u0108ehio": [
+        "49.6901444",
+        "14.0103663"
+    ],
+    "Esperanto! - Inf": [
+        null,
+        null
+    ],
+    "la \u0109efurbo Meksiko": [
+        null,
+        null
+    ],
+    "Stella-Plage- Francio": [
+        "50.4799397",
+        "1.577138"
+    ],
+    "Colombo- Sri Lanka": [
+        "6.9218124",
+        "79.8655608840961"
+    ],
+    "Ni\u0135nij Tagil": [
+        null,
+        null
+    ],
+    "Lahore- Pakistano": [
+        "31.5655908",
+        "74.3141453"
+    ],
+    "bavara urbeto N\u00f6rdlingen- Germanio": [
+        null,
+        null
+    ],
+    "Saarbr\u00fccken- Germanio- apud la germana-franca landlimo": [
+        null,
+        null
+    ],
+    "\u0109ina budhisma monahejo Tiefo- mondfama pro la terakotaj militistoj kaj \u0109evaloj- 80 km de Siano (Xi'an)- \u0108inio": [
+        null,
+        null
+    ],
+    "Turku- Finnlando": [
+        "60.4517531",
+        "22.2670522"
+    ],
+    "restadejo Val d' Esquiere - Les Issambres \u0109e la Lazura Marbordo- Francio": [
+        null,
+        null
+    ],
+    "Tbilisi- Kartvelio": [
+        "41.6934591",
+        "44.8014495"
+    ],
+    "Castelsardo- insulo Sardio- Italio": [
+        null,
+        null
+    ],
+    "Skokovy \u0108ehio": [
+        "50.5313762",
+        "15.1104629"
+    ],
+    "Sxerbruko (Sherbrooke)- Kebekio- Kanado": [
+        null,
+        null
+    ],
+    "San Benedetto del Tronto- Italio": [
+        "42.9525328",
+        "13.8807144"
+    ],
+    "Pitlochry- Skotlando": [
+        "56.7039627",
+        "-3.7331576"
+    ],
+    "L\u00f6vberget- Dala-Floda- Svedio": [
+        null,
+        null
+    ],
+    "Ti\u0125vin- Rusio": [
+        "59.644323",
+        "33.5418624"
+    ],
+    "Budape\u015dto": [
+        "47.4983815",
+        "19.0404707"
+    ],
+    "Dinano- Francio": [
+        null,
+        null
+    ],
+    "Fai della Paganella- Trento": [
+        "46.1793313",
+        "11.0689304"
+    ],
+    "Modra Harm\u00f3nia- Slovakio": [
+        "48.35823795",
+        "17.3076561806002"
+    ],
+    "Florian\u00f3polis- \u0109efurbo de \u015dtato Santa Catarina- Brazilo": [
+        null,
+        null
+    ],
+    "Florian\u00f3polis- \u0109efurbo de la \u015dtato Santa Catarina- Brazilo": [
+        null,
+        null
+    ],
+    "May-en-Multien- Francio": [
+        "49.0713108",
+        "3.0235336"
+    ],
+    "La BASTIDE-sur-l'HERS- Francio": [
+        "42.95633",
+        "1.9089971"
+    ],
+    "Hall (Eerbeek)- Nederlando": [
+        "52.0951883",
+        "6.06018407538723"
+    ],
+    "Hago- Nederlando": [
+        "52.03405145",
+        "4.50220654092863"
+    ],
+    "Amougies/Amengijs- Belgio": [
+        null,
+        null
+    ],
+    "Szigetmonostor-Hor\u00e1ny- Hungario": [
+        "47.6955013",
+        "19.0923977"
+    ],
+    "Liverpool- Anglio": [
+        "53.4054719",
+        "-2.9805392"
+    ],
+    "Amsterdamo- Nederlando": [
+        "52.3727598",
+        "4.8936041"
+    ],
+    "Storckensohn- Francio": [
+        "47.8780756",
+        "6.9585332"
+    ],
+    "Havl\u00ed\u010dk\u016fv Brod": [
+        "49.607079",
+        "15.5794883"
+    ],
+    "Manoir de K\u00e9ralic- Francio": [
+        null,
+        null
+    ],
+    "\u015c\u0109ecino (Szczecin)- Pollando": [
+        "53.4301818",
+        "14.5509623"
+    ],
+    "Niter\u00f3i- Brazilo": [
+        "-22.8832371",
+        "-43.1154552"
+    ],
+    "Xanten- Germanio": [
+        "51.661519",
+        "6.4543203"
+    ],
+    "Sheffield- Anglio": [
+        "53.3806626",
+        "-1.4702278"
+    ],
+    "kastelo Greziljono- Baug\u00e9- Francio": [
+        "47.5512797",
+        "-0.082320040008184"
+    ],
+    "Kfar Hanokdim- 10 km oriente de la urbo Arad- prosime de Masada": [
+        null,
+        null
+    ],
+    "\u0108ehio": [
+        "49.8167003",
+        "15.4749544"
+    ],
+    "Kopenhago- Danlando": [
+        "55.6867243",
+        "12.5700724"
+    ],
+    "Montaro Harz (Herzberg am Harz- Germanio)": [
+        null,
+        null
+    ],
+    "Tuchom\u011b\u0159ice \u0109e Prago- \u0108ehio": [
+        "50.1355328",
+        "14.2825414"
+    ],
+    "Jekaterinburg- Rusio": [
+        "56.839104",
+        "60.60825"
+    ],
+    "Arundo- Andaluzio (Hispanio) - Ronda- Andaluc\u00eda (Espa\u00f1a)": [
+        null,
+        null
+    ],
+    "Zaozhuang- \u0108inio- kie estas Esperanto-Muzeo- la plej granda en la mondo- Internacia Esperanto-Arbaro kaj Zamenhof-statuo": [
+        null,
+        null
+    ],
+    "kastelo Greziljono- Baug\u00e9- Francio kun Zdravka kaj Maja- kontakto per reto: manjo": [
+        null,
+        null
+    ],
+    "Dijon- Francio": [
+        "47.3215806",
+        "5.0414701"
+    ],
+    "Neuch\u00e2tel- La Chaux-de-Fonds urba biblioteko- Svislando": [
+        null,
+        null
+    ],
+    "Bludov- \u0108ehio": [
+        "49.940833",
+        "16.9283927"
+    ],
+    "\u015cerbruko (Sherbrooke)- Kebekio- Kanado": [
+        null,
+        null
+    ],
+    "Amsterdamo-Hago-Sneek-Leeuwarden": [
+        null,
+        null
+    ],
+    "Vrocalov- Pollando": [
+        null,
+        null
+    ],
+    "Martin- Slovakio": [
+        "49.0724921",
+        "18.929193"
+    ],
+    "Jaela City Hall (Jaela Urbohalo) (proksime al flughaveno) Inf": [
+        null,
+        null
+    ],
+    "Seibelseckle- Germanio": [
+        "48.5956622",
+        "8.2178722"
+    ],
+    "Schkeuditz proksime Lipsko- Germanio": [
+        null,
+        null
+    ],
+    "\u0108inio": [
+        "35.000074",
+        "104.999927"
+    ],
+    "Chamb\u00e9ry- Francio": [
+        "45.5662672",
+        "5.9203636"
+    ],
+    "Pratorsi- apud Pistojo- Italio": [
+        null,
+        null
+    ],
+    "Krak\u00f3w- Pollando": [
+        "50.04691015",
+        "19.9970637622827"
+    ],
+    "Santiago- \u0108ilio": [
+        "-33.4377968",
+        "-70.6504451"
+    ],
+    "Pollando": [
+        "52.0977181",
+        "19.0258159"
+    ],
+    "Erfurt- Germanio": [
+        "50.9777974",
+        "11.0287364"
+    ],
+    "Hrensko- \u0108ehio": [
+        "50.8739272",
+        "14.2402549"
+    ],
+    "Pardubice- \u0108ehio": [
+        "50.0385812",
+        "15.7791356"
+    ],
+    "Dienten am Hochk\u00f6nig- A\u016dstio": [
+        null,
+        null
+    ],
+    "Chamonix- Francio": [
+        "45.9246705",
+        "6.8727506"
+    ],
+    "Jelgava- Latvio": [
+        "56.6514394",
+        "23.7339143"
+    ],
+    "Universitato de Victoria": [
+        null,
+        null
+    ],
+    "Goi\u00e2nia- \u0109efurbo de \u015dtato Goi\u00e1s- Brazilo": [
+        null,
+        null
+    ],
+    "montara bela\u0135o Tam Dao (Tri insuloj - insulo sur la montaro)": [
+        null,
+        null
+    ],
+    "J\u00e1szber\u00e9ny- Hungario": [
+        "47.5030505",
+        "19.9117887"
+    ],
+    "Tihvin- Rusio": [
+        "59.644323",
+        "33.5418624"
+    ],
+    "termalbanejo Hark\u00e1ny en regiono Baranya- Hungario": [
+        null,
+        null
+    ],
+    "Lan\u010dov- \u0108ehio": [
+        "48.9070583",
+        "15.7678004"
+    ],
+    "Orivesi- Finnlando": [
+        "61.6775495",
+        "24.3587506"
+    ],
+    "Rio de \u0134anejro- Brazilo": [
+        "-22.9110137",
+        "-43.2093727"
+    ],
+    "Baotou- Interna Mongolio- \u0108inio": [
+        "40.660201",
+        "109.8303243"
+    ],
+    "Bra\u015dovo- Rumanio": [
+        null,
+        null
+    ],
+    "Montevideo- Urugvajo": [
+        "-34.9059039",
+        "-56.1913569"
+    ],
+    "Herzberg \"La Esperanto-urbo\"- Germanio": [
+        "51.6565219",
+        "10.3428415"
+    ],
+    "Szigetmonostor-Hor\u00e1ny- nur 10 km-ojn for de Budape\u015dto": [
+        null,
+        null
+    ],
+    "Kri\u017eevci- Kroatio": [
+        "46.0229849",
+        "16.5456976"
+    ],
+    "kuracurbo Szczawno Zdr\u00f3j- \u0109i-jara JES-ejo- Pollando": [
+        null,
+        null
+    ],
+    "la urbo Ni\u0135nij Tagil- Ruslando": [
+        null,
+        null
+    ],
+    "Herzberg am Harz / Sieber- Germanio": [
+        null,
+        null
+    ],
+    "Monto Serein- Francio": [
+        null,
+        null
+    ],
+    "urboj Urum\u0109i- Turfan- \u015cjano": [
+        null,
+        null
+    ],
+    "Glazou\u00e9- Benino": [
+        "8.16811735",
+        "2.22913575273068"
+    ],
+    "Plouezec- Bretagne- Francio": [
+        "48.74957",
+        "-2.9855088"
+    ],
+    "Trento - Cadine- Italio": [
+        "46.06852295",
+        "11.06298565"
+    ],
+    "Pont-de-Barret- Francio": [
+        "44.6009",
+        "5.00941"
+    ],
+    "Caen- Francio": [
+        "49.1828008",
+        "-0.3690815"
+    ],
+    "Kastelo Greziljono": [
+        "47.5512797",
+        "-0.082320040008184"
+    ],
+    "Jokohamo- Japanio": [
+        "35.444991",
+        "139.636768"
+    ],
+    "Krynica-Zdr\u00f3j- Pollando": [
+        "49.4206138",
+        "20.9594176"
+    ],
+    "L'Arbo\u00e7- Katalunio": [
+        "41.2677369",
+        "1.6037535"
+    ],
+    "Iislami- Finnlando": [
+        null,
+        null
+    ],
+    "Skokovy- 75 km nordoriente de Prago- \u0108ehio": [
+        null,
+        null
+    ],
+    "Sopot- Pollando": [
+        "54.44190905",
+        "18.5430944457045"
+    ],
+    "Svat\u00fd Kope\u010dek \u0109e Olomouc- \u0108ehio": [
+        "49.6299738",
+        "17.3393751"
+    ],
+    "Hra\u0161\u0107ina- Kroatio": [
+        "46.1104686",
+        "16.2276136"
+    ],
+    "Sillian- A\u016dstrio": [
+        "46.7472874",
+        "12.4180291"
+    ],
+    "Laarne- Belgio": [
+        "51.0406809",
+        "3.85990354003467"
+    ],
+    "Bydgoszcz-Toru\u0144- Pollando": [
+        "53.0198927",
+        "18.5983362"
+    ],
+    "Taguatinga- anta\u016durbo de \u0109efurbo Braziljo": [
+        null,
+        null
+    ],
+    "Svitavy- \u0108e\u0125io": [
+        "49.7562053",
+        "16.4688995"
+    ],
+    "R\u0103scruci": [
+        "46.9079114",
+        "23.7707839991869"
+    ],
+    "Katmanduo- Nepalo": [
+        "27.708796",
+        "85.320244"
+    ],
+    "Borl\u00e4nge- Svedio": [
+        "60.4856426",
+        "15.4234561"
+    ],
+    "Vogezoj- Francio": [
+        null,
+        null
+    ],
+    "Salou (Tarragono-Hispanio)": [
+        null,
+        null
+    ],
+    "centr-orienta provinco Camaguey- Kubo": [
+        null,
+        null
+    ],
+    "Camag\u00fcey- Kubo": [
+        "21.4164136",
+        "-77.9193853007935"
+    ],
+    "Uster kaj Vordemwald- Svisio": [
+        null,
+        null
+    ],
+    "Rinteln- Germanio": [
+        "52.1873798",
+        "9.0804584"
+    ],
+    "Maison Promotion Sociale Artigues-pres-Bordeaux- Francio": [
+        null,
+        null
+    ],
+    "Obama- Japanio": [
+        "35.4938281",
+        "135.7446614"
+    ],
+    "Sankt Peter- Germanio": [
+        "48.01786",
+        "8.0358335"
+    ],
+    "Vordemwald apud Zofingo- Kantono Argovio- Svislando": [
+        null,
+        null
+    ],
+    "Araraquara/SP - Brazilo": [
+        "-21.7886713",
+        "-48.1773096"
+    ],
+    "Bullay- Germanio": [
+        "50.0552113",
+        "7.1327573"
+    ],
+    "Cape Town- Sud-Afriko": [
+        "-33.928992",
+        "18.417396"
+    ],
+    "Prost\u011bjov- \u0108ehio": [
+        "49.4721467",
+        "17.1117979"
+    ],
+    "Alicanto- Hispanio": [
+        null,
+        null
+    ],
+    "urbo So\u0109i- Rusio": [
+        null,
+        null
+    ],
+    "Mede\u011dino- Kolumbio": [
+        null,
+        null
+    ],
+    "Kenmin Kaikan en urbo Morioka de gubernio Iwate- Japanio": [
+        null,
+        null
+    ],
+    "Wijk aan Zee- Nederlando": [
+        "52.49070835",
+        "4.60237985134742"
+    ],
+    "urbo Chodov- apud Karlovy Vary": [
+        null,
+        null
+    ],
+    "Pod\u011bbrady- \u0108ehio": [
+        "50.149751",
+        "15.1283074539847"
+    ],
+    "Colonia del Sacramento- Uruguvajo": [
+        null,
+        null
+    ],
+    "Berlino- Oran\u011derio- salono \"Studentenblume - tageto\" (Schulze-Boysen-Stra\u00dfe 38)": [
+        null,
+        null
+    ],
+    "Bielefeld- Germanio": [
+        "52.010877",
+        "8.540868"
+    ],
+    "CDELI ": [
+        "47.1043064",
+        "6.8262405"
+    ],
+    "Slanec- Slovakio": [
+        "48.636466",
+        "21.4788382"
+    ],
+    "Vieno- A\u016dstrio": [
+        "48.2083537",
+        "16.3725042"
+    ],
+    "Rabka-Zdr\u00f3j- Pollando": [
+        "49.6076663",
+        "19.9622575"
+    ],
+    "P\u00edsek": [
+        "49.3089887",
+        "14.147769"
+    ],
+    "Berlino- \"Oran\u011derio\"- Schulze-Boyen-Stra\u00dfe 38": [
+        null,
+        null
+    ],
+    "Regensburgo- Germanio": [
+        null,
+        null
+    ],
+    "Bydgoszcz -Toru\u0144- Pollando": [
+        "53.0198927",
+        "18.5983362"
+    ],
+    "Oostende- Flandrio- Belgio": [
+        "51.0355755",
+        "3.714989"
+    ],
+    "Homburg- Sarlando- Germanio": [
+        "49.3181673",
+        "7.3340336"
+    ],
+    "Svitavy": [
+        "49.7562053",
+        "16.4688995"
+    ],
+    "Vogan- Togolando": [
+        "6.334956",
+        "1.529707"
+    ],
+    "urbo J\u00fclich- Germanio- inter nederlanda limo kaj K\u00f6ln": [
+        null,
+        null
+    ],
+    "Bitburg (apud Trier/Treviro)- Germanio": [
+        null,
+        null
+    ],
+    "Wei\u00dfwasser- Germanio": [
+        "51.5741445",
+        "10.096311"
+    ],
+    "Melburno- A\u016dstralio": [
+        "-37.8142176",
+        "144.9631608"
+    ],
+    "Iksan": [
+        "35.9479291",
+        "126.9578025"
+    ],
+    "La Bastide/Hers- Arje\u011dio- Francio": [
+        null,
+        null
+    ],
+    "Callejones- Graneros- \u0108ilio": [
+        "-34.06147",
+        "-70.7544982"
+    ],
+    "Pun Hill- Nepalo": [
+        "28.14993415",
+        "84.0867285"
+    ],
+    "Hammamet- Tunizio": [
+        "36.4096837",
+        "10.5078118318923"
+    ],
+    "Winterberg- Germanio": [
+        "51.1930845",
+        "8.5338289"
+    ],
+    "Wroc\u0142aw- Pollando": [
+        "51.1263106",
+        "16.9781963305126"
+    ],
+    "Yehiam (proksime al Ako) Inf": [
+        null,
+        null
+    ],
+    "Skokovy \u0108eha respubliko": [
+        "50.5313762",
+        "15.1104629"
+    ],
+    "Kastelo Greziljono- Baug\u00e9- Francio": [
+        "47.5512797",
+        "-0.082320040008184"
+    ],
+    "Lviv- Ukrainio": [
+        "49.841952",
+        "24.0315921"
+    ],
+    "Neuch\u00e2tel-La Chaux-de-Fonds- Svislando": [
+        null,
+        null
+    ],
+    "Toronto- Ontario- Kanado": [
+        "43.653963",
+        "-79.387207"
+    ],
+    "Helensburgh- Skotlando": [
+        "56.0083612",
+        "-4.732019"
+    ],
+    "Dala-Floda- Svedio": [
+        "60.5076925",
+        "14.79673"
+    ],
+    "Dala-Floda- Bingsj\u00f6 kaj najbaraj vila\u011doj- Svedio": [
+        null,
+        null
+    ],
+    "St-Peterburgo-Ni\u0135nij Novgorod- Rusio": [
+        null,
+        null
+    ],
+    "\u0108eboksaro/Jadrin- Rusio": [
+        null,
+        null
+    ],
+    "Oostende- Belgio": [
+        "51.2303177",
+        "2.9203275"
+    ],
+    "Sisak- Kroatio": [
+        "45.4888297",
+        "16.3754816"
+    ],
+    "Strasburgo- Francio": [
+        "48.584614",
+        "7.7507127"
+    ],
+    "Wiesbaden- Germanio": [
+        "50.0820384",
+        "8.2416556"
+    ],
+    "Tehran-Iran": [
+        "35.7006177",
+        "51.4013785"
+    ],
+    "Irano": [
+        "32.9407495",
+        "52.9471344"
+    ],
+    "Bir\u0161tonas- Litovio": [
+        "54.6043509",
+        "24.0335131"
+    ],
+    "Teherano-Irano en jaro 2016": [
+        null,
+        null
+    ],
+    "Schoonloo (inter Assen kaj Emmen)- Nederlando": [
+        null,
+        null
+    ],
+    "Pelh\u0159imov- \u0108ehio": [
+        "49.4317154",
+        "15.2233722"
+    ],
+    "urbeto Ver\u0151ce- 50 km norde de Budape\u015dto": [
+        null,
+        null
+    ],
+    "Brusson- Aosta Valo- Italio": [
+        "45.759342",
+        "7.7304474"
+    ],
+    "Alto Paraiso de Goias- Brazilo": [
+        "-14.1304779",
+        "-47.5100161"
+    ],
+    "Verdun- Francio": [
+        "49.1589278",
+        "5.3867277"
+    ],
+    "Budapest- Hungario": [
+        "47.4983815",
+        "19.0404707"
+    ],
+    "Yehiam (proksime al Ako)": [
+        null,
+        null
+    ],
+    "Skokovy- penziono Espero- \u0108ehio": [
+        null,
+        null
+    ],
+    "esperanto-muzeo en Svitavy (CZ)": [
+        "49.7546004",
+        "16.472588"
+    ],
+    "Cullera (Valencio) Hispanio": [
+        "39.5049266",
+        "-0.4188098"
+    ],
+    "\u0108elabinsk- Rusio": [
+        "55.1598408",
+        "61.4025547"
+    ],
+    "\u0108ernivci- Okcidenta Ukrainio": [
+        null,
+        null
+    ],
+    "Heidelberg- Germanio": [
+        "49.4093582",
+        "8.694724"
+    ],
+    "Mozet- Belgio": [
+        "50.4416402",
+        "4.9846704"
+    ],
+    "Valinjo (Valinhos - SP) en Brazilo": [
+        null,
+        null
+    ],
+    "Oldenburg- Germanio": [
+        "53.1389753",
+        "8.2146017"
+    ],
+    "Mielno- PEA-Filio en Gliwice- Pollando": [
+        null,
+        null
+    ],
+    "Herzberg - La Esperanto-urbo- - Germanio": [
+        "51.6565219",
+        "10.3428415"
+    ],
+    "Lille- Francio": [
+        "50.6305089",
+        "3.0706414"
+    ],
+    "Decin- \u0108ehio (CZ)": [
+        null,
+        null
+    ],
+    "Amtshainersdorf- Germanio": [
+        "50.9662081",
+        "14.2322136"
+    ],
+    "College theologique FJKM Ivato Antananarivo- Malgasio": [
+        null,
+        null
+    ],
+    "Iznik- Turkio": [
+        "40.4735862",
+        "29.6903748535141"
+    ],
+    "Beskidy montaro apud landlimo de CZ- PL- anka\u016d proksime al SK": [
+        null,
+        null
+    ],
+    "Svedio": [
+        "59.6749712",
+        "14.5208584"
+    ],
+    "Tallinn- Estonio": [
+        "59.4372155",
+        "24.7453688"
+    ],
+    "Detrojto- Mi\u015digano- Usono": [
+        null,
+        null
+    ],
+    "Gen\u00e8ve- Svisio": [
+        "46.2017559",
+        "6.1466014"
+    ],
+    "Raleigh- Nord-Karolino- Usono": [
+        "35.7803977",
+        "-78.6390989"
+    ],
+    "Tata- Hungario": [
+        "47.6500863",
+        "18.3181275"
+    ],
+    "St-Peterburgo - Ni\u0135nij Novgorod- Rusio": [
+        null,
+        null
+    ],
+    "\u0108eboksari/Jadrin- Rusio": [
+        null,
+        null
+    ],
+    "Parizo - Lille- Francio": [
+        "48.8566101",
+        "2.3514992"
+    ],
+    "Bre\u017eice- sud-orienta Slovenio": [
+        null,
+        null
+    ],
+    "Villeneuve-d'Ascq- Francio": [
+        "50.6193174",
+        "3.1314002"
+    ],
+    "Flandrio - Bruselo- Belgio": [
+        null,
+        null
+    ],
+    "N": [
+        "64.5731537",
+        "11.5280364395482"
+    ],
+    "Krasnojarsk kaj Hakasio- Rusio": [
+        null,
+        null
+    ],
+    "Nitra- Slovakio": [
+        "48.31295",
+        "18.0894593"
+    ],
+    "Szentgotth\u00e1rd- Hungario- apud la a\u016dstra kaj slovena landlimoj": [
+        null,
+        null
+    ],
+    "Bauru- Brazilo": [
+        "-22.3218102",
+        "-49.0705863"
+    ],
+    "El Paso- Teksaso- Usono": [
+        "31.7600372",
+        "-106.487287"
+    ],
+    "Pluezeko- Francio": [
+        null,
+        null
+    ],
+    "Krani- apud Lago de Prespa- Makedonio": [
+        null,
+        null
+    ],
+    "Sundern- Germanio": [
+        "51.329832",
+        "8.0072645"
+    ],
+    "Saarbr\u00fccken/Sarlando- Germanio": [
+        "49.234362",
+        "6.996379"
+    ],
+    "Berlin-Neuk\u00f6lln- Germanio": [
+        "52.4454318",
+        "13.443459827373"
+    ],
+    "Lahti- Finnlando": [
+        "60.9838761",
+        "25.6561814"
+    ],
+    "Nankina Sahib- Pakistano": [
+        null,
+        null
+    ],
+    "(DE-66424) Homburgo- Germanio": [
+        null,
+        null
+    ],
+    "\u0108aledo Bel-Oseau en La L\u00e9cherette- Ch\u00e2teau-d'Oex": [
+        null,
+        null
+    ],
+    "Veli Lo\u0161inj- Kroatio": [
+        "44.521069",
+        "14.5017167"
+    ],
+    "la kulturbutiko St": [
+        null,
+        null
+    ],
+    "Ottenh\u00f6fen- Germanio": [
+        "48.2157282",
+        "11.8799783"
+    ],
+    "Princeton- NJ- Usono": [
+        "40.3492744",
+        "-74.6592958"
+    ],
+    "Opatija- Kroatio": [
+        "45.332782",
+        "14.3029538"
+    ],
+    "Sendai- Japanio": [
+        "38.2677554",
+        "140.8691498"
+    ],
+    "Guaymall\u00e9n- Mendoza- Argentino": [
+        "-32.8950719",
+        "-68.7455461"
+    ],
+    "Paranapiakabo- Brazilo": [
+        null,
+        null
+    ],
+    "Nov\u00e1 Paka- \u0108ehio": [
+        "50.4947616",
+        "15.5149801"
+    ],
+    "Pforzheim- Germanio": [
+        "48.8908846",
+        "8.7029532"
+    ],
+    "Bad M\u00fcnder- Hameln- Germanio": [
+        "52.1952894",
+        "9.4633959"
+    ],
+    "Skokovy- \u0108eha Respubliko": [
+        "50.5313762",
+        "15.1104629"
+    ],
+    "Krakovo- Pollando": [
+        "50.04691015",
+        "19.9970637622827"
+    ],
+    "Zaozhuang- \u0108inio": [
+        "34.8093451",
+        "117.3178371"
+    ],
+    "kastelo Grezijlono": [
+        null,
+        null
+    ],
+    "Kijiv- Ukrainio": [
+        "50.4501071",
+        "30.5240501"
+    ],
+    "Heerlen- Nederlando": [
+        "50.87627725",
+        "5.98279521547417"
+    ],
+    "erez de la Frontera (Kadizo)- Hispanio": [
+        null,
+        null
+    ],
+    "Matar\u00f3- Katalunio- Hispanio": [
+        "41.5398348",
+        "2.4448926"
+    ],
+    "Vuhan- \u0108inio": [
+        null,
+        null
+    ],
+    "Bogoto- Kolombio": [
+        "4.5980772",
+        "-74.0761028"
+    ],
+    "Rio-de-\u0134anejro- Brazilo": [
+        "-22.9110137",
+        "-43.2093727"
+    ],
+    "So\u0109i- Rusio": [
+        "43.5854823",
+        "39.723109"
+    ],
+    "\u015cimonoseki [Shimonoseki]- Japanio": [
+        null,
+        null
+    ],
+    "Kolombo- Srilanko": [
+        "6.9218124",
+        "79.8655608840961"
+    ],
+    "Ostendo- Belgio": [
+        null,
+        null
+    ],
+    "Liptovsk\u00fd Mikul\u00e1\u0161 - Dem\u00e4nov\u00e1- Slovakio": [
+        "49.0735414",
+        "19.6040226"
+    ],
+    "Havano- Kubo": [
+        "23.135305",
+        "-82.3589631"
+    ],
+    "la mallongaj ondoj": [
+        null,
+        null
+    ],
+    "AIGUES-VIVES (Ari\u00e8ge) - Francio": [
+        "42.9955309",
+        "1.8757809"
+    ],
+    "Zweibr\u00fccken- Germanio en Romantik-Hotel Fasanerie- Salono Fasanenzimmer- Fasanerie 1- DE-66482 Zweibr\u00fccken je la 19-a horo": [
+        null,
+        null
+    ],
+    "Parizo- Francio": [
+        "48.8566101",
+        "2.3514992"
+    ],
+    "Saarbr\u00fccken- Germanio!\n": [
+        "49.234362",
+        "6.996379"
+    ],
+    "urbo Nideggen (inter Kolonjo kaj Aachen) en Germanio- organizata de Germana E-Asocio": [
+        null,
+        null
+    ],
+    "Nideggen- Germanio": [
+        "50.6913559",
+        "6.482614"
+    ],
+    "Pla\u011do Sahy- Mangaratiba - RJ- Brazilo": [
+        null,
+        null
+    ],
+    "Z\u00e1va n\u00e1 Poruba- Slovakio": [
+        null,
+        null
+    ],
+    "Presidente Figueiredo kaj Manaus- Brazilo": [
+        null,
+        null
+    ],
+    "Manaus- Brazilo": [
+        "-3.1316333",
+        "-59.9825041"
+    ],
+    "la interreto": [
+        null,
+        null
+    ],
+    "Jer\u015dovo- Rusio": [
+        null,
+        null
+    ],
+    "Buurse- urbeto apud Enschede en Nederlando": [
+        null,
+        null
+    ],
+    "urba biblioteko ekde 10:30": [
+        null,
+        null
+    ],
+    "Villa Clara- Kubo": [
+        "22.68986135",
+        "-79.6877854779688"
+    ],
+    "Liverpolo- Britio": [
+        "53.4054719",
+        "-2.9805392"
+    ],
+    "Arrout en Arie\u0135o- Francio": [
+        null,
+        null
+    ],
+    "Hanojo": [
+        "21.0294498",
+        "105.8544441"
+    ],
+    "Bandung- Indonezio": [
+        "-6.9344694",
+        "107.6049539"
+    ],
+    "Pesaro- Italio": [
+        "43.9098114",
+        "12.9131228"
+    ],
+    "Las Grutas- R\u00edo Negro- Argentino": [
+        "-40.8090033",
+        "-65.0879222"
+    ],
+    "Bad Hersfeld- Germanio": [
+        "50.8681341",
+        "9.7068481"
+    ],
+    "Borugxerdo-Irano": [
+        null,
+        null
+    ],
+    "Dinny\u00e9s": [
+        "47.173237",
+        "18.5667944"
+    ],
+    "\u00dcrg\u00fcp- Turkio": [
+        "38.5928197",
+        "34.9589020075008"
+    ],
+    "Baia Mare- Rumanio": [
+        "47.6565584",
+        "23.5719843"
+    ],
+    "Skokovy- \u0108eha respubliko": [
+        "50.5313762",
+        "15.1104629"
+    ],
+    "Jafo- Israelo": [
+        "32.0443395",
+        "34.7509908"
+    ],
+    "Pietrasanta- Italio": [
+        "43.9589031",
+        "10.2332031"
+    ],
+    "Ronse- Belgio": [
+        "50.7476192",
+        "3.6020465"
+    ],
+    "Ranzan- Japanio": [
+        "36.0564172",
+        "139.320248"
+    ],
+    "Lvov (Lviv)- Ukrainio": [
+        "49.841952",
+        "24.0315921"
+    ],
+    "Kultura Centro \"La Marlagne\"- Namuro- Valonio (Belgio)": [
+        null,
+        null
+    ],
+    "Marsejlo- Francio": [
+        "43.2961743",
+        "5.3699525"
+    ],
+    "Gdansk- Pollando": [
+        "54.36143025",
+        "18.6282333804869"
+    ],
+    "urbo Ruse- Bulgario": [
+        null,
+        null
+    ],
+    "Varna- Bulgario- apud la Nigra Maro! Postkongreso en Veliko Tarnovo": [
+        null,
+        null
+    ],
+    "\u0141\u00f3d\u017a- Pollando": [
+        "51.7687323",
+        "19.4569911"
+    ],
+    "Herzberg am Harz/Sieber- Germanio": [
+        null,
+        null
+    ],
+    "Palu\u015de- Litovio": [
+        "55.3286709",
+        "26.1011089"
+    ],
+    "Habrino": [
+        null,
+        null
+    ],
+    "H\u00fclftegg- (ZH- SG) Svislando": [
+        "47.3950684",
+        "8.9983054"
+    ],
+    "Frascati (Romo)- Italio": [
+        "41.8082452",
+        "12.6803684"
+    ],
+    "Genk- Belgio": [
+        "50.9654864",
+        "5.5001456"
+    ],
+    "Duisburg- Germanio": [
+        "51.434999",
+        "6.759562"
+    ],
+    "Glasgovo- Skotlando": [
+        "55.856656",
+        "-4.2435817"
+    ],
+    "Arrout- Arie\u0135o en Francio": [
+        null,
+        null
+    ],
+    "Chamonix- Francio (Alpoj)": [
+        null,
+        null
+    ],
+    "L\u00f6vberget- Bj\u00f6rbo- Svedio": [
+        null,
+        null
+    ],
+    "L\u00f6vberget- Bj\u00f6rbo- Svedio- poste ni kune veturos al N\u00e5s- Bingsj\u00f6 kaj Lesj\u00f6fors": [
+        null,
+        null
+    ],
+    "Herrera del Duque- Hispanio": [
+        "39.1676109",
+        "-5.0504659"
+    ],
+    "urbo Sorriso- \u015dtato Mato Grosso- Brazilo": [
+        null,
+        null
+    ],
+    "insulo Cat Ba de Hai Phong- Vjetmanio": [
+        null,
+        null
+    ],
+    "Miami- Florida- Usono": [
+        "25.7742658",
+        "-80.1936589"
+    ],
+    "Jalta- Krimeo - kun invito al eksterlandanoj! - La aran\u011do okazos en la studenthejmo de la Komerc-Ekonomia Kolegio": [
+        null,
+        null
+    ],
+    "Iisalmi- Finnlando": [
+        "63.5567679",
+        "27.1892281"
+    ],
+    "Osijek- Kroatio": [
+        "45.5548893",
+        "18.6954077"
+    ],
+    "Nitro- Slovakio": [
+        null,
+        null
+    ],
+    "Kazanj- Tatarstano- Rusio": [
+        "55.7823547",
+        "49.1242266"
+    ],
+    "Paranapiakabo - La Fervoja Vila\u011do- Sau Paulo- Brazilo": [
+        null,
+        null
+    ],
+    "la urbo Ny\u00edregyh\u00e1za- Hungario": [
+        null,
+        null
+    ],
+    "Karlovac- Sisak- Petrinja- Kroatio": [
+        "45.3324674",
+        "16.2231456"
+    ],
+    "Boru\u011derdo-Irano": [
+        null,
+        null
+    ],
+    "Merido- Venezuelo": [
+        "8.7773719",
+        "-71.1565218"
+    ],
+    "Greziljono- Francio": [
+        "47.5512797",
+        "-0.082320040008184"
+    ],
+    "Islamabad- Pakistano": [
+        "33.63573935",
+        "72.9230467027632"
+    ],
+    "Moskva regiono- Rusio": [
+        "55.7507178",
+        "37.6176606"
+    ],
+    "Lier- Belgio": [
+        "51.131069",
+        "4.5696516"
+    ],
+    "Taguatinga- Braziljo- BRAZILO": [
+        "-15.8335277",
+        "-48.0565716"
+    ],
+    "Isola Santa- Tuskanio- Italio": [
+        null,
+        null
+    ],
+    "Mnichovo Hradi\u0161t\u011b- \u0108ehio": [
+        "50.5233731",
+        "14.979577888259"
+    ],
+    "Turnov- \u0108ehio": [
+        "50.5872282",
+        "15.1502597027157"
+    ],
+    "Oumiha\u0109iman- Japanio": [
+        null,
+        null
+    ],
+    "Antequera (M\u00e1laga)- Hispanio": [
+        "37.0183652",
+        "-4.5596649"
+    ],
+    "Modra-Harm\u00f3nia- Slovakio": [
+        "48.35823795",
+        "17.3076561806002"
+    ],
+    "Kijivo- Ukrainio": [
+        "50.4501071",
+        "30.5240501"
+    ],
+    "Bia\u0142istok- Pollando": [
+        null,
+        null
+    ],
+    "Serengeti (!)- Bunda- Tanzanio": [
+        "-2.2015918",
+        "33.8646483"
+    ],
+    "Waldheim am Brahmsee- norda Germanio": [
+        null,
+        null
+    ],
+    "M\u00fcnster- Germanio": [
+        "51.9501317",
+        "7.61330165026119"
+    ],
+    "apudmoskva ripozejo- Rusio": [
+        null,
+        null
+    ],
+    "Saint RAPHAEL- Francio": [
+        "43.4255303",
+        "6.7694244"
+    ],
+    "La Bastide-sur-l'Hers - Okcitanio- Francio": [
+        "42.95633",
+        "1.9089971"
+    ],
+    "Varsovio": [
+        "52.2319237",
+        "21.0067265"
+    ],
+    "Mainz- Germanio": [
+        "50.0012314",
+        "8.2762513"
+    ],
+    "Tuluzo- Francio": [
+        "43.6044622",
+        "1.4442469"
+    ],
+    "Hyvink\u00e4\u00e4- Finnlando": [
+        "60.6335719",
+        "24.8695328"
+    ],
+    "Tainan- Tajvano": [
+        "22.9912348",
+        "120.184982"
+    ],
+    "Sakramento- Kalifornio- Usono": [
+        null,
+        null
+    ],
+    "Bekasi- Indonezio- organizita de la Esperanto-Asocioj de la tri landoj: IEA- AEA- NZEA": [
+        null,
+        null
+    ],
+    "Marina di Ascea": [
+        "40.1453952",
+        "15.1679308"
+    ],
+    "Monte Hermoso- apud la atlantikaj pla\u011doj de la sudo en provinco de Buenos Aires": [
+        null,
+        null
+    ],
+    "Museo do Cr\u00e9dito Real- Av": [
+        null,
+        null
+    ],
+    "Pla\u016den/Saksio- Germanio": [
+        "50.4950632",
+        "12.1346523"
+    ],
+    "Als\u00f3\u00f6rs apud Balatono en Hungario": [
+        null,
+        null
+    ],
+    "Tehrano": [
+        "35.7006177",
+        "51.4013785"
+    ],
+    "T\u0159ebo\u0148- \u0108ehio": [
+        "49.0064356",
+        "14.7633295"
+    ],
+    "Aberystwyth- Kimrio- Britio": [
+        "52.4143113",
+        "-4.0816846"
+    ],
+    "Boone- Norda Karolino- Usono": [
+        "36.216795",
+        "-81.6745517"
+    ],
+    "la Esperanto-Kastelo Greziljono- Baug\u00e9- Francio": [
+        "47.5512797",
+        "-0.082320040008184"
+    ],
+    "Nesebar- Bulgario": [
+        "42.6607865",
+        "27.7167464"
+    ],
+    "la historia urbo Ayutthaya- Tajlando": [
+        null,
+        null
+    ],
+    "\u017d\u010f\u00e1r nad S\u00e1zavou- \u0108ehio": [
+        "49.5629014",
+        "15.9391924"
+    ],
+    "Arrout- Francio": [
+        "42.944854",
+        "1.0269234"
+    ],
+    "la Centra Oficejo en Rotterdamo": [
+        null,
+        null
+    ],
+    "Marina di Pietrasanta- Italio": [
+        "43.9325236",
+        "10.2067186"
+    ],
+    "urbo Jalta en Krimeo": [
+        null,
+        null
+    ],
+    "Akko- Israelo": [
+        "32.9281747",
+        "35.0756366"
+    ],
+    "R\u00e1ckeve- Hungario tuj apud Budape\u015dto - NULIGITA! - Organizas: Hungara Esperanto Junularo- Bag\u00f3 L\u00e1szl\u00f3- retadreso: bago": [
+        null,
+        null
+    ],
+    "Budape\u015dto- Hungario": [
+        "47.4983815",
+        "19.0404707"
+    ],
+    "Esperanto-Kastelo Greziljono": [
+        "47.5512797",
+        "-0.082320040008184"
+    ],
+    "Hameln- apud Hannover- Germanio": [
+        null,
+        null
+    ],
+    "Tilff- Belgio": [
+        "50.5613241",
+        "5.59423276207901"
+    ],
+    "Levice- Slovakio": [
+        "48.2163194",
+        "18.6000869"
+    ],
+    "Zweibr\u00fccken- Germanio": [
+        "49.248655",
+        "7.3641981"
+    ],
+    "Tririvero- Kebekio- Kanado": [
+        null,
+        null
+    ],
+    "Vroclavo kaj G\u00f3ra- Pollando": [
+        null,
+        null
+    ],
+    "Zabrze- Pollando": [
+        "50.31428055",
+        "18.7815763087718"
+    ],
+    "Kuritibo- Brazilo": [
+        "-25.4295963",
+        "-49.2712724"
+    ],
+    "la bela urbo Perth- kun postkongreso la 18-an": [
+        null,
+        null
+    ],
+    "Fortika\u0135o K\u00f6nigstein- Germanio": [
+        null,
+        null
+    ],
+    "Antverpeno- Belgio": [
+        null,
+        null
+    ],
+    "Freiburg- Germanio": [
+        "47.9960901",
+        "7.8494005"
+    ],
+    "Odessa- Ukrainio": [
+        "46.4852419",
+        "30.7433894"
+    ],
+    "P\u00e4rnu- Estonio": [
+        "58.3835136",
+        "24.5081751"
+    ],
+    "la hotelo \"Tomislavov dom\" sur la monto Medvednica apud Zagrebo": [
+        null,
+        null
+    ],
+    "\u010c\u00e1slav- Vrdy kaj Zbyslav- \u0108ehio": [
+        null,
+        null
+    ],
+    "Seattle- Usono": [
+        "47.6038321",
+        "-122.3300624"
+    ],
+    "Lesj\u00f6fors- V\u00e4rmland- Svedio": [
+        "59.97628",
+        "14.1840612"
+    ],
+    "Herzberg/Harz - la Esperanto-urbo- Germanio": [
+        "51.6439569",
+        "10.3301135216632"
+    ],
+    "Madrido (Hispanio)": [
+        "40.4167047",
+        "-3.7035825"
+    ],
+    "Kastelo Greziljono Francio": [
+        "47.5512797",
+        "-0.082320040008184"
+    ],
+    "M\u00fchlhausen- Th\u00fcringen- N51\u00b013'/E10\u00b027'- Germanio": [
+        null,
+        null
+    ],
+    "Pansionat Sinemor'ye- Rusio": [
+        null,
+        null
+    ],
+    "Lisbono- Portugalio": [
+        "38.7077507",
+        "-9.1365919"
+    ],
+    "F\u00e1tima- Portugalio": [
+        "39.6255372",
+        "-8.6659422"
+    ],
+    "Ni\u0135nij Tagil- Rusio": [
+        null,
+        null
+    ],
+    "Svitavy kaj Barto\u0161ovice- \u0108ehio": [
+        null,
+        null
+    ],
+    "Badajoz- Hispanio": [
+        "38.8780585",
+        "-6.9702048"
+    ],
+    "Kragujevac- Serbio": [
+        "44.0082482",
+        "20.9140472"
+    ],
+    "Podebrady- \u0108ehio": [
+        "50.149751",
+        "15.1283074539847"
+    ],
+    "Riva Trigoso- Italio": [
+        "44.2592474",
+        "9.4266038"
+    ],
+    "San Marino! Temo: \"San Marino kaj Esperanto: malgrandaj komunumoj kaj grandaj valoroj\"": [
+        null,
+        null
+    ],
+    "Kolomija- Ukrainio": [
+        null,
+        null
+    ],
+    "Leeuwarden- Nederlando": [
+        "53.19968475",
+        "5.80069089560234"
+    ],
+    "L\u0105dek Zdr\u00f3j- Pollando": [
+        "50.3458254",
+        "16.8725948"
+    ],
+    "la urbo Paraty- \u0109e Costa Verde (la verda marbordo) de Rio-de-\u0134anejro Paraty- Brazilo": [
+        null,
+        null
+    ],
+    "W\u00f6rlitz- Germanio": [
+        "51.8414537",
+        "12.4199023"
+    ],
+    "Houthalen- Belgio": [
+        "51.036563",
+        "5.41215471360364"
+    ],
+    "urbo Svitavy- \u0108ehio": [
+        null,
+        null
+    ],
+    "Gherla- Rumanio": [
+        "47.03198445",
+        "23.9119435315038"
+    ],
+    "Chester- Unui\u011dinta Re\u011dlando": [
+        "53.1908873",
+        "-2.8908955"
+    ],
+    "Poznano (Pozna\u0144)- Pollando": [
+        "52.4082663",
+        "16.9335199"
+    ],
+    "Moramanga- Madagaskaro": [
+        "-18.9471494",
+        "48.2304269"
+    ],
+    "Lahr- Germanio": [
+        "48.33460175",
+        "7.88320649377849"
+    ],
+    "Stanford- Kalifornio- Usono": [
+        "37.4248398",
+        "-122.1677058"
+    ],
+    "Salou- Hispanio": [
+        "41.0768193",
+        "1.1440411"
+    ],
+    "Office Culturel de Arras- Francio": [
+        null,
+        null
+    ],
+    "Dubajo- UAE": [
+        "25.0750095",
+        "55.1887608818332"
+    ],
+    "Katovico (Katowice)- Pollando": [
+        null,
+        null
+    ],
+    "Donapaleo (Saint Palais-Donapaleu)- Norde\u016dskio": [
+        null,
+        null
+    ],
+    "Namyangju- apud Seulo- Sud-Koreio": [
+        null,
+        null
+    ],
+    "urbo Bene\u0161ov- \u0108ehio": [
+        null,
+        null
+    ],
+    "Nara- Japanio": [
+        "34.2963089",
+        "135.8816819"
+    ],
+    "Olinda- Pernambuco- Brazilo": [
+        "-7.9986401",
+        "-34.8459552"
+    ],
+    "Cz\u0119stochowa- Pollando": [
+        "50.8089997",
+        "19.1244089281233"
+    ],
+    "Sheffield- Britio": [
+        "53.3806626",
+        "-1.4702278"
+    ],
+    "Ljubljana- Slovenio": [
+        "46.0498146",
+        "14.5067824"
+    ],
+    "Hainburg- A\u016dstrio": [
+        "48.1466103",
+        "16.9422459"
+    ],
+    "Mor\u015din- Ukrainio": [
+        null,
+        null
+    ],
+    "Paderborn- Germanio": [
+        "51.71895955",
+        "8.76486977817756"
+    ],
+    "Hunsel- Nederlando": [
+        "51.1870382",
+        "5.81300594968725"
+    ],
+    "Changzhou (\u0108an\u011duo) okcidente apud Shanghai": [
+        null,
+        null
+    ],
+    "Halle (Saale) Germanio": [
+        "51.4825041",
+        "11.9705452"
+    ],
+    "La Chaux-de-Fonds (\u0108a\u016ddefono)- Svislando": [
+        null,
+        null
+    ],
+    "Puebla- Meksiko": [
+        "18.833333",
+        "-98"
+    ],
+    "Centra Oficejo en Rotterdamo- Nederlando": [
+        null,
+        null
+    ],
+    "Stuttgart- Germanio": [
+        "48.7784485",
+        "9.1800132"
+    ],
+    "Le Beausset- Francio": [
+        "43.1988273",
+        "5.8007195"
+    ],
+    "Vieno- Austrio": [
+        "48.2083537",
+        "16.3725042"
+    ],
+    "la urbo Puneo en Mahara\u015dtro- Barato": [
+        null,
+        null
+    ],
+    "Bautzen- Germanio": [
+        "51.1813907",
+        "14.4275735"
+    ],
+    "K\u00f6nigswinter apud Bonn- Germanio": [
+        null,
+        null
+    ],
+    "Storkow/Mark- apud Berlino": [
+        null,
+        null
+    ],
+    "Adelajdo- A\u016dstralio": [
+        "-34.9281805",
+        "138.5999312"
+    ],
+    "Pustevny- \u0108ehio": [
+        "49.4896099",
+        "18.2651488"
+    ],
+    "Wellington- Nov-Zelando": [
+        "-41.2887467",
+        "174.7772092"
+    ],
+    "Leipzig- Germanio": [
+        "51.3406321",
+        "12.3747329"
+    ],
+    "Restadejo Val d'Esquiere- Les Issambres- Francio (Lazura Marbordo)": [
+        null,
+        null
+    ],
+    "Verniolle- Francio": [
+        "43.0794025",
+        "1.6514261"
+    ],
+    "Krikkenhaar- Bornerbroek- Nederlando": [
+        "52.3190148",
+        "6.6807681"
+    ],
+    "Ka\u015dano- Irano": [
+        null,
+        null
+    ],
+    "Dovro- Britio": [
+        null,
+        null
+    ],
+    "Akaba- Jordanio kunlige kun la israela Esperanto-kongreso en Eilat": [
+        null,
+        null
+    ],
+    "Simmerath (35 km de Aachen)- Germanio": [
+        "50.6072499",
+        "6.3005267"
+    ],
+    "Danang- Vjetnamio": [
+        "16.0425792",
+        "108.197158732364"
+    ],
+    "Danango (\u0110a N?ng)- Vjetnamio": [
+        null,
+        null
+    ],
+    "M\u00e1laga- Hispanio": [
+        "36.7213028",
+        "-4.4216366"
+    ],
+    "Lvov- Ukrainio": [
+        "49.841952",
+        "24.0315921"
+    ],
+    "Malaga- Hispanio": [
+        "36.7213028",
+        "-4.4216366"
+    ],
+    "Neum\u00fcnster- Germanio": [
+        "54.0715956",
+        "9.9865296"
+    ],
+    "Raleigh- NC- Usono": [
+        "35.7803977",
+        "-78.6390989"
+    ],
+    "Paneve\u017eys- Litovio": [
+        "55.7344985",
+        "24.3578055"
+    ],
+    "kadro de BET- Litovio": [
+        null,
+        null
+    ],
+    "tipa hungara vila\u011do Kondoros- Hungario": [
+        null,
+        null
+    ],
+    "\u0108a\u0109ak- Serbio": [
+        "43.8888275",
+        "20.3447317"
+    ],
+    "Litovio- Latvio- Estonio": [
+        null,
+        null
+    ],
+    "Tihvin- apud Peterburgo- Rusio": [
+        null,
+        null
+    ],
+    "Lahtio- Finnlando": [
+        null,
+        null
+    ],
+    "Liptovsk\u00fd Hr\u00e1dok- Slovakio": [
+        "49.0371787",
+        "19.7217331"
+    ],
+    "Barcelono- Katalunio- Hispanio": [
+        "41.3828939",
+        "2.1774322"
+    ],
+    "Kam\u0109atka! ": [
+        "55.8677904",
+        "158.802460116547"
+    ],
+    "Trieste- Italio": [
+        "45.6500335",
+        "13.7706559"
+    ],
+    "Montrealo- Kanado": [
+        "45.4972159",
+        "-73.6103642"
+    ]
+}

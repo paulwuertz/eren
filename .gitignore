@@ -1,5 +1,7 @@
 frozen/build/*
 frozen/renkontoj/*
+frozen/html/*
+frozen/eventoj.json
 renkontoj/*
 build/*
 sekreta.py

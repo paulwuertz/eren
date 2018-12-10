@@ -1,30 +1,37 @@
-import urllib.request
+import requests, html
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
 import json, sys, os
 
 EVENTOJ_URL="http://www.eventoj.hu/{0}.htm"
-jaroj=range(2018,2020)
+jaroj=range(1997,2019)
 geolocator = Nominatim()
 
 if not os.path.exists("renkontoj"):
     os.makedirs("renkontoj")
+if not os.path.exists("html"):
+    os.makedirs("html")
+geocache = {} if not os.path.isfile("geocache.json") else json.load(open("geocache.json","r"))
+geoc = 0
+geol = 0
+cxiujEventoj = []
 
-def printProgress (iteration, total, prefix = '', suffix = '', decimals = 1, barLength = 100):
-    formatStr = "{0:." + str(decimals) + "f}"
-    percent = formatStr.format(100 * (iteration / float(total)))
-    filledLength = int(round(barLength * iteration / float(total)))
-    bar = '█' * filledLength + '-' * (barLength - filledLength)
-    sys.stdout.write('\r%s |%s| %s%s %s' % (prefix, bar, percent, '%', suffix)),
-    if iteration == total:
-        sys.stdout.write('\n')
-    sys.stdout.flush()
-
-def int2tagStr(nombr):
-	if len(str(nombr))==1:
-		return "0"+str(nombr)
-	else:
-		return str(nombr)
+def getGeoCoords(string):
+    global geoc, geol
+    if string in geocache:
+        geoc+=1
+        return geocache[string]
+    else:
+        geol+=1
+        try:
+            location = geolocator.geocode(string)
+            geocache[string] = location.raw["lat"], location.raw["lon"]
+            open("geocache.json","w").write(json.dumps(geocache,indent=4))
+            return location.raw["lat"], location.raw["lon"]
+        except Exception as e:
+            geocache[string] = None, None
+            open("geocache.json","w").write(json.dumps(geocache,indent=4))
+            return None, None
 
 """
 Transformas datumo kiel
@@ -39,102 +46,119 @@ kaj redonas vin
 {"ektago":"26","ekmonato":"02","finmonato":"02""fintago":"27"}
 {"ektago":"26","ekmonato":"02","finmonato":"03","fintago":"27"}
 """
-def str2strTempo(string):
-	tagoj = [int(s) for s in string.replace(".","").split() if s.isdigit()]
-	monatoj=[]
-	if "januar" in eren["tempo"]:
-		monatoj.append("01")
-	elif "februar" in eren["tempo"]:
-		monatoj.append("02")
-	elif "mart" in eren["tempo"]:
-		monatoj.append("03")
-	elif "april" in eren["tempo"]:
-		monatoj.append("04")
-	elif "maj" in eren["tempo"]:
-		monatoj.append("05")
-	elif "juni" in eren["tempo"]:
-		monatoj.append("06")
-	elif "juli" in eren["tempo"]:
-		monatoj.append("07")
-	elif "gust" in eren["tempo"]:
-		monatoj.append("08")
-	elif "septembr" in eren["tempo"]:
-		monatoj.append("09")
-	elif "oktobr" in eren["tempo"]:
-		monatoj.append("10")
-	elif "novembr" in eren["tempo"]:
-		monatoj.append("11")
-	elif "dezembr" in eren["tempo"]:
-		monatoj.append("12")
+def str2strTempo(datString, ren, jaro):
+    datString = datString.lower()
+    #sen la punkto, legu la numeroj, kiuj versxajne estas la tag(oj)
+    tagoj = [s for s in datString.replace("."," ").split() if s.isdigit()]
+    #kontrolu, se enhavas unu aux du monatnomoj
+    monatoj=[]
+    finjaro=jaro
+    if "januar"   in datString and not "dezembr"  in datString:  monatoj.append("01")
+    if "februar"  in datString:  monatoj.append("02")
+    if "mart"     in datString:  monatoj.append("03")
+    if "april"    in datString:  monatoj.append("04")
+    if "maj"      in datString:  monatoj.append("05")
+    if "juni"     in datString:  monatoj.append("06")
+    if "juli"     in datString:  monatoj.append("07")
+    if "gust"     in datString:  monatoj.append("08")
+    if "septembr" in datString:  monatoj.append("09")
+    if "oktobr"   in datString:  monatoj.append("10")
+    if "novembr"  in datString:  monatoj.append("11")
+    if "decembr"  in datString:
+        monatoj.append("12")
+        if "januar"   in datString:
+            monatoj.append("01")
+            finjaro=jaro+1
 
-	datumo={}
+    datumo={}
+    #print(datString, jaro,finjaro, monatoj, tagoj)
 
-	if len(tagoj)==2:
-		datumo["ektago"]=int2tagStr(tagoj[0])
-		datumo["fintago"]=int2tagStr(tagoj[1])
-	elif len(tagoj)==1:
-		datumo["ektago"]=int2tagStr(tagoj[0])
+    if len(tagoj)==2:
+        ren["ekdato"]= "%d-%s-%s" % (jaro, monatoj[0], tagoj[0])
+        if len(monatoj)==2:
+            ren["finmonato"]= "%d-%s-%s" % (finjaro, monatoj[1], tagoj[1])
+        elif len(monatoj)==1:
+            ren["ekdato"]= "%d-%s-%s" % (jaro, monatoj[0], tagoj[0])
+            ren["findato"]= "%d-%s-%s" % (jaro, monatoj[0], tagoj[1])
+        else: ren["ekdato"] = None
+    elif len(tagoj)==1:
+        ren["ekdato"] = "%d-%s-%s" % (jaro, monatoj[0], tagoj[0])
+    else: ren["ekdato"] = None
+    return ren
 
-
-	if len(monatoj)==2:
-		datumo["ekmonato"]=monatoj[0]
-		datumo["finmonato"]=monatoj[1]
-	elif len(monatoj)==1:
-		datumo["ekmonato"]=monatoj[0]
-		datumo["finmonato"]=monatoj[0]
-	return datumo
-
+###############
+#######SKRIPTO
+###############
 for jar in jaroj:
-	print("Komencas datumi jaro "+str(jar)+" ...")
-	jar_url=EVENTOJ_URL.format(jar)
-	print(jar_url)
-	pagxo = urllib.request.urlopen(jar_url).read()
+    print("Komencas datumi jaro "+str(jar)+" ...")
+    jar_url=EVENTOJ_URL.format(jar)
+    print(jar_url)
+    #Sxargxu vere aux servo de cache
+    if os.path.isfile("html/"+str(jar)+".html"):
+        print("Caching","html/"+str(jar)+".html")
+        pagxo = open("html/"+str(jar)+".html","r").read()
+    else:
+        print("Loading","html/"+str(jar)+".html kaj savu por la cache...")
+        pagxo = requests.get(jar_url)
+        if jar<2005: pagxo.encoding = "UTF-8"
+        else:        pagxo.encoding = "windows-1250"
+        pagxo = html.unescape(pagxo.text)
+        open("html/"+str(jar)+".html","w").write(str(pagxo))
 
-	if jar>2001:
-		renoj=str(pagxo).split("<dt>")
-	else:
-		renoj=str(pagxo).split("<DT>")
+    erenoj=[]
+    cnt,loc=0,0
+    soup = BeautifulSoup(pagxo,"lxml")
+    eblajEventoj = soup.find_all('dt')
+    for ren in eblajEventoj:
+        eren={}
+        #print(ren,ren.find_all('strong')[0].text,"\n--PPP--\n")
+        try:
+            tempo = ren.find_all('strong')[0].text
+            eren = str2strTempo(tempo, eren, jar)
+        except Exception as e :
+            print("ERROR",ren, "'E", e, "E'\n")
+            continue;
+        #try:
+        dd=ren.find_next("dd")
+        if dd and dd.a:
+            eren["nomo"]=dd.a.text
+            links = dd.find_all("a")
+            if links:
+                for link in links:
+                    if link.href:
+                        if "mailto:" in link.href:
+                            eren["mail"]=link.href.replace("mailto:","")
+                        if not "mailto:" in link.href: eren["link"] = links[0].href
+            #"Junulara Esperanta Semajno JES-2016 - en Waldheim am Brahmsee, norda Germanio."
+            #ansxtatauxigu helpas kun kelkaj neregulajxoj
+            loko = dd.text.replace("–","-").replace(",","-")
+            if "- en " in loko and "." in loko:
+                eren["loko"]=loko.split("- en ")[1].split(".")[0]
+                eren["lat"], eren["lon"] = getGeoCoords(eren["loko"].split(",")[0])
+            else:
+                eren["loko"]=None
+                eren["lat"], eren["lon"] = None, None
+            eren["text"]=".".join(dd.text.split(".")[1:])
+            loc+=1
+        #se havas minimume 4 informacioj uzu kiel evento
+        if len(list(eren.values()))-list(eren.values()).count(None)>3 and eren["loko"] and eren["ekdato"]:
+            cnt+=1
+            erenoj.append(eren)
+            cxiujEventoj.append(eren)
 
-	erenoj=[]
-	cnt,loc=0,0
+    print()
+    print("Trovite "+str(len(eblajEventoj)))
+    print("Renkontitaj "+str(cnt))
+    print("Lokitaj "+str(loc))
 
-	for ren in renoj:
-		eren={}
-		soup = BeautifulSoup(ren,"lxml")
+    f=open("renkontoj/"+str(jar)+".json","w")
+    f.write(json.dumps(erenoj,indent=4,ensure_ascii=False))
+    f.close()
 
-		try:
-			eren["tempo"]=soup.find_all('strong')[0].text
-			eren["periodo"]=str2strTempo(eren["tempo"])
-		except Exception :
-			continue;
+#savu geocache
+print(geoc,"/",geoc+geol)
+print("Total "+str(len(cxiujEventoj)))
 
-		try:
-			dd=soup.find_all('dd')[0]
-			eren["nomo"]=dd.a.text
-			eren["mail"]=soup.find_all("a")[-1]["href"].replace("mailto:","")
-			eren["link"]=dd.a["href"]
-			#"Junulara Esperanta Semajno JES-2016 - en Waldheim am Brahmsee, norda Germanio."
-			eren["loko"]=dd.text.split(".")[0].split("- en ")[1]
-			eren["text"]=".".join(dd.text.split(".")[1:])
-			try:
-				location = geolocator.geocode(eren["loko"].split(",")[0])
-				eren["lat"]=location.raw["lat"]
-				eren["lon"]=location.raw["lon"]
-				loc+=1
-			except Exception :
-				pass
-		except Exception :
-			continue;
-
-		cnt+=1
-		erenoj.append(eren)
-		printProgress(cnt, len(renoj), prefix = 'Progreso:', suffix = ' da renkontiĝoj', barLength = 50)
-
-	print()
-	print("Trovite "+str(len(renoj)))
-	print("Renkontitaj "+str(cnt))
-	print("Lokitaj "+str(loc))
-
-	f=open("renkontoj/"+str(jar)+".json","w")
-	f.write(json.dumps(erenoj,indent=4))
-	f.close()
+f=open("eventoj.json","w")
+f.write(json.dumps(cxiujEventoj,indent=4,ensure_ascii=False))
+f.close()
