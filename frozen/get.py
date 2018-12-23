@@ -2,6 +2,7 @@ import requests, html
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
 import json, sys, os
+from selenium import webdriver
 
 EVENTOJ_URL="http://www.eventoj.hu/{0}.htm"
 jaroj=range(1997,2019)
@@ -16,6 +17,7 @@ geoc = 0
 geol = 0
 cxiujEventoj = []
 
+#Uzu la geopy lib por elsxuti divenata koordinatoj
 def getGeoCoords(string):
     global geoc, geol
     if string in geocache:
@@ -34,17 +36,11 @@ def getGeoCoords(string):
             return None, None
 
 """
-Transformas datumo kiel
+Transformas datumo tielmaniere
 
-"26 februaro" aû
-"26 - 27. februaro" aû
-"26. februaro - 8. marto"
-
-kaj redonas vin
-
-{"ektago":"26","ekmonato":"02"}
-{"ektago":"26","ekmonato":"02","finmonato":"02""fintago":"27"}
-{"ektago":"26","ekmonato":"02","finmonato":"03","fintago":"27"}
+"26 februaro" aû         -> 2017-02-26
+"26 - 27. februaro" aû   -> 2017-02-26 kaj 2017-02-27
+"26. februaro - 8. marto"-> 2017-02-26 kaj 2017-03-08
 """
 def str2strTempo(datString, ren, jaro):
     datString = datString.lower()
@@ -93,18 +89,17 @@ for jar in jaroj:
     print("Komencas datumi jaro "+str(jar)+" ...")
     jar_url=EVENTOJ_URL.format(jar)
     print(jar_url)
+
     #Sxargxu vere aux servo de cache
     if os.path.isfile("html/"+str(jar)+".html"):
         print("Caching","html/"+str(jar)+".html")
         pagxo = open("html/"+str(jar)+".html","r").read()
     else:
+        driver = webdriver.Chrome()
         print("Loading","html/"+str(jar)+".html kaj savu por la cache...")
-        pagxo = requests.get(jar_url)
-        if jar<2005: pagxo.encoding = "UTF-8"
-        else:        pagxo.encoding = "windows-1250"
-        pagxo = html.unescape(pagxo.text)
-        open("html/"+str(jar)+".html","w").write(str(pagxo))
-
+        pagxo = driver.get(jar_url)
+        open("html/"+str(jar)+".html","w").write(driver.page_source)
+        driver.close()
     erenoj=[]
     cnt,loc=0,0
     soup = BeautifulSoup(pagxo,"lxml")
