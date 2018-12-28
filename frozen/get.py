@@ -1,7 +1,6 @@
-import requests, html
+import requests, html, regex, json, sys, os
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
-import json, sys, os
 from selenium import webdriver
 
 EVENTOJ_URL="http://www.eventoj.hu/{0}.htm"
@@ -32,7 +31,7 @@ def getGeoCoords(string):
             return location.raw["lat"], location.raw["lon"]
         except Exception as e:
             geocache[string] = None, None
-            open("geocache.json","w").write(json.dumps(geocache,indent=4))
+            open("geocache.json","w").write(json.dumps(geocache,indent=4,ensure_ascii=False))
             return None, None
 
 """
@@ -40,8 +39,7 @@ Transformas datumo tielmaniere
 
 "26 februaro" aû         -> 2017-02-26
 "26 - 27. februaro" aû   -> 2017-02-26 kaj 2017-02-27
-"26. februaro - 8. marto"-> 2017-02-26 kaj 2017-03-08
-"""
+"26. februaro - 8. marto"-> 2017-02-26 kaj 2017-03-08"""
 def str2strTempo(datString, ren, jaro):
     datString = datString.lower()
     #sen la punkto, legu la numeroj, kiuj versxajne estas la tag(oj)
@@ -72,7 +70,7 @@ def str2strTempo(datString, ren, jaro):
     if len(tagoj)==2:
         ren["ekdato"]= "%d-%s-%s" % (jaro, monatoj[0], tagoj[0])
         if len(monatoj)==2:
-            ren["finmonato"]= "%d-%s-%s" % (finjaro, monatoj[1], tagoj[1])
+            ren["findato"]= "%d-%s-%s" % (finjaro, monatoj[1], tagoj[1])
         elif len(monatoj)==1:
             ren["ekdato"]= "%d-%s-%s" % (jaro, monatoj[0], tagoj[0])
             ren["findato"]= "%d-%s-%s" % (jaro, monatoj[0], tagoj[1])
@@ -81,6 +79,25 @@ def str2strTempo(datString, ren, jaro):
         ren["ekdato"] = "%d-%s-%s" % (jaro, monatoj[0], tagoj[0])
     else: ren["ekdato"] = None
     return ren
+
+def analizuDDTekston(dd):
+    #inf regex - kaj
+    spl = regex.split("[\ +]?((Inf)|(Org))[\.]?[\:]?", dd)
+    tel = "[\(\)\-\+0-9]{7,}"
+    posxtcodo_lando = "[A-Z]{2}[\ -]*[0-9\-]{4,}[\ ]*[\p{L}-\ ]+,\ +[\p{L}-\ ]+"
+    text = ".".join(spl[0].split(".")[1:])
+    if len(spl)<2: return text, None
+    infoj = spl[-1].replace("\n"," ").strip()
+    if len(infoj)<=2: return text, None
+    #print(infoj)
+    trovita = {}
+    if regex.search(tel, infoj):
+        trovita["tel"] = regex.findall(tel, infoj)[0]
+    if regex.search(posxtcodo_lando, infoj):
+        trovita["posxtcodo"],trovita["lando"] = regex.findall(posxtcodo_lando, infoj)[0].split(",")
+        trovita["posxtcodo"] = trovita["posxtcodo"][3:].strip()
+    #print("\t=>",trovita)
+    return text, trovita
 
 ###############
 #######SKRIPTO
@@ -109,7 +126,8 @@ for jar in jaroj:
         #print(ren,ren.find_all('strong')[0].text,"\n--PPP--\n")
         try:
             tempo = ren.find_all('strong')[0].text
-            eren = str2strTempo(tempo, eren, jar)
+            #sekvaj jaroj en la pagxo estas post h1 elementoj
+            eren = str2strTempo(tempo, eren, jar +  len(ren.findAllPrevious("h1")))
         except Exception as e :
             print("ERROR",ren, "'E", e, "E'\n")
             continue;
@@ -118,41 +136,42 @@ for jar in jaroj:
         if dd and dd.a:
             eren["nomo"]=dd.a.text
             links = dd.find_all("a")
-            if links:
-                for link in links:
-                    if link.href:
-                        if "mailto:" in link.href:
-                            eren["mail"]=link.href.replace("mailto:","")
-                        if not "mailto:" in link.href: eren["link"] = links[0].href
+            #sercxu retposxtadreso kaj ligilo
+            for link in links:
+                if link.href:
+                    if "mailto:" in link.href:
+                        eren["mail"]=link.href.replace("mailto:","")
+                    else: eren["link"] = links[0].href
             #"Junulara Esperanta Semajno JES-2016 - en Waldheim am Brahmsee, norda Germanio."
             #ansxtatauxigu helpas kun kelkaj neregulajxoj
             loko = dd.text.replace("–","-").replace(",","-")
             if "- en " in loko and "." in loko:
                 eren["loko"]=loko.split("- en ")[1].split(".")[0]
-                eren["lat"], eren["lon"] = getGeoCoords(eren["loko"].split(",")[0])
-            else:
-                eren["loko"]=None
-                eren["lat"], eren["lon"] = None, None
-            eren["text"]=".".join(dd.text.split(".")[1:])
+            eren["text"], update = analizuDDTekston(dd.text)
+            if update: eren.update(update)
+            geoString = ""
+            if "lando" in eren and "posxtcodo" in eren:
+                geoString = eren["posxtcodo"].split(" ",1)[-1] + " - " + eren["posxtcodo"].split(" ")[0] + eren["lando"]
+            elif "loko" in eren: geoString = eren["loko"]
+            if geoString: eren["lat"], eren["lon"] = getGeoCoords(geoString)
             loc+=1
         #se havas minimume 4 informacioj uzu kiel evento
-        if len(list(eren.values()))-list(eren.values()).count(None)>3 and eren["loko"] and eren["ekdato"]:
+        if len(list(eren.values()))-list(eren.values()).count(None)>3 and eren["ekdato"] and eren["text"]:
             cnt+=1
             erenoj.append(eren)
             cxiujEventoj.append(eren)
 
-    print()
-    print("Trovite "+str(len(eblajEventoj)))
+    print("\nTrovite "+str(len(eblajEventoj)))
     print("Renkontitaj "+str(cnt))
     print("Lokitaj "+str(loc))
 
-    f=open("renkontoj/"+str(jar)+".json","w")
-    f.write(json.dumps(erenoj,indent=4,ensure_ascii=False))
-    f.close()
+    open("renkontoj/"+str(jar)+".json","w").write(
+        json.dumps(erenoj,indent=4,ensure_ascii=False)
+    )
 
 #savu geocache
-print(geoc,"/",geoc+geol)
-print("Total "+str(len(cxiujEventoj)))
+print("geosuchen",geoc,"/",geoc+geol)
+print("Total renoj "+str(len(cxiujEventoj)))
 
 f=open("eventoj.json","w")
 f.write(json.dumps(cxiujEventoj,indent=4,ensure_ascii=False))

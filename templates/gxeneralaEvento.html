@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <style>
+      #cont-m {
+        margin-top: 50px;
+        padding-buttom: 50px;
+      }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet/dist/leaflet.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="row center-align container z-depth-1" id="cont-m">
+  <div class="col s12">
+    <h3 class="grey-text text-darken-4">{{ gevento.nomo }}</h3>
+    <div class="col s12 m3 grey lighten-2">
+          <a class="" href="/evento/{{ g.evento_mallongigo }}">
+            {% if gevento.logo %}
+            <img class="fillwidth responsive-img" src="{{ url_for('static', filename=gevento.logo) }}">
+            {% elif orga.logo %}
+            <img class="fillwidth responsive-img" src="{{ url_for('static', filename=orga.logo) }}">
+            {% else %}
+            <img class="fillwidth responsive-img" src="{{ url_for('static', filename='img/stelo.jpg') }}">
+            {% endif %}
+          </a>
+    </div>
+    <div class="col s12 m9 left-align">
+      <p>
+        {{ gevento.nomo }} ({{gevento.evento_mallongigo}}) estas organizata de la <a href="{{ url_for('uzanto', nomo=orga.nomo) }}">{{orga.nomo}}</a>.
+      </p>
+      {% if gevento.ektempo %}
+      <b>Organizita ekde {{ gevento.ektempo.strftime('%Y') }}</b>
+      {% endif %}
+
+    </div>
+    <div class="col s10 offset-s1">
+        {% if eventoj|length > 0 %}
+
+        {% if GLOBAL.strptime( (eventoj|first).ektempo, "%Y-%m-%d").date() > GLOBAL.today() %}
+        <p>La proksima {{gevento.evento_mallongigo}} venas baldau!!!</p>
+        {% endif %}
+
+        <h5>Jen informoj pri la lastaj {{gevento.evento_mallongigo}}oj:</h5>
+        <ul class="collection">
+          {% for e in eventoj[:5] %}
+          <li class="collection-item avatar">
+            {% if gevento.logo %}
+            <img class="circle" src="{{ url_for('static', filename=gevento.logo) }}">
+            {% elif orga.logo %}
+            <img class="circle" src="{{ url_for('static', filename=orga.logo) }}">
+            {% else %}
+            <img class="circle" src="{{ url_for('static', filename='img/stelo.jpg') }}">
+            {% endif %}
+            <span><a href="{{ url_for('konkretaEvento', nomo=e.nomo) }}">{{ e.nomo }}</a></span>
+            <p>Okazis je la {{ e.ektempo }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="col s12">
+          <div class="col s12">
+              <h5>Jen la ejoj de la lastaj {{gevento.evento_mallongigo}}oj:</h5>
+          </div>
+          <!--- la karto -->
+          <div id="mapo" class="col s10 offset-s1"></div>
+      </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var eventoj = {{ eventoj|safe }};
+        initMapo(eventoj);
+    });
+</script>
+{% endblock %}

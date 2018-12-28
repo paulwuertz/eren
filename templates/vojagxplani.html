@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <title>E-Renkontiĝoj en la mondo</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/vis/dist/vis.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/vis/dist/vis-timeline-graph2d.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet/dist/leaflet.css') }}">
+{% endblock %}
+
+{% block body %}
+<!--- Cxie tie cxion rilate al montri unu jaro de erenkontigxoj estas -->
+<!--- Jen la sxangxbutenoj por sxangxi inter karta aux kalendara vido -->
+<div class="row center-align">
+    <div class="col s12 m6 offset-m3 left-align">
+        <h5>Kiel plej efektive vojaĝumi en esperantoj?</h5>
+        <!-- vojagxkondicxoj -->
+        <div class="s12">
+          <p>Kiel vi vojagxos inter la eventoj?</p>
+          <div>
+              <span class="large material-icons">directions_walk</span>
+              <span>Piede</span>
+              <input value="5" class="with-gap" name="metodo" type="radio" />
+
+              <span class="large material-icons">directions_bike</span>
+              <span>Bicikle</span>
+              <input value="15" class="with-gap" name="metodo" type="radio" />
+
+              <span class="large material-icons">directions_transit</span>
+              <span>Trajne</span>
+              <input value="200" class="with-gap" name="metodo" type="radio" checked />
+
+              <span class="large material-icons">airplanemode_active</span>
+              <span>Aviadile</span>
+              <input value="1000" class="with-gap" name="metodo" type="radio" />
+          </div>
+          <p>Kiam vi volas vojaĝumi?</p>
+          <div class="row">
+            <div class="input-field col m6 s12">
+              <i class="material-icons prefix">date_range</i>
+              <label>Komiencdato</label>
+              <input name="ekdato" type="text" class="datepicker" required>
+            </div>
+            <div class="input-field col m6 s12">
+              <i class="material-icons prefix">date_range</i>
+              <label>Findato</label>
+              <input name="findato" type="text" class="datepicker">
+            </div>
+        </div>
+      </div>
+      <div class="row">
+          <button class="btn waves-effect waves-light col s4 offset-s4" type="submit" name="action">Resxargxu
+              <i class="material-icons right">refresh</i>
+          </button>
+      </div>
+      <div class="center-align">{{ renoj|length }} eventoj por la vojagxo...</div>
+      <h5>Jen cxiuj okazantaj eventoj en tio periodo:</h5>
+    </div>
+    <!--- tempolineo -->
+    <div class="col s12">
+      <div id="visualization"></div>
+    </div>
+    <!--- la karto -->
+    <div id="mapo" class="col s12"></div>
+    <!--- efika tempolineo -->
+    <div class="col s12 m6 offset-m3 left-align">
+        <h5>Plej esperantuja vojagxplano:</h5>
+    </div>
+    <div class="col s12">
+        <div id="visualization_efika"></div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<!--- JSajxojn -->
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/vis/dist/vis.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+<script type="text/javascript">
+    function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+        var R = 6371; // Radius of the earth in km
+        var dLat = deg2rad(lat2-lat1);  // deg2rad below
+        var dLon = deg2rad(lon2-lon1);
+        var a =
+          Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+          Math.sin(dLon/2) * Math.sin(dLon/2)
+          ;
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        var d = R * c; // Distance in km
+        return d;
+    }
+
+    function deg2rad(deg) {
+        return deg * (Math.PI/180)
+    }
+
+    function kilometraDistanco(evento1, evento2, tagoj) {
+        var km_dist = getDistanceFromLatLonInKm(evento1.lat,evento1.lon,evento2.lat,evento2.lon);
+        if(km_dist > horojTageEnTrafiko*rapideco*tagoj)
+            return false;
+        var tagojVojagxanto = km_dist/horojTageEnTrafiko*rapideco*tagoj;
+        //return tagojVojagxanto, tagojAtendanto, km_dist
+        return [tagojVojagxanto, tagoj-tagojVojagxanto, km_dist];
+    }
+
+    function datumaDistanco(evento1, evento2) {
+        var komencSekva = new Date(evento1.ektempo);
+        var finBaza     = (evento2.fintempo!="None" ? new Date(evento2.fintempo) : new Date(evento2.ektempo))
+        if (komencSekva >= finBaza) {
+            //diff in us => tagoj
+            return (komencSekva-finBaza)/1000/60/60/24;
+        } else
+          return false;
+    }
+
+    function initScheduler(eventoj, startFromHome) {
+        var lokalizataj_eventoj = [];
+        for (var renInd in eventoj) {
+            if (eventoj[renInd].hasOwnProperty("lat") && eventoj[renInd].lat!="None") {
+                lokalizataj_eventoj.push(eventoj[renInd])
+            }
+        }
+        //vars
+        //+1 por la konektoj de la ekposicioj
+        var numLokalizataj_eventoj = lokalizataj_eventoj.length;
+        if(startFromHome) numLokalizataj_eventoj += 1;
+        var konektoj = Array(numLokalizataj_eventoj).fill(0).map(x => Array(numLokalizataj_eventoj).fill(false))
+        //init konekta matrico
+        for (var i = 0; i < lokalizataj_eventoj.length; i++) {
+            var de = lokalizataj_eventoj[i];
+            for (var j = 0; j < lokalizataj_eventoj.length; j++) {
+                var al = lokalizataj_eventoj[j];
+                var dd = datumaDistanco(de, al);
+                var kd = kilometraDistanco(de, al, dd);
+                //se dua evento estas en la futuro de la unua, ne estas vizitebla
+                //kej ne viziteblas un evento de si mem ;=)
+                //console.log(i,j,dd, !dd, !kd);
+                if(i===j || !dd || !kd){
+                    konektoj[i][j] = false;
+                    continue;
+                }
+                konektoj[i][j] = [kd, dd];
+            }
+        }
+        //console.log(konektoj);
+        var maxTagoj = 0;
+        var eventListo = [];
+        //for (var i = 0; i < array.length; i++) {
+        //  array[i]
+        //}
+        function planumi() {
+        }
+        planumi()
+    }
+
+
+
+    $(document).ready(function(){
+       rapideco = parseInt($('input[type=radio][name=metodo]').val());
+       horojTageEnTrafiko = 10;
+       $('input[type=radio][name=metodo]').change(function() {
+           rapideco = parseInt(this.value);
+       });
+       var eventoj = {{ renoj|safe }};
+       var mapo = initMapo(eventoj);
+       initScheduler(eventoj);
+
+        //Define an array of Latlng objects (points along the line)
+       var polylinePoints = [];
+       var tl_datoj = [];
+       for(var m in eventoj){
+           var ren = eventoj[m];
+           if (ren.hasOwnProperty("lat") && ren.lat!="None") {
+              polylinePoints.push([ren.lat,ren.lon]);
+              tl_datoj.push({id: tl_datoj.length, content: ren.gxeneralaEvento, start: ren.ektempo, end: ren.fintempo});
+           }
+       }
+       var polylineOptions = {
+             color: 'blue',
+             weight: 6,
+             opacity: 0.9
+       };
+      var polyline = new L.Polyline(polylinePoints, polylineOptions);
+      mapo.addLayer(polyline);
+      // zoom the map to the polyline
+      mapo.fitBounds(polyline.getBounds());
+      // DOM element where the Timeline will be attached
+      var container = document.getElementById('visualization');
+      var container_efike = document.getElementById('visualization_efika');
+      // Create a DataSet (allows two way data-binding)
+      var items = new vis.DataSet(tl_datoj);
+      // Configuration for the Timeline
+      var options = {};
+      // Create a Timeline
+      var timeline = new vis.Timeline(container, items, options);
+      var timeline_efike = new vis.Timeline(container_efike, items, options);
+    });
+</script>
+{% endblock %}

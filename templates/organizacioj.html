@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <link rel="stylesheet" href="{{ url_for('static',  filename='app_grid.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="row" id="cont-m">
+  <div id="formContainer" class="card col row s12 z-depth-1">
+    <div class="card-body grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+      <div class="row">
+        {% for u in uzantoj %}
+        <div class="col s12 m3 l2 nooverflow autobreak">
+          <div class="card fillheigth">
+            <div class="card-image grey lighten-2 valign-wrapper center-align">
+              <a class="" href="/organizacioj/{{ u.orga_mallongigo }}">
+                {%if u.logo %}
+                <img class="fillwidth responsive-img" src="{{ url_for('static', filename=u.logo) }}">
+                {% else %}
+                <img class="fillwidth responsive-img" src="{{ url_for('static', filename='img/stelo.jpg') }}">
+                {% endif %}
+              </a>
+            </div>
+            <div class="card-content daten row">
+              <b class="grey-text text-darken-4">{{ u.nomo }}</b>
+
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}

@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
-{% block head %}
+{% block header %}
     <title>E-Renkontiĝoj en la mondo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet/dist/leaflet.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -41,9 +43,16 @@
                 {% for ren in renoj %}
                   <tr>
                     <td><a href="{{ ren.link }}">{{ ren.nomo }}</a></td>
-                    <td>{{ ren.loko }}</td>
-                    <td>{{ ren.tempo }}</td>
-                    <td>{{ ren.text }}</td>
+                    {# Kiel kontrulu malegaleco kun None? #}
+                    {% if ren.urbo != ren.lando %}
+                    <td>{{ ren.urbo }} - {{ ren.lando }}</td>
+                    {% elif ren.regiono != ren.lando %}
+                    <td>{{ ren.regiono }}</td>
+                    {% else %}
+                    <td> - </td>
+                    {% endif %}
+                    <td>{{ ren.ektempo }} {% if ren.ektempo %}- {{ ren.fintempo }} {%endif%}</td>
+                    <td>{{ ren.priskribo }}</td>
                     <td><a href="mailto:{{ren.mail}}">Alretpoŝtu!</a></td>
                   </tr>
                 {% endfor %}
@@ -59,14 +68,17 @@
 
 {% block js %}
 <!--- JSajxojn -->
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/moment/min/moment-with-locales.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 <script type="text/javascript">
-    var csrf_token = "{{ csrf_token() }}";
-    //setup tabs
     $(document).ready(function(){
         $('ul.tabs').tabs();
-        initCalendar({{ jar|safe }}, {{ renoj|safe }});
+        var eventoj = {{ renoj|safe }};
+        initCalendar(eventoj);
+        initMapo(eventoj);
     });
 </script>
 {% endblock %}

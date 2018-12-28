@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <style>
+      #cont-m {
+        margin-top: 50px;
+      }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet/dist/leaflet.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="row center-align container z-depth-1" id="cont-m">
+  <div class="col s12">
+    <h3 class="grey-text text-darken-4">{{ evento.nomo }}</h3>
+    <div class="col s12 m3 grey lighten-4">
+          <a class="" href="/evento/{{ g.evento_mallongigo }}">
+            {% if "/" in evento.logo %}
+            <img class="fillwidth responsive-img" src="{{ url_for('static', filename=evento.logo) }}">
+            {% elif "/" in gevento.logo %}
+            <img class="fillwidth responsive-img" src="{{ url_for('static', filename=gevento.logo) }}">
+            {% else %}
+            <img class="fillwidth responsive-img" src="{{ url_for('static', filename='img/stelo.jpg') }}">
+            {% endif %}
+          </a>
+    </div>
+    <!-- gevento=gevento, evento=evento, orga=orga -->
+    <div class="col s12 m9 left-align">
+      {% if evento.ektempo %}
+      <b>Kiam okazas:</b> {{ evento.ektempo }}{% if evento.fintempo %}- {{evento.fintempo}}{% endif %}
+      {% endif %}
+      {% if evento.urbo != "None" %}      <p><b>Urbo:</b>        {{ evento.urbo }}    </p> {% endif %}
+      {% if evento.regiono != "None" %}   <p><b>Kie okazos:</b>  {{ evento.regiono }} </p> {% endif %}
+      {% if evento.posxtcodo != "None" %} <p><b>Posxtcodo:</b> {{ evento.posxtcodo }} </p> {% endif %}
+      {% if evento.priskribo != "None" %} <p><b>Priskribo:</b> {{ evento.priskribo }} </p> {% endif %}
+
+      <p> {{evento.nomo}} ({{evento.gxeneralaEvento}}) estas organizata de la {{orga.nomo}}</p>
+      <p>Jen pli informacioj pri <a href="{{ url_for('gxeneralaEvento', evento_mallongigo=evento.gxeneralaEvento) }}">
+        {{evento.gxeneralaEvento}}oj</a>.
+      </p>
+    </div>
+    {% if evento.lat != "None" %} <div id="mapo" class="col s10 offset-s1"></div> {% endif %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var evento = [{{ evento|safe }}];
+        initMapo(evento);
+    });
+</script>
+{% endblock %}
