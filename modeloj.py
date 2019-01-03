@@ -96,8 +96,9 @@ class TeamMembroj(db.Model):
 #tio estas gxenerala evento, kiu
 class Evento(db.Model):
     __tablename__ = "evento"
+    ektempo = Column(Date, primary_key=True)
     nomo = Column(Text(255), nullable=False, primary_key=True)
-    ektempo = Column(Date, nullable=False)
+    gxeneralaEvento = Column(Text, ForeignKey('gxeneralaEvento.evento_mallongigo'), primary_key=True)
     fintempo = Column(Date)
     grandeco = Column(Integer)
     retposxto = Column(Text(255))
@@ -113,7 +114,6 @@ class Evento(db.Model):
     lon = Column(Float)#, nullable=False)
     isLokaEvento = Column(Boolean(), default=True, nullable=True)
     cxijarateamo = Column(Text(255), ForeignKey('teamo.nomo'))
-    gxeneralaEvento = Column(Text, ForeignKey('gxeneralaEvento.evento_mallongigo'))
 
     def __init__(self, nomo, ektempo, gxeneralaEvento=None, ligilo=None, lat=None, lon=None, priskribo=None, grandeco=None, retposxto=None, fintempo=None, logo=None, urbo=None, lando=None, regiono=None, posxtcodo=None):
         self.nomo = nomo.strip()
@@ -161,7 +161,7 @@ class Evento(db.Model):
         else: return None
 
     def __repr__(self):
-        return '<Evento {0} @ {1}>'.format(self.nomo,self.ektempo)
+        return '<Evento {0} @ {1} aka {2}>'.format(self.nomo, self.ektempo, self.gxeneralaEvento)
 
 
 #abono povas esti de evento, organizacio aux regiono

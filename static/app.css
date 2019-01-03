@@ -30,9 +30,14 @@
 }
 
 #formContainer {
-  padding-top: 50px;
   border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
 }
 
 #formHead {
+}
+
+.informejo {
+    margin-top:    15px;
+    margin-bottom: 15px;
+    padding:       10px;
 }

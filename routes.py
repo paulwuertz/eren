@@ -94,7 +94,7 @@ def konkretaEvento(nomo):
     return render_template('konkretaEvento.html', GLOBAL=GLOBAL, gevento=gevento, evento=modeloj.TableAsDict(evento), orga=orga)
 
 #listo de eventoj konkretas proksimas
-@app.route('/eventoj')
+@app.route('/eventoj/')
 def konkretajEventoj():
     #ricevi datoj
     hodiaux = datetime.date.today()
@@ -107,7 +107,7 @@ def konkretajEventoj():
     return render_template('konkretajEventoj.html', GLOBAL=GLOBAL, renoj=eventojDicts)
 
 #listo de eventoj konkretas proksimas
-@app.route('/vojagxplani')
+@app.route('/vojagxplani/')
 def vojagxPlan():
     #ricevi datoj
     hodiaux = datetime.date.today()
@@ -119,7 +119,7 @@ def vojagxPlan():
     #la pagxo
     return render_template('vojagxplani.html', GLOBAL=GLOBAL, renoj=eventojDicts)
 
-@app.route('/aldoniEventon', methods=["GET","POST"])
+@app.route('/aldoniEventon/', methods=["GET","POST"])
 def aldoniEventon():
     if request.method == 'GET':
         return render_template('aldoniEventon.html', GLOBAL=GLOBAL, hejm=True)

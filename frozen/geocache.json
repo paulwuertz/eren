@@ -6518,5 +6518,85 @@
     "75020 Paris - - Francio": [
         "48.8628083544452",
         "2.40070189252323"
+    ],
+    "Nitra - 94901 Slovakio": [
+        "48.31132705",
+        "18.0732111705358"
+    ],
+    "Seoul - 100-679 Koreio": [
+        null,
+        null
+    ],
+    "Zagreb - 41000 Amru\u015deva ": [
+        "45.6927786",
+        "15.7367756"
+    ],
+    "Druento TO - 10040 Italio": [
+        "45.134748",
+        "7.576618"
+    ],
+    "Moskva - 119270 Rusio": [
+        "55.7163654",
+        "37.5758007"
+    ],
+    "Tokio - 162 Japanio": [
+        "35.6828387",
+        "139.7594549"
+    ],
+    "Lyon Cedex - 69394 Francio": [
+        null,
+        null
+    ],
+    "Gundelfingen - 79194 Germanio": [
+        "48.0441176",
+        "7.8686038"
+    ],
+    "Wien - 1140 A\u016dstrio": [
+        "48.2083537",
+        "16.3725042"
+    ],
+    "Budapest - 1077 Hungario": [
+        "47.4983815",
+        "19.0404707"
+    ],
+    "Popr\u00e1d - 05801 Slovakio": [
+        "49.05887475",
+        "20.3129236356845"
+    ],
+    "Dobrichovie - 25229 \u0108ehio": [
+        null,
+        null
+    ],
+    "Koebenhavn - 2200 Danio": [
+        "55.6867243",
+        "12.5700724"
+    ],
+    "Pencice - 75127 \u0108ehio": [
+        "49.5186301",
+        "17.4214741"
+    ],
+    "PG Wageningen - 6709 Nederlando": [
+        null,
+        null
+    ],
+    "Bydgoszcz - 85-094 Pollanado": [
+        null,
+        null
+    ],
+    "Kroscienko - 34-450 Polio": [
+        "49.4508383",
+        "20.3938953160713"
+    ],
+    "Triest - 34100 Italio": [
+        "45.6500335",
+        "13.7706559"
+    ],
+    "CX Utrecht - 3562 Nederlando": [
+        null,
+        null
+    ],
+    "Brabrand - 8220 Danio": [
+        "56.1532111",
+        "10.1024171"
     ]
 }

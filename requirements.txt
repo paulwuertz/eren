@@ -14,3 +14,4 @@ Flask-WTF==0.14.2
 Flask-JWT-Extended==3.14.0
 Flask-Login==0.4.1
 Flask-Mail==0.9.1
+Flask-Permissions==0.2.3

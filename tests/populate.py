@@ -1,4 +1,4 @@
-import csv, datetime, requests, sys, json, os
+import csv, datetime, requests, sys, json, os, re
 from sqlalchemy import update
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
@@ -54,22 +54,21 @@ def addGeneralajEventoj():
     db.session.commit()
 
 def addEventoj():
-    sercxoj = [["Printempa Semajno Internacia", "PSI"],["Universala Kongreso de Esperanto", "UK"],["Germana Esperanto-Kongreso", "GEK"],["PRINTEMPaS", "PRINTEMPaS"],["Roskilde", "Roskilde"],["ŜEP"],["JER"],["IJK"],["SAT"],["IJS"],["KAEST"],["KEKSO"],["ILEI"],["ARKONES"],["BIERo"],["BAVELO"],["NR"],["KoKoLoRES"],["Israela Kongreso", "IKE2"],["Brazila Kongreso de Esperanto", "BKE"],["Skota Kongreso", "SKE"],["Japana Esperanto-Kongreso", "JEK"],["PEKO"],["Centrejo"],["Beneluksa Kongreso", "BEKO"],["Brita", "BK"],["baltia", "BET"],["Sud-Azia", "SAS"],["Internacia Esperanto-Semajno", "IES"],["Mediteranea Esperanto","MES"],["a Mezorienta","MK"],["IREK"],["MeKaRo"],["a Itala Kongreso","IKE"],["BARO"],["Renkontiĝo de Amikoj","RA"],["a ABELO","ABELO"],["Milan Zvara","MZP"],["Blindaj","IKBE"],["IEK"],["Hispana Kongreso","HEK"],["Ŝĉecina Esperanta Printempo","ŜEP"],["somerkursaro","AKE"],["Poludnica"],["Meksika","MEK"],["Rata Rendevuo","RR"],["a Azia","AK"],["AŬTUNE"]]
+    sercxoj = [["Printempa Semajno Internacia", "PSI"],["Universala Kongreso de Esperanto", "UK"],["Germana Esperanto-Kongreso", "GEK"],["PRINTEMPaS", "PRINTEMPaS"],["Roskilde", "Roskilde"],["Esperanta Printempo","ŜEP"],["JER"],["IJK"],["SAT"],["IJS"],["KAEST"],["KEKSO"],["ILEI"],["ARKONES"],["BIERo"],["BAVELO"],["NR"],["KoKoLoRES"],["Israela Kongreso", "IKE2"],["Brazila Kongreso de Esperanto", "BKE"],["Skota Kongreso", "SKE"],["Japana Esperanto-Kongreso", "JEK"],["PEKO"],["Centrejo"],["Beneluksa Kongreso", "BEKO"],["Brita", "BK"],["baltia", "BET"],["Sud-Azia", "SAS"],["Internacia Esperanto-Semajno", "IES"],["Mediteranea Esperanto","MES"],["a Mezorienta","MK"],["IREK"],["MeKaRo"],["a Itala Kongreso","IKE"],["BARO"],["Renkontiĝo de Amikoj","RA"],["a ABELO","ABELO"],["Milan Zvara","MZP"],["Blindaj","IKBE"],["IEK"],["Hispana Kongreso","HEK"],["Ŝĉecina Esperanta Printempo","ŜEP"],["somerkursaro","AKE"],["Poludnica"],["Meksika","MEK"],["Rata Rendevuo","RR"],["a Azia","AK"],["AŬTUNE"],["a JES", "JES"],["Junulara Esperanta Semajno","JES"], ["Internacia Junulara Festivalo", "IJF"],["Somera Esperanto-Studado","SES"], ["a Internacia Seminario","IS"],["Ago-Semajno","AS"],["Brita Kongreso de Esperanto","BK"]]
     eventoj = json.load(open("frozen/eventoj.json"))
+    ev=None
     for sercxo in sercxoj:
-        datoj, nomoj = set(), set()
         geStr = sercxo[0] if len(sercxo)==1 else sercxo[1]
         ge = GxeneralaEvento.query.filter(GxeneralaEvento.evento_mallongigo == geStr)[0]
+        nedublaj = set()
         for e in eventoj:
-            fin = None if not "findato" in e else e["findato"]
-            nomo = ge.nomo + " - " + e["ekdato"][:4]
-            if not e["ekdato"] in datoj and not nomo in nomoj and sercxo[0].lower() in e["nomo"].lower():
-                datoj.add(e["ekdato"])
-                nomoj.add(nomo)
+            if geStr in e["nomo"] and not (e["ekdato"], ge.nomo + " - " + e["ekdato"][:4], geStr) in nedublaj:
+                fin = None if not "findato" in e else e["findato"]
+                nomo = ge.nomo + " - " + e["ekdato"][:4]
                 priskribo = e["text"] if "text" in e else None
                 loko = e["loko"] if "loko" in e else None
                 if "posxtcodo" in e:
-                    posxtcodo, urbo = e["posxtcodo"].split(" ", 1) if " " in e["posxtcodo"] else None
+                    posxtcodo, urbo = re.split("[\- .]", e["posxtcodo"].strip("- \t"), 1)
                 else:
                     posxtcodo, urbo = None, None
                 lando = e["lando"] if "lando" in e else None
@@ -78,6 +77,8 @@ def addEventoj():
                 lat, lon = (e["lat"], e["lon"]) if "lat" in e else (None, None)
                 ev=Evento(nomo=nomo, ektempo=e["ekdato"], fintempo=fin, lat=lat, lon=lon, priskribo=priskribo, gxeneralaEvento=geStr, retposxto=mail, urbo=urbo, lando=lando, regiono=loko, ligilo=link, posxtcodo=posxtcodo)
                 db.session.add(ev)
+                eventoj.remove(e)
+                nedublaj.add((str(ev.ektempo), nomo, ev.gxeneralaEvento))
     db.session.commit()
     print("aldonis %d Eventoj" % len(db.session.query(Evento).all()))
 

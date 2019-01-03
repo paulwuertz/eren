@@ -1,37 +1,41 @@
-import requests, html, regex, json, sys, os
+import requests, html, regex, json, sys, os, re
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
 from selenium import webdriver
 
 EVENTOJ_URL="http://www.eventoj.hu/{0}.htm"
-jaroj=range(1997,2019)
+jaroj=range(1997, 2019)
 geolocator = Nominatim()
 
+#kreu subdusierujoj
 if not os.path.exists("renkontoj"):
     os.makedirs("renkontoj")
 if not os.path.exists("html"):
     os.makedirs("html")
+
 geocache = {} if not os.path.isfile("geocache.json") else json.load(open("geocache.json","r"))
-geoc = 0
-geol = 0
+trovataGeoLoko, neTrovataGeoLoko = 0, 0
 cxiujEventoj = []
 
 #Uzu la geopy lib por elsxuti divenata koordinatoj
 def getGeoCoords(string):
-    global geoc, geol
+    global trovataGeoLoko, neTrovataGeoLoko
     if string in geocache:
-        geoc+=1
+        if geocache[string] != [None, None]: trovataGeoLoko+=1
+        else: neTrovataGeoLoko+=1
         return geocache[string]
     else:
-        geol+=1
         try:
             location = geolocator.geocode(string)
             geocache[string] = location.raw["lat"], location.raw["lon"]
             open("geocache.json","w").write(json.dumps(geocache,indent=4))
+            if geocache[string] != [None, None]: trovataGeoLoko+=1
+            else: neTrovataGeoLoko+=1
             return location.raw["lat"], location.raw["lon"]
         except Exception as e:
             geocache[string] = None, None
             open("geocache.json","w").write(json.dumps(geocache,indent=4,ensure_ascii=False))
+            neTrovataGeoLoko+=1
             return None, None
 
 """
@@ -43,11 +47,11 @@ Transformas datumo tielmaniere
 def str2strTempo(datString, ren, jaro):
     datString = datString.lower()
     #sen la punkto, legu la numeroj, kiuj versxajne estas la tag(oj)
-    tagoj = [s for s in datString.replace("."," ").split() if s.isdigit()]
+    tagoj = [int(dato) for dato in re.split("[- .]", datString) if dato.isdigit()]
     #kontrolu, se enhavas unu aux du monatnomoj
     monatoj=[]
     finjaro=jaro
-    if "januar"   in datString and not "dezembr"  in datString:  monatoj.append("01")
+    if "januar"   in datString and not "decembr"  in datString:  monatoj.append("01")
     if "februar"  in datString:  monatoj.append("02")
     if "mart"     in datString:  monatoj.append("03")
     if "april"    in datString:  monatoj.append("04")
@@ -66,17 +70,16 @@ def str2strTempo(datString, ren, jaro):
 
     datumo={}
     #print(datString, jaro,finjaro, monatoj, tagoj)
-
     if len(tagoj)==2:
-        ren["ekdato"]= "%d-%s-%s" % (jaro, monatoj[0], tagoj[0])
+        ren["ekdato"]= "%d-%s-%02d" % (jaro, monatoj[0], tagoj[0])
         if len(monatoj)==2:
-            ren["findato"]= "%d-%s-%s" % (finjaro, monatoj[1], tagoj[1])
+            ren["findato"]= "%d-%s-%02d" % (finjaro, monatoj[1], tagoj[1])
         elif len(monatoj)==1:
-            ren["ekdato"]= "%d-%s-%s" % (jaro, monatoj[0], tagoj[0])
-            ren["findato"]= "%d-%s-%s" % (jaro, monatoj[0], tagoj[1])
+            ren["ekdato"]= "%d-%s-%02d" % (jaro, monatoj[0], tagoj[0])
+            ren["findato"]= "%d-%s-%02d" % (jaro, monatoj[0], tagoj[1])
         else: ren["ekdato"] = None
     elif len(tagoj)==1:
-        ren["ekdato"] = "%d-%s-%s" % (jaro, monatoj[0], tagoj[0])
+        ren["ekdato"] = "%d-%s-%2d" % (jaro, monatoj[0], tagoj[0])
     else: ren["ekdato"] = None
     return ren
 
@@ -103,9 +106,8 @@ def analizuDDTekston(dd):
 #######SKRIPTO
 ###############
 for jar in jaroj:
-    print("Komencas datumi jaro "+str(jar)+" ...")
     jar_url=EVENTOJ_URL.format(jar)
-    print(jar_url)
+    print("Skanas jaron", str(jar), "(", jar_url, ") ...")
 
     #Sxargxu vere aux servo de cache
     if os.path.isfile("html/"+str(jar)+".html"):
@@ -117,19 +119,21 @@ for jar in jaroj:
         pagxo = driver.get(jar_url)
         open("html/"+str(jar)+".html","w").write(driver.page_source)
         driver.close()
-    erenoj=[]
-    cnt,loc=0,0
+    erenoj, senlokajrenoj = [], []
+    cxijarajEventojCnt = 0
     soup = BeautifulSoup(pagxo,"lxml")
     eblajEventoj = soup.find_all('dt')
     for ren in eblajEventoj:
         eren={}
-        #print(ren,ren.find_all('strong')[0].text,"\n--PPP--\n")
         try:
-            tempo = ren.find_all('strong')[0].text
-            #sekvaj jaroj en la pagxo estas post h1 elementoj
-            eren = str2strTempo(tempo, eren, jar +  len(ren.findAllPrevious("h1")))
+            tempo = ren.text
+            if len(tempo)>6:
+                #sekvaj jaroj en la pagxo estas post h1 elementoj
+                eren = str2strTempo(tempo, eren, jar +  len(ren.findAllPrevious("h1")))
+            else:
+                continue
         except Exception as e :
-            print("ERROR",ren, "'E", e, "E'\n")
+            print("Ne enhavas daton", tempo, "'E", e, "E'\n")
             continue;
         #try:
         dd=ren.find_next("dd")
@@ -141,7 +145,7 @@ for jar in jaroj:
                 if link.href:
                     if "mailto:" in link.href:
                         eren["mail"]=link.href.replace("mailto:","")
-                    else: eren["link"] = links[0].href
+                    else: eren["link"] = link.href
             #"Junulara Esperanta Semajno JES-2016 - en Waldheim am Brahmsee, norda Germanio."
             #ansxtatauxigu helpas kun kelkaj neregulajxoj
             loko = dd.text.replace("–","-").replace(",","-")
@@ -154,25 +158,25 @@ for jar in jaroj:
                 geoString = eren["posxtcodo"].split(" ",1)[-1] + " - " + eren["posxtcodo"].split(" ")[0] + eren["lando"]
             elif "loko" in eren: geoString = eren["loko"]
             if geoString: eren["lat"], eren["lon"] = getGeoCoords(geoString)
-            loc+=1
-        #se havas minimume 4 informacioj uzu kiel evento
-        if len(list(eren.values()))-list(eren.values()).count(None)>3 and eren["ekdato"] and eren["text"]:
-            cnt+=1
-            erenoj.append(eren)
-            cxiujEventoj.append(eren)
+            eren["tutaTeksto"] = dd.text
+            #aldonu al listo por json-dosiero
+            if eren["ekdato"]:
+                cxijarajEventojCnt+=1
+                erenoj.append(eren)
+                cxiujEventoj.append(eren)
 
-    print("\nTrovite "+str(len(eblajEventoj)))
-    print("Renkontitaj "+str(cnt))
-    print("Lokitaj "+str(loc))
+    print("Trovite "+str(len(eblajEventoj)))
+    print("Vere enskanita al datumbaza (pro suficxe da datoj): "+str(cxijarajEventojCnt))
 
     open("renkontoj/"+str(jar)+".json","w").write(
-        json.dumps(erenoj,indent=4,ensure_ascii=False)
-    )
+        json.dumps(erenoj,indent=4,ensure_ascii=False))
 
+print("====================",  "\nEne de cxiuj jaroj")
 #savu geocache
-print("geosuchen",geoc,"/",geoc+geol)
-print("Total renoj "+str(len(cxiujEventoj)))
+print("Por", trovataGeoLoko, "de", trovataGeoLoko+neTrovataGeoLoko, "eventoj trovis geokordinatoj de la loko")
+print("Entute enkontris "+str(len(cxiujEventoj)), "erenkontigxojn kun geokordinatoj kaj", str(len(senlokajrenoj)) ,"sen")
 
-f=open("eventoj.json","w")
-f.write(json.dumps(cxiujEventoj,indent=4,ensure_ascii=False))
-f.close()
+open("eventoj.json","w").write(
+    json.dumps(cxiujEventoj,indent=4,ensure_ascii=False))
+open("eventoj_senlokaj.json","w").write(
+    json.dumps(senlokajrenoj,indent=4,ensure_ascii=False))
