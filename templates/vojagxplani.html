@@ -158,15 +158,13 @@
         planumi()
     }
 
-
-
     $(document).ready(function(){
        rapideco = parseInt($('input[type=radio][name=metodo]').val());
        horojTageEnTrafiko = 10;
        $('input[type=radio][name=metodo]').change(function() {
            rapideco = parseInt(this.value);
        });
-       var eventoj = {{ renoj|safe }};
+       var eventoj = {{ renoj|tojson_str_encoded|safe }};
        var mapo = initMapo(eventoj);
        initScheduler(eventoj);
 

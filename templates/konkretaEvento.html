@@ -15,9 +15,9 @@
     <h3 class="grey-text text-darken-4">{{ evento.nomo }}</h3>
     <div class="col s12 m3 grey lighten-4">
           <a class="" href="/evento/{{ g.evento_mallongigo }}">
-            {% if "/" in evento.logo %}
+            {% if evento.logo != None %}
             <img class="fillwidth responsive-img" src="{{ url_for('static', filename=evento.logo) }}">
-            {% elif "/" in gevento.logo %}
+            {% elif gevento.logo != None and gevento.logo != '' %}
             <img class="fillwidth responsive-img" src="{{ url_for('static', filename=gevento.logo) }}">
             {% else %}
             <img class="fillwidth responsive-img" src="{{ url_for('static', filename='img/stelo.jpg') }}">
@@ -29,10 +29,10 @@
       {% if evento.ektempo %}
       <b>Kiam okazas:</b> {{ evento.ektempo }}{% if evento.fintempo %}- {{evento.fintempo}}{% endif %}
       {% endif %}
-      {% if evento.urbo != "None" %}      <p><b>Urbo:</b>        {{ evento.urbo }}    </p> {% endif %}
-      {% if evento.regiono != "None" %}   <p><b>Kie okazos:</b>  {{ evento.regiono }} </p> {% endif %}
-      {% if evento.posxtcodo != "None" %} <p><b>Posxtcodo:</b> {{ evento.posxtcodo }} </p> {% endif %}
-      {% if evento.priskribo != "None" %} <p><b>Priskribo:</b> {{ evento.priskribo }} </p> {% endif %}
+      {% if evento.urbo != None %}      <p><b>Urbo:</b>        {{ evento.urbo }}    </p> {% endif %}
+      {% if evento.regiono != None %}   <p><b>Kie okazos:</b>  {{ evento.regiono }} </p> {% endif %}
+      {% if evento.posxtcodo != None %} <p><b>Posxtcodo:</b> {{ evento.posxtcodo }} </p> {% endif %}
+      {% if evento.priskribo != None %} <p><b>Priskribo:</b> {{ evento.priskribo }} </p> {% endif %}
 
       <p> {{evento.nomo}} ({{evento.gxeneralaEvento}}) estas organizata de la {{orga.nomo}}</p>
       <p>Jen pli informacioj pri <a href="{{ url_for('gxeneralaEvento', evento_mallongigo=evento.gxeneralaEvento) }}">
@@ -50,7 +50,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        var evento = [{{ evento|safe }}];
+        var evento = [{{ evento|tojson_str_encoded|safe }}];
         initMapo(evento);
     });
 </script>

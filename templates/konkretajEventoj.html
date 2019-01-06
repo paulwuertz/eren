@@ -29,31 +29,36 @@
         <!--- teksta listo de renkontigxoj en tabela formo -->
         <div class="row">
             <div class="col s10 offset-s1">
-              <table class="striped bordered">
+              <table id="eventtablo" class="striped bordered">
                 <thead>
                   <tr>
-                      <th data-field="nomo">Nomo</th>
+                      <th data-field="nomo">Eventnomo</th>
                       <th data-field="loko">Loko</th>
-                      <th data-field="tempo">Tempo</th>
+                      <th data-field="tempo">Komenco</th>
+                      <th data-field="tempo">Fino</th>
                       <th data-field="tempo">Priskribo</th>
-                      <th data-field="tempo">Kontakto</th>
+                      <th data-field="tempo">Ligilo</th>
                   </tr>
                 </thead>
                 <tbody>
                 {% for ren in renoj %}
                   <tr>
-                    <td><a href="{{ ren.link }}">{{ ren.nomo }}</a></td>
+                    <td><a href="{{ url_for('konkretaEvento', nomo=ren.nomo) }}">{{ ren.nomo }}</a></td>
                     {# Kiel kontrulu malegaleco kun None? #}
-                    {% if ren.urbo != ren.lando %}
+                    {% if ren.urbo != None %}
                     <td>{{ ren.urbo }} - {{ ren.lando }}</td>
                     {% elif ren.regiono != ren.lando %}
                     <td>{{ ren.regiono }}</td>
                     {% else %}
                     <td> - </td>
                     {% endif %}
-                    <td>{{ ren.ektempo }} {% if ren.ektempo %}- {{ ren.fintempo }} {%endif%}</td>
+                    <td>{{ ren.ektempo }}</td>
+                    <td>{% if ren.fintempo %} {{ ren.fintempo }} {% else %} - {%endif%}</td>
                     <td>{{ ren.priskribo }}</td>
-                    <td><a href="mailto:{{ren.mail}}">Alretpoŝtu!</a></td>
+                    <td>{% if ren.ligilo != None %}
+                        <a href="{{ ren.ligilo }}"><i class="small material-icons">open_in_new</i></a>
+                        {% else %} - {%endif%}
+                    </td>
                   </tr>
                 {% endfor %}
                 </tbody>
@@ -69,16 +74,29 @@
 {% block js %}
 <!--- JSajxojn -->
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='node_modules/moment/min/moment-with-locales.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('ul.tabs').tabs();
-        var eventoj = {{ renoj|safe }};
+        var eventoj = {{ renoj|tojson_str_encoded|safe }};
         initCalendar(eventoj);
         initMapo(eventoj);
+
+        var rows = $("#eventtablo tbody").children();
+        for(const r of rows){
+            //la dua enhavas la datoj
+            var dataCxielo = r.cells[2]
+            var dataTexto  = dataCxielo.innerText
+            var belaDato   = moment(dataTexto, "YYYY-MM-DD").format("Do MMM YYYY");
+            dataCxielo.innerText = belaDato
+
+            var dataCxielo = r.cells[3]
+            var dataTexto  = dataCxielo.innerText
+            var belaDato   = moment(dataTexto, "YYYY-MM-DD").format("Do MMM YYYY");
+            dataCxielo.innerText = belaDato
+        }
     });
 </script>
 {% endblock %}

@@ -37,7 +37,7 @@
               <ul class="collection">
                   {% for evento in eventoj[:2] %}
                   <li class="collection-item avatar">
-                      {% if evento.logo != "None" %}
+                      {% if evento.logo != None %}
                       <img class="circle" src="{{ url_for('static', filename=evento.logo) }}">
                       {% else %}
                       <img class="circle" src="{{ url_for('static', filename='img/stelo.jpg') }}">
@@ -53,6 +53,8 @@
       </div>
       <div class="col s12">
       </div>
+      <!--- la karto -->
+      <div id="mapo" class="col s10 offset-s1"></div>
   </div>
 </div>
 {% endblock %}
@@ -62,8 +64,16 @@
 <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        var eventoj = {{ eventoj|safe }};
-        //initMapo(eventoj);
+        var eventoj = [
+                      {% for team_nomo, geventoj in koorps.items() %}
+                      {% for gevento, eventoj in geventoj.items() %}
+                      {% for evento in eventoj%}
+                          {{ eventoj|tojson_str_encoded|safe }},
+                      {% endfor %}
+                      {% endfor %}
+                      {% endfor %}
+        ]
+        initMapo(eventoj);
     });
 </script>
 {% endblock %}

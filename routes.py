@@ -1,4 +1,4 @@
-import datetime, flask_login, modeloj
+import datetime, flask_login, modeloj, json
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, jsonify, request
 
@@ -73,7 +73,8 @@ def jare(jar):
 def gxeneralaEvento(evento_mallongigo):
     gevento = modeloj.GxeneralaEvento.query.filter_by(evento_mallongigo=evento_mallongigo).first_or_404()
     orga = modeloj.Teamo.query.filter_by(nomo=gevento.cxefteamo).first_or_404()
-    eventoj = modeloj.Evento.query.filter_by(gxeneralaEvento=evento_mallongigo).all()
+    eventoj = modeloj.Evento.query.filter_by(gxeneralaEvento=evento_mallongigo)\
+                                  .order_by(modeloj.Evento.ektempo.desc()).all()
     eventojDicts = [modeloj.TableAsDict(e) for e in eventoj]
     return render_template('gxeneralaEvento.html', GLOBAL=GLOBAL, gevento=gevento, orga=orga, eventoj=eventojDicts)
 

@@ -23,17 +23,17 @@ def getGeoCoords(string):
     if string in geocache:
         if geocache[string] != [None, None]: trovataGeoLoko+=1
         else: neTrovataGeoLoko+=1
-        return geocache[string]
+        return geocache[string][:2]
     else:
         try:
             location = geolocator.geocode(string)
-            geocache[string] = location.raw["lat"], location.raw["lon"]
+            geocache[string] = location.raw["lat"], location.raw["lon"], False
             open("geocache.json","w").write(json.dumps(geocache,indent=4))
-            if geocache[string] != [None, None]: trovataGeoLoko+=1
+            if geocache[string] != [None, None, False]: trovataGeoLoko+=1
             else: neTrovataGeoLoko+=1
             return location.raw["lat"], location.raw["lon"]
         except Exception as e:
-            geocache[string] = None, None
+            geocache[string] = None, None, False
             open("geocache.json","w").write(json.dumps(geocache,indent=4,ensure_ascii=False))
             neTrovataGeoLoko+=1
             return None, None
@@ -139,13 +139,12 @@ for jar in jaroj:
         dd=ren.find_next("dd")
         if dd and dd.a:
             eren["nomo"]=dd.a.text
-            links = dd.find_all("a")
+            links = dd.find_all("a", href=True)
             #sercxu retposxtadreso kaj ligilo
             for link in links:
-                if link.href:
-                    if "mailto:" in link.href:
-                        eren["mail"]=link.href.replace("mailto:","")
-                    else: eren["link"] = link.href
+                if "mailto:" in link['href']:
+                    eren["mail"]=link['href'].replace("mailto:","")
+                else: eren["ligilo"] = link['href']
             #"Junulara Esperanta Semajno JES-2016 - en Waldheim am Brahmsee, norda Germanio."
             #ansxtatauxigu helpas kun kelkaj neregulajxoj
             loko = dd.text.replace("–","-").replace(",","-")

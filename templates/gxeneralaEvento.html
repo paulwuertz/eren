@@ -27,7 +27,7 @@
     </div>
     <div class="col s12 m9 left-align">
       <p>
-        {{ gevento.nomo }} ({{gevento.evento_mallongigo}}) estas organizata de la <a href="{{ url_for('uzanto', nomo=orga.nomo) }}">{{orga.nomo}}</a>.
+        {{ gevento.nomo }} ({{gevento.evento_mallongigo}}) estas organizata de la <a href="{{ url_for('organizacio', nomo=orga.nomo) }}">{{orga.nomo}}</a>.
       </p>
       {% if gevento.ektempo %}
       <b>Organizita ekde {{ gevento.ektempo.strftime('%Y') }}</b>
@@ -37,7 +37,7 @@
     <div class="col s10 offset-s1">
         {% if eventoj|length > 0 %}
 
-        {% if GLOBAL.strptime( (eventoj|first).ektempo, "%Y-%m-%d").date() > GLOBAL.today() %}
+        {% if (eventoj|first).ektempo > GLOBAL.today() %}
         <p>La proksima {{gevento.evento_mallongigo}} venas baldau!!!</p>
         {% endif %}
 
@@ -75,7 +75,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        var eventoj = {{ eventoj|safe }};
+        var eventoj = {{ eventoj|tojson_str_encoded|safe }};
         initMapo(eventoj);
     });
 </script>

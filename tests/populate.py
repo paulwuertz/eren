@@ -72,15 +72,17 @@ def addEventoj():
                 else:
                     posxtcodo, urbo = None, None
                 lando = e["lando"] if "lando" in e else None
-                mail = e["retposxto"] if "retposxto" in e else None
-                link = e["regiono"] if "regiono" in e else None
+                mail = e["mail"] if "mail" in e else None
+                link = e["ligilo"] if "ligilo" in e else None
                 lat, lon = (e["lat"], e["lon"]) if "lat" in e else (None, None)
                 ev=Evento(nomo=nomo, ektempo=e["ekdato"], fintempo=fin, lat=lat, lon=lon, priskribo=priskribo, gxeneralaEvento=geStr, retposxto=mail, urbo=urbo, lando=lando, regiono=loko, ligilo=link, posxtcodo=posxtcodo)
                 db.session.add(ev)
                 eventoj.remove(e)
                 nedublaj.add((str(ev.ektempo), nomo, ev.gxeneralaEvento))
     db.session.commit()
-    print("aldonis %d Eventoj" % len(db.session.query(Evento).all()))
+    print("aldonis %d Eventoj al la testdatumbazo. restas %d eventoj neenigxataj" % (len(db.session.query(Evento).all()), len(eventoj)))
+    #skribu restantaj eventoj en datumo
+    open("neUzataj.json", "w").write(json.dumps(eventoj, ensure_ascii=False, indent=4))
 
 def plenumiDBkunEkzemploj():
     addGeneralajEventoj()

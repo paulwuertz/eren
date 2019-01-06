@@ -21,7 +21,7 @@ def getEventoj(ekdato=None, findato=None, regionaFiltro=False, tipoj=False):
     return eventoj
 
 def TableAsDict(self):
-    return {c.name: str(getattr(self, c.name)) for c in self.__table__.columns}
+    return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 #tio estas aux simpla uzanto aux organizacio, kiu organizas eventoj
 class Uzanto(db.Model, UserMixin):
