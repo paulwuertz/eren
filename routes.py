@@ -1,6 +1,6 @@
 import datetime, flask_login, modeloj, json
 from flask_sqlalchemy import SQLAlchemy
-from flask import render_template, jsonify, request
+from flask import render_template, jsonify, request, abort
 
 from sekreta import *
 from helpiloj import *
@@ -29,9 +29,15 @@ def organizacioj():
 def organizacio(nomo):
     uzanto = modeloj.Uzanto.query.filter_by(isOrganizacio=1) \
                                  .filter_by(orga_mallongigo=nomo).first()
+    #se ne ekzistas UZANTo devas esti teamo
+    if not uzanto:
+        teamo = modeloj.Teamo.query.filter_by(nomo=nomo).first_or_404()
+        membroj = [modeloj.Uzanto.query.filter_by(orga_mallongigo=mem.uzanto_nomo).first_or_404() 
+                        for mem in modeloj.TeamMembroj.query.filter_by(teamo_nomo=nomo).all()]
+        eventoj = getCxiujEventojDeTeamo(teamo.nomo)
+        return render_template('organizacio_teamo.html', teamo=teamo, membroj=membroj, eventoj=eventoj);
     teamoj = modeloj.TeamMembroj.query.filter_by(uzanto_nomo=nomo).all()
     koorps = {t.teamo_nomo:getCxiujEventojDeTeamo(t.teamo_nomo) for t in teamoj}
-    print(koorps)
     return render_template('organizacio.html', uzanto=uzanto, koorps=koorps);
 
 @app.route('/follow/<username>')
@@ -123,7 +129,7 @@ def vojagxPlan():
 @app.route('/aldoniEventon/', methods=["GET","POST"])
 def aldoniEventon():
     if request.method == 'GET':
-        return render_template('aldoniEventon.html', GLOBAL=GLOBAL, hejm=True)
+        return render_template('aldoniEventon.html', GLOBAL=GLOBAL)
     #transformi al sxlosil-valorparoj
     if request.method == 'POST':
         form = request.form.to_dict()
@@ -152,7 +158,18 @@ def aldoniEventon():
             return jsonify({"succeson":False,"messagxo":"Tute fiaskis..."})
         return "Saluton :)"
 
+@app.route('/geocache', methods=["GET","POST"])
+def geocachedebug():
+    if not app.debug:
+        return abort(404)
+    if request.method == 'GET':
+        geocache = json.load(open("frozen/geocache.json","r"))
+        return render_template('korektiGeolibKordinatoj.html', GLOBAL=GLOBAL, geocache=geocache)
+    #transformi al sxlosil-valorparoj
+    if request.method == 'POST':
+        return
+
 @app.route('/')
 def hejme():
     print(GLOBAL)
-    return render_template('home.html', GLOBAL=GLOBAL, hejm=True)
+    return render_template('home.html', GLOBAL=GLOBAL)

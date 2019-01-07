@@ -46,4 +46,4 @@ if __name__ == '__main__':
        db.metadata.create_all(engine) #Lets create the actual sqlite database and schema!
        print('kreis datumbazo: eren.db')
        tests.populate.plenumiDBkunEkzemploj()
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=DEBUG)

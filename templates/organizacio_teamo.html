@@ -15,27 +15,33 @@
 {% block body %}
 <div class="row center-align container z-depth-1" id="cont-m">
   <div class="col grey lighten-4 s12">
-    <h3 class="grey-text text-darken-4">{{ uzanto.nomo }}</h3>
+    <h3 class="grey-text text-darken-4">{{ teamo.nomo }}</h3>
     <div class="col s12 m3">
-          <a class="" href="/evento/{{ uzanto.orga_mallongigo }}">
-            {% if uzanto.logo %}
-            <img class="fillwidth responsive-img" src="{{ url_for('static', filename=uzanto.logo) }}">
-            {% else %}
-            <img class="fillwidth responsive-img" src="{{ url_for('static', filename='img/stelo.jpg') }}">
-            {% endif %}
-          </a>
+        {% if teamo.logo %}
+        <img class="fillwidth responsive-img" src="{{ url_for('static', filename=teamo.logo) }}">
+        {% else %}
+        <img class="fillwidth responsive-img" src="{{ url_for('static', filename='img/stelo.jpg') }}">
+        {% endif %}
     </div>
-    <div class="col s12 m9 left-align">
-      <p>
-        {{ uzanto.nomo }} ({{ uzanto.orga_mallongigo}})
-      </p>
+    <div class="col row s12 m9 left-align">
+      En la {{ teamo.nomo }} estas tiuj organizacioj:
+      <div class="col s12 row">
+        {% for team in membroj %}
+        <a class="col s2" href="{{ url_for('organizacio', nomo=team.orga_mallongigo) }}">
+            {% if team.logo %}
+            <img class="circle responsive-img" src="{{ url_for('static', filename=team.logo) }}">
+            {% else %}
+            <img class="circle responsive-img" src="{{ url_for('static', filename='img/stelo.jpg') }}">
+            {% endif %}
+        </a>
+        {% endfor %}
+      </div>
     </div>
     <div class="col s10 offset-s1">
-        <p>{{ uzanto.nomo }} organizas tiuj eventoj regule:</p>
-        {% for team_nomo, geventoj in koorps.items() %}
-        {% if (geventoj.values()|list) != [[]] %}
-        <h5>Kiel parte de la {{ team_nomo }}:</h5>
-              {% for gevento, eventoj in geventoj.items() %}
+        <p>{{ teamo.nomo }} organizas tiuj eventoj regule:</p>
+        {% if (eventoj.values()|list) != [[]] %}
+        <h5>{{ team_nomo }} organizas tiuj eventoj:</h5>
+              {% for gevento, eventoj in eventoj.items() %}
               <ul class="collection">
                   {% for evento in eventoj[:2] %}
                   <li class="collection-item avatar">
@@ -51,7 +57,6 @@
               </ul>
               {% endfor %}
         {% endif %}
-        {% endfor %}
       </div>
       <div class="col s12">
       </div>
@@ -68,11 +73,9 @@
 <script type="text/javascript">
     $(document).ready(function(){
         var eventoj = [
-                      {% for team_nomo, geventoj in koorps.items() %}
-                      {% for gevento, eventoj in geventoj.items() %}
-                      {% for evento in eventoj%}
-                          {{ eventoj|tojson_str_encoded|safe }},
-                      {% endfor %}
+                      {% for gevento, konk_eventoj in eventoj.items() %}
+                      {% for evento in konk_eventoj%}
+                          {{ evento|tojson_str_encoded|safe }},
                       {% endfor %}
                       {% endfor %}
         ]

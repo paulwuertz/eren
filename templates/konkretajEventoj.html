@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet/dist/leaflet.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet.markercluster/dist/MarkerCluster.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -54,7 +56,7 @@
                     {% endif %}
                     <td>{{ ren.ektempo }}</td>
                     <td>{% if ren.fintempo %} {{ ren.fintempo }} {% else %} - {%endif%}</td>
-                    <td>{{ ren.priskribo }}</td>
+                    <td>{% if ren.priskribo %} {{ ren.priskribo }} {% else %} - {%endif%}</td>
                     <td>{% if ren.ligilo != None %}
                         <a href="{{ ren.ligilo }}"><i class="small material-icons">open_in_new</i></a>
                         {% else %} - {%endif%}
@@ -74,6 +76,7 @@
 {% block js %}
 <!--- JSajxojn -->
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet.markercluster/dist/leaflet.markercluster.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/fullcalendar/dist/fullcalendar.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/qtip2/dist/jquery.qtip.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>

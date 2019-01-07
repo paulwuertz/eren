@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+<style media="screen">
+</style>
+{% block header %}
+  <title>E-Renkontiĝoj en la mondo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/leaflet-locationpicker/dist/leaflet-locationpicker.src.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet/dist/leaflet.css') }}">
+{% endblock %}
+
+{% block informa_antaux_body %}
+<div class="informejo container z-depth-1 row">
+  <div class="row">
+    <h5>Cxi tie vi povas korekti auxtomatdivenitaj lokoj de eventoj en la geocache.json</h5>
+  </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<!--- Hejmpagxo se nenia jaro estas elektita -->
+<div id="formContainer" class="row z-depth-1 container">
+  <form id="col novevento l6 offset-l3 m8 offset-m2 s10 offset-s1" method="post">
+
+    <fieldset>
+        <legend>Ejo</legend>
+        <div class="row">
+        <div class="input-field col s12">
+          <div class="input-field col m6 s12">
+              <div class="input-field col s12">
+                  <input id="geoinput" name="geoloc" type="text" placeholder="0.0000,0.0000" required>
+                  <label for="geoloc">Elektu la okazejo en la mapo:</label>
+              </div>
+              <div class="input-field in-opts col s12 bfh-selectbox bfh-countries" data-country="eo" data-flags="true">
+                        <input type="text" name="lando" class="autocomplete" placeholder="Lando" required>
+                        <label for="autocomplete-input">Elektu eventlando:</label>
+              </div>
+              <div class="input-field col s12">
+                <input placeholder="Urbonomo" name="urbnomo" type="text" required>
+                <label for="urbnomo">Nomo de okazurbo:</label>
+              </div>
+          </div>
+          <!--- MAP --->
+          <div id="map" class="col m6 s12"></div>
+        </div>
+        </div>
+    </fieldset>
+    <div class="col s12 center-align">
+      <a class="waves-effect waves-light btn"><i class="material-icons left">chevron_left</i>Lasta</a>
+      <a class="waves-effect waves-light btn"><i class="material-icons left">file_upload</i>Aktualigxu</a>
+      <a class="waves-effect waves-light btn"><i class="material-icons left">chevron_right</i>Sekva</a>
+
+    </div>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet-locationpicker/dist/leaflet-locationpicker.src.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/bootstrap-formhelpers/js/lang/eo/bootstrap-formhelpers-countries.eo.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='form.js') }}"></script>
+<script type="text/javascript">
+    function statistikoj(lokoj) {
+        var eventKv = lokoj.length;
+        var neLokataj = 0,
+            neKontrolataj = 0
+            senUrbo = 0
+            senLando = 0;
+        for (loko of lokoj) {
+            if(loko == [none, none]){
+              neLokataj++; neKontrolataj++; senUrbo++; senLando++;
+            } else if(loko.length == 2){
+              neKontrolataj++; senUrbo++; senLando++;
+            }
+        }
+        return {  "eventKv":eventKv,
+                  "neLokataj":neLokataj,
+                  "neKontrolataj":neKontrolataj,
+                  "senUrbo":senUrbo,
+                  "senLando":senLando,
+               }
+    }
+
+  index = 0;
+  var lokoj = {{ geocache|tojson_str_encoded|safe }};
+  console.log(statistikoj(lokoj));
+</script>
+{% endblock %}

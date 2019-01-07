@@ -7,6 +7,8 @@
       }
     </style>
     <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet/dist/leaflet.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet.markercluster/dist/MarkerCluster.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',  filename='node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -27,7 +29,7 @@
     <!-- gevento=gevento, evento=evento, orga=orga -->
     <div class="col s12 m9 left-align">
       {% if evento.ektempo %}
-      <b>Kiam okazas:</b> {{ evento.ektempo }}{% if evento.fintempo %}- {{evento.fintempo}}{% endif %}
+      <b>Kiam okazas:</b> <span class="ektempo">{{ evento.ektempo }}</span>{% if evento.fintempo %} - <span class="fintempo">{{evento.fintempo}}</span> {% endif %}
       {% endif %}
       {% if evento.urbo != None %}      <p><b>Urbo:</b>        {{ evento.urbo }}    </p> {% endif %}
       {% if evento.regiono != None %}   <p><b>Kie okazos:</b>  {{ evento.regiono }} </p> {% endif %}
@@ -47,11 +49,22 @@
 
 {% block js %}
 <script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet/dist/leaflet.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='node_modules/leaflet.markercluster/dist/leaflet.markercluster.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         var evento = [{{ evento|tojson_str_encoded|safe }}];
         initMapo(evento);
+
+        var dataSpan = $(".ektempo");
+        var dataTexto  = dataSpan.text();
+        var belaDato   = moment(dataTexto, "YYYY-MM-DD").format("Do MMMM YYYY");
+        dataSpan.text(belaDato);
+
+        dataSpan = $(".fintempo");
+        var dataTexto  = dataSpan.text();
+        var belaDato   = moment(dataTexto, "YYYY-MM-DD").format("Do MMMM YYYY");
+        dataSpan.text(belaDato);
     });
 </script>
 {% endblock %}

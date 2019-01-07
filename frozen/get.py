@@ -1,11 +1,9 @@
 import requests, html, regex, json, sys, os, re
 from bs4 import BeautifulSoup
-from geopy.geocoders import Nominatim
 from selenium import webdriver
 
 EVENTOJ_URL="http://www.eventoj.hu/{0}.htm"
 jaroj=range(1997, 2019)
-geolocator = Nominatim()
 
 #kreu subdusierujoj
 if not os.path.exists("renkontoj"):
@@ -13,30 +11,7 @@ if not os.path.exists("renkontoj"):
 if not os.path.exists("html"):
     os.makedirs("html")
 
-geocache = {} if not os.path.isfile("geocache.json") else json.load(open("geocache.json","r"))
-trovataGeoLoko, neTrovataGeoLoko = 0, 0
 cxiujEventoj = []
-
-#Uzu la geopy lib por elsxuti divenata koordinatoj
-def getGeoCoords(string):
-    global trovataGeoLoko, neTrovataGeoLoko
-    if string in geocache:
-        if geocache[string] != [None, None]: trovataGeoLoko+=1
-        else: neTrovataGeoLoko+=1
-        return geocache[string][:2]
-    else:
-        try:
-            location = geolocator.geocode(string)
-            geocache[string] = location.raw["lat"], location.raw["lon"], False
-            open("geocache.json","w").write(json.dumps(geocache,indent=4))
-            if geocache[string] != [None, None, False]: trovataGeoLoko+=1
-            else: neTrovataGeoLoko+=1
-            return location.raw["lat"], location.raw["lon"]
-        except Exception as e:
-            geocache[string] = None, None, False
-            open("geocache.json","w").write(json.dumps(geocache,indent=4,ensure_ascii=False))
-            neTrovataGeoLoko+=1
-            return None, None
 
 """
 Transformas datumo tielmaniere
@@ -152,11 +127,6 @@ for jar in jaroj:
                 eren["loko"]=loko.split("- en ")[1].split(".")[0]
             eren["text"], update = analizuDDTekston(dd.text)
             if update: eren.update(update)
-            geoString = ""
-            if "lando" in eren and "posxtcodo" in eren:
-                geoString = eren["posxtcodo"].split(" ",1)[-1] + " - " + eren["posxtcodo"].split(" ")[0] + eren["lando"]
-            elif "loko" in eren: geoString = eren["loko"]
-            if geoString: eren["lat"], eren["lon"] = getGeoCoords(geoString)
             eren["tutaTeksto"] = dd.text
             #aldonu al listo por json-dosiero
             if eren["ekdato"]:
@@ -172,7 +142,6 @@ for jar in jaroj:
 
 print("====================",  "\nEne de cxiuj jaroj")
 #savu geocache
-print("Por", trovataGeoLoko, "de", trovataGeoLoko+neTrovataGeoLoko, "eventoj trovis geokordinatoj de la loko")
 print("Entute enkontris "+str(len(cxiujEventoj)), "erenkontigxojn kun geokordinatoj kaj", str(len(senlokajrenoj)) ,"sen")
 
 open("eventoj.json","w").write(

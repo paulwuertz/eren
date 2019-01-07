@@ -136,23 +136,29 @@ function initMapo(renoj){
     // set up the map
     map = new L.Map('mapo');
 
+    var markerList = [];
     // create the tile layer with correct attribution
     var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
     var osm = new L.TileLayer(osmUrl, {minZoom:2,attribution: osmAttrib});
+    var markers = L.markerClusterGroup();
 
-    map.setView(new L.LatLng(0, 0),2);
+    map.setView(new L.LatLng(0, 0), 2);
     map.addLayer(osm);
 
     //plenigo de mapo kun JSON datumojn
     for (var renInd in renoj) {
       var ren = renoj[renInd];
       if (ren.hasOwnProperty("lat") && ren.lat != null) {
-        var marker = L.marker([ren.lat, ren.lon]).addTo(map);
-        var m_str  = renkontigxoJson2listo(ren);
-        marker.bindPopup(m_str)
+          var marker = L.marker([ren.lat, ren.lon]);
+          var m_str  = renkontigxoJson2listo(ren);
+          marker.bindPopup(m_str);
+          markerList.push(marker);
       }
     }
+    //aldonu indikiloj kaj indikilaroj
+    markers.addLayers(markerList);
+    map.addLayer(markers);
     return map;
 }
 

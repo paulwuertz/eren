@@ -2,6 +2,7 @@ import csv, datetime, requests, sys, json, os, re
 from sqlalchemy import update
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
+from geopy.geocoders import Nominatim
 sys.path.append("../..")
 from modeloj import Teamo, TeamMembroj, GxeneralaEvento, Evento, Uzanto
 from app import db
@@ -17,6 +18,42 @@ def savuBildoSeNeEstas(url, path):
 
 stelo="http://podkasto.net/esperanto_pl/wp-content/uploads/2017/11/stelo.jpg"
 savuBildoSeNeEstas(stelo, "static/img/stelo.jpg")
+
+geocache = {} if not os.path.isfile("geocache.json") else json.load(open("geocache.json", "r"))
+geolocator = Nominatim()
+trovataGeoLoko, neTrovataGeoLoko = 0, 0
+
+#Uzu la geopy lib por elsxuti divenata koordinatoj
+def getGeoCoords(loko, posxtcodo, lando, urbo):
+    global trovataGeoLoko, neTrovataGeoLoko
+    geoString = loko
+    if lando and posxtcodo:
+        geoString = posxtcodo.split(" ",1)[-1] + " - " + posxtcodo.split(" ")[0] + lando
+    #jen en global dict se estas jam lokata
+    if geoString in geocache:
+        #1D religo
+        if len(geocache[geoString])==1:
+            geoString = geocache[geoString][0]
+            if len(geocache[geoString])==4 and not urbo:
+                urbo = geocache[geoString][3]
+        if not geoString: return None, None, urbo
+        #stats kaj return
+        if geocache[geoString][:2] != [None, None]: trovataGeoLoko+=1
+        else: neTrovataGeoLoko+=1
+        return geocache[geoString][0], geocache[geoString][1], urbo
+    else:
+        try:
+            location = geolocator.geocode(geoString)
+            geocache[geoString] = location.raw["lat"], location.raw["lon"], False
+            open("geocache.json","w").write(json.dumps(geocache,indent=4,ensure_ascii=False))
+            if geocache[geoString][:2] != [None, None]: trovataGeoLoko+=1
+            else: neTrovataGeoLoko+=1
+            return location.raw["lat"], location.raw["lon"], urbo
+        except Exception as e:
+            geocache[geoString] = None, None, False
+            open("geocache.json","w").write(json.dumps(geocache,indent=4,ensure_ascii=False))
+            neTrovataGeoLoko+=1
+            return None, None, urbo
 
 def orgaByName(name):
     return session.query(Uzanto).filter_by(uzantnomo=name).all()[0]
@@ -67,14 +104,13 @@ def addEventoj():
                 nomo = ge.nomo + " - " + e["ekdato"][:4]
                 priskribo = e["text"] if "text" in e else None
                 loko = e["loko"] if "loko" in e else None
-                if "posxtcodo" in e:
-                    posxtcodo, urbo = re.split("[\- .]", e["posxtcodo"].strip("- \t"), 1)
-                else:
-                    posxtcodo, urbo = None, None
+                posxtcodo, urbo = (None, None) if not "posxtcodo" in e else re.split("[\- .]", e["posxtcodo"].strip("- \t"), 1)
                 lando = e["lando"] if "lando" in e else None
                 mail = e["mail"] if "mail" in e else None
                 link = e["ligilo"] if "ligilo" in e else None
-                lat, lon = (e["lat"], e["lon"]) if "lat" in e else (None, None)
+                #divenu geokordinatoj, renomo urbo nur se estis antauxe None
+                lat, lon, urbo = getGeoCoords(loko, posxtcodo, lando, urbo)
+                #aldonu al DB kaj forigu de la listo
                 ev=Evento(nomo=nomo, ektempo=e["ekdato"], fintempo=fin, lat=lat, lon=lon, priskribo=priskribo, gxeneralaEvento=geStr, retposxto=mail, urbo=urbo, lando=lando, regiono=loko, ligilo=link, posxtcodo=posxtcodo)
                 db.session.add(ev)
                 eventoj.remove(e)
@@ -91,6 +127,7 @@ def plenumiDBkunEkzemploj():
     print("aldonis Uzantoj Kaj Teamoj")
     print("aldonas Eventoj")
     addEventoj()
+    print("Por", trovataGeoLoko, "de", trovataGeoLoko+neTrovataGeoLoko, "eventoj trovis geokordinatoj de la loko")
 
 #TODO elsuxtu informoj de asocioj, ligiloj, blabla
 def ueaOrgas():
